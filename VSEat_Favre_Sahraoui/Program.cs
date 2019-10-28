@@ -7,7 +7,7 @@ namespace VSEat_Favre_Sahraoui
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            Console.WriteLine("Salut Github 2");
+            Console.WriteLine("Salut Github 3");
         }
     }
 }
