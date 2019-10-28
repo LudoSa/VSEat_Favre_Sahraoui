@@ -9,9 +9,11 @@ namespace DTO
         public int IdCity { get; set; }
         public string Name { get; set; }
 
+        public int Code { get; set; }
+
         public override string ToString()
         {
-            return $"{IdCity}|{Name}";
+            return $"{IdCity}|{Name}|{Code}";
         }
 
     }
