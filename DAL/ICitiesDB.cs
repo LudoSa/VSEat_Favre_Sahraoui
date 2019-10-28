@@ -5,12 +5,12 @@ using System.Text;
 
 namespace DAL
 {
-    public interface ICities
+    public interface ICitiesDB
     {
         IConfiguration Configuration { get; }
-        List<Cities> getCities();
-        Cities getCity(int id);
-        Cities AddCity(Cities city);
+        List<CitiesDB> getCities();
+        CitiesDB getCity(int id);
+        CitiesDB AddCity(CitiesDB city);
         int DeleteCity(int id);
 
     }

@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Text;
 using Microsoft.Extensions.Configuration;
+using DTO;
 
 namespace DAL
 {
-    class Cities : ICities
+    class CitiesDB : ICitiesDB
     {
         public IConfiguration Configuration { get; }
-        public Cities(IConfiguration configuration)
+        
+
+        public CitiesDB(IConfiguration configuration)
         {
             Configuration = configuration;
         }
@@ -24,9 +27,10 @@ namespace DAL
                 {
                     String query = "Insert into Cities(Name,Code) values(@Name,@Code); SELECT SCOPE_IDENTITY()";
                     SqlCommand cmd = new SqlCommand(query, cn);
-                    cmd.Parameters.AddWithValue("@Name", Cities.Name);
-                    cmd.Parameters.AddWithValue("@Code", Cities.Code);
+                    cmd.Parameters.AddWithValue("@Name", city.Name);
+                    cmd.Parameters.AddWithValue("@Code", city.Code);
                     cn.Open();
+                    //city.IdCity = Convert.ToInt32(cmd.ExecuteScalar());
                 }
             }
             catch (Exception e)
@@ -41,12 +45,12 @@ namespace DAL
            
         }
 
-        public List<Cities> getCities()
+        public List<CitiesDB> getCities()
         {
             
         }
 
-        public Cities getCity(int id)
+        public CitiesDB getCity(int id)
         {
             
         }

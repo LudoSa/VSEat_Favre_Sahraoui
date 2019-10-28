@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DAL
 {
-    class Courier
+    class IRestaurantsDB
     {
     }
 }

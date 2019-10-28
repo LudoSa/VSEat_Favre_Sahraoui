@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DAL
 {
-    class IRestaurants
+    class IOrdersDB
     {
     }
 }

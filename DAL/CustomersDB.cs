@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DAL
 {
-    class Customers
+    class CustomersDB
     {
 
         public int IdCustomer { get; set; }
