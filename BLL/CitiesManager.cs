@@ -10,7 +10,7 @@ namespace BLL
     {
 
 
-        public ICitiesDb CitiesDb { get; }
+        public ICities CitiesDb { get; }
 
         public CitiesManager(IConfiguration configuration)
         {

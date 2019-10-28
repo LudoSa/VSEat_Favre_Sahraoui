@@ -9,7 +9,7 @@ namespace BLL
     public class CourierManager
     {
 
-        public ICourierDb CourierDb { get; }
+        public ICourier CourierDb { get; }
 
         public CourierManager(IConfiguration configuration)
         {
