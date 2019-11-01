@@ -4,11 +4,12 @@ using System.Text;
 
 namespace DTO
 {
-    class Restaurants
+    public class Restaurants
     {
 
         public int IdRestaurant { get; set; }
         public string Merchant_name { get; set; }
+        public string Address { get; set; }
         public int Country_code { get; set; }
 
         public override string ToString()
