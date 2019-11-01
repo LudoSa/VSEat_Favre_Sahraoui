@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using DTO;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,9 +9,10 @@ namespace DAL
     public interface ICitiesDB
     {
         IConfiguration Configuration { get; }
-        List<CitiesDB> getCities();
-        CitiesDB getCity(int id);
-        CitiesDB AddCity(CitiesDB city);
+        List<Cities> getCities();
+        Cities getCity(int id);
+        Cities AddCity(Cities city);
+        
         int DeleteCity(int id);
 
     }

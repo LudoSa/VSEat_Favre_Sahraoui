@@ -42,17 +42,109 @@ namespace DAL
 
         public int DeleteCity(int id)
         {
-           
+            int result = 0;
+            string connectionString = Configuration.GetConnectionString("DefaultConnection");
+
+            try
+            {
+                using (SqlConnection cn = new SqlConnection(connectionString))
+                {
+                    string query = "DELETE Cities where idCity = @id";
+                    SqlCommand cmd = new SqlCommand(query, cn);
+                    cmd.Parameters.AddWithValue("@id", id);
+
+
+                    cn.Open();
+
+                    result = cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+            return result;
         }
 
-        public List<CitiesDB> getCities()
+        public List<Cities> getCities()
         {
-            
+            List<Cities> results = null;
+            string connectionString = Configuration.GetConnectionString("DefaultConnection");
+
+            try
+            {
+                using (SqlConnection cn = new SqlConnection(connectionString))
+                {
+                    string query = "SELECT * FROM Cities";
+                    SqlCommand cmd = new SqlCommand(query, cn);
+
+                    cn.Open();
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            if (results == null)
+                                results = new List<Cities>();
+
+                            Cities city = new Cities();
+
+                            city.IdCity = (int)dr["IdCity"];
+                            city.Name = (string)dr["Name"];
+                            city.Code = (int)dr["Code"];
+                          
+                            results.Add(city);
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+            return results;
         }
 
-        public CitiesDB getCity(int id)
+        public Cities getCity(int id)
         {
-            
+            Cities city = null;
+            string connectionString = Configuration.GetConnectionString("DefaultConnection");
+
+            try
+            {
+                using (SqlConnection cn = new SqlConnection(connectionString))
+                {
+
+
+                    string query = "Select * from Cities where idCity = @id";
+                    SqlCommand cmd = new SqlCommand(query, cn);
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    cn.Open();
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        if (dr.Read())
+                        {
+
+                            city = new Cities();
+
+                            city.IdCity = (int)dr["IdCity"];
+                            city.Name = (string)dr["Name"];
+                            city.Code = (int)dr["Code"];
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+            return city;
+
         }
     }
 }
