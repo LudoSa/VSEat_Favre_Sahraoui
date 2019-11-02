@@ -17,27 +17,27 @@ namespace BLL
 
         }
 
-        public List<Dishes> GetHotels()
+        public List<Dishes> GetDishes()
         {
             return DishesDb.GetHotel();
         }
 
-        public Dishes GetHotel(int id)
+        public Dishes GetDish(int id)
         {
             return DishesDb.GetHotel(id);
         }
 
-        public Dishes AddHotel(Dishes dishes)
+        public Dishes AddDish(Dishes dishes)
         {
             return DishesDb.AddHotel(dishes);
         }
 
-        public int UpdateHotel(Dishes dishes)
+        public int UpdateDish(Dishes dishes)
         {
             return DishesDb.UpdateHotel(dishes);
         }
 
-        public int DeleteHotel(int id)
+        public int DeleteDish(int id)
         {
             return DishesDb.DeleteHotel(id);
         }

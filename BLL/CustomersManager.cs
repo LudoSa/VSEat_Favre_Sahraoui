@@ -17,27 +17,27 @@ namespace BLL
 
         }
 
-        public List<Customers> GetHotels()
+        public List<Customers> GetCustomers()
         {
             return CustomersDb.GetHotel();
         }
 
-        public Customers GetHotel(int id)
+        public Customers GetCustomer(int id)
         {
             return CustomersDb.GetHotel(id);
         }
 
-        public Customers AddHotel(Customers courier)
+        public Customers AddCustomer(Customers courier)
         {
             return CustomersDb.AddHotel(courier);
         }
 
-        public int UpdateHotel(Customers courier)
+        public int UpdateCustomer(Customers courier)
         {
             return CustomersDb.UpdateHotel(courier);
         }
 
-        public int DeleteHotel(int id)
+        public int DeleteCustomer(int id)
         {
             return CustomersDb.DeleteHotel(id);
         }

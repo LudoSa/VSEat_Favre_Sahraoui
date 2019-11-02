@@ -13,11 +13,11 @@ namespace DTO
         public string Login { get; set; }
         public string Password { get; set; }
         public int Country_code { get; set; }
-
+        public string Address { get; set; }
 
         public override string ToString()
         {
-            return $"{IdCustomer}|{Firstname}|{Lastname}|{Login}|{Password}|{Country_code.ToString()}";
+            return $"{IdCustomer}|{Firstname}|{Lastname}|{Login}|{Password}|{Address}|{Country_code.ToString()}";
         }
 
     }

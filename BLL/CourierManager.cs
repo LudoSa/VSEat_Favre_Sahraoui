@@ -18,27 +18,27 @@ namespace BLL
 
         }
 
-        public List<Courier> GetHotels()
+        public List<Courier> GetCouriers()
         {
             return CourierDb.GetHotel();
         }
 
-        public Courier GetHotel(int id)
+        public Courier GetCourier(int id)
         {
             return CourierDb.GetHotel(id);
         }
 
-        public Courier AddHotel(Courier courier)
+        public Courier AddCourier(Courier courier)
         {
             return CourierDb.AddHotel(courier);
         }
 
-        public int UpdateHotel(Courier courier)
+        public int UpdateCourier(Courier courier)
         {
             return CourierDb.UpdateHotel(courier);
         }
 
-        public int DeleteHotel(int id)
+        public int DeleteCourier(int id)
         {
             return CourierDb.DeleteHotel(id);
         }
