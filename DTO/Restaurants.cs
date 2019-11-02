@@ -9,6 +9,7 @@ namespace DTO
 
         public int IdRestaurant { get; set; }
         public string Merchant_name { get; set; }
+        public string Address { get; set; }
         public int Country_code { get; set; }
 
         public override string ToString()

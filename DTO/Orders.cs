@@ -8,9 +8,10 @@ namespace DTO
     {
         public int IdOrder { get; set; }
         public string Status { get; set; }
-        public string Created_at { get; set; }
+        public int Created_at { get; set; }
         public int Delivery_time { get; set; }
         public int IdUser { get; set; }
+        public int IdCourier { get; set; }
 
         public override string ToString()
         {

@@ -15,6 +15,6 @@ namespace DAL
         Hotel AddHotel(Hotel hotel);
         int UpdateHotel(Hotel hotel);
         int DeleteHotel(int id);
-        List<Hotel> GetHotel();
+       
     }
 }
