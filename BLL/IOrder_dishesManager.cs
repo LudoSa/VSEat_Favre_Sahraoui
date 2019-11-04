@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DTO;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -8,17 +9,17 @@ namespace BLL
     {
 
 
-        IHotelsDb HotelsDb { get; }
+        IOrder_Dishes OrderDishesDb { get; }
 
-        List<Hotel> GetHotels();
+        List<OrderDishes> GetOrderDishes();
 
-        Hotel GetHotel(int id);
+        OrderDishes GetOrderDish(int id);
 
-        Hotel AddHotel(Hotel hotel);
+        OrderDishes AddOrderDish(OrderDishes hotel);
 
-        int UpdateHotel(Hotel hotel);
+        int UpdateOrderDish(OrderDishes hotel);
 
-        int DeleteHotel(int id);
+        int DeleteOrderDish(int id);
 
 
     }

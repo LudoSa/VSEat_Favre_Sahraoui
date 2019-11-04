@@ -10,7 +10,7 @@ namespace BLL
     {
 
 
-        public IOrders OrdersDb { get; }
+        public IOrdersManager OrdersDb { get; }
 
         public OrdersManager(IConfiguration configuration)
         {
