@@ -1,5 +1,6 @@
 ﻿using System;
 using DTO;
+using DAL;
 using System.Collections.Generic;
 using System.Text;
 
@@ -8,7 +9,7 @@ namespace BLL
     public interface IDishesManager
     {
 
-        IDishesDb DishesDb { get; }
+        IDishesDB DishesDb { get; }
 
         List<Dishes> GetDishes();
 

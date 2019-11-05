@@ -1,4 +1,5 @@
 ﻿using DTO;
+using DAL;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,7 +9,7 @@ namespace BLL
     public interface ICustomersManager
     {
 
-        ICustomersDb ICustomersDb { get; }
+        ICustomersDB CustomersDb { get; }
 
         List<Customers> GetCustomers();
 

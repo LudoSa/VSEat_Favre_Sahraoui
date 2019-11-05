@@ -1,4 +1,5 @@
 ﻿using DTO;
+using DAL;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,7 +10,7 @@ namespace BLL
     {
 
 
-        IOrder_Dishes OrderDishesDb { get; }
+        IOrder_dishesDB OrderDishesDb { get; }
 
         List<OrderDishes> GetOrderDishes();
 
