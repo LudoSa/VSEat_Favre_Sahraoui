@@ -49,7 +49,7 @@ namespace DAL
             {
                 using (SqlConnection cn = new SqlConnection(connectionString))
                 {
-                    string query = "DELETE Order_dishes where IdOrder = @id";
+                    string query = "DELETE Order_dishes where IdOrderDishes = @id";
                     SqlCommand cmd = new SqlCommand(query, cn);
                     cmd.Parameters.AddWithValue("@id", id);
 
@@ -78,7 +78,7 @@ namespace DAL
                 {
 
 
-                    string query = "Select * from Order_dishes where IdOrder_dishes = @id";
+                    string query = "Select * from Order_dishes where IdOrderDishes = @id";
                     SqlCommand cmd = new SqlCommand(query, cn);
                     cmd.Parameters.AddWithValue("@id", id);
 
@@ -91,7 +91,7 @@ namespace DAL
 
                             orderdishes = new OrderDishes();
 
-                            orderdishes.IdOrderDishes = (int)dr["IdOrderDishes"];
+                            orderdishes.IdOrder = (int)dr["IdOrder"];
                             orderdishes.IdDish = (int)dr["IdDish"];
                             orderdishes.Quantity = (int)dr["Quantity"];
                         }
@@ -129,7 +129,7 @@ namespace DAL
 
                             OrderDishes orderDishes = new OrderDishes();
 
-                            orderDishes.IdOrderDishes = (int)dr["IdOrderDishes"];
+                            orderDishes.IdOrder = (int)dr["IdOrder"];
                             orderDishes.IdDish = (int)dr["IdDish"];
                             orderDishes.Quantity = (int)dr["Quantity"];
                       
@@ -157,7 +157,7 @@ namespace DAL
                 {
                     string query = "UPDATE Order_dishes SET IdOrder=@IdOrder, IdDish=@IdDish, Quantity=@Quantity";
                     SqlCommand cmd = new SqlCommand(query, cn);
-                    cmd.Parameters.AddWithValue("@IdOrderDishes", orderdishes.IdOrderDishes);
+                    cmd.Parameters.AddWithValue("@IdOrder", orderdishes.IdOrder);
                     cmd.Parameters.AddWithValue("@IdDish", orderdishes.IdDish);
                     cmd.Parameters.AddWithValue("@Quantity", orderdishes.Quantity);
 
