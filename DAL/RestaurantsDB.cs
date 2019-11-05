@@ -26,7 +26,7 @@ namespace DAL
                     cmd.Parameters.AddWithValue("@Country_code", restaurants.Country_code);
                   
                     cn.Open();
-                    //courier.IdCourier = Convert.ToInt32(cmd.ExecuteScalar());
+                    restaurants.IdRestaurant = Convert.ToInt32(cmd.ExecuteScalar());
                 }
             }
             catch (Exception e)
@@ -63,7 +63,7 @@ namespace DAL
             return result;
         }
 
-        public Restaurants getRestaurant(int id)
+        public Restaurants GetRestaurant(int id)
         {
             Restaurants restaurants = null;
             string connectionString = Configuration.GetConnectionString("DefaultConnection");
@@ -104,7 +104,7 @@ namespace DAL
             return restaurants;
         }
 
-        public List<Restaurants> getRestaurants()
+        public List<Restaurants> GetRestaurants()
         {
             List<Restaurants> results = null;
             string connectionString = Configuration.GetConnectionString("DefaultConnection");
@@ -157,9 +157,9 @@ namespace DAL
                     string query = "UPDATE Restaurants SET Merchant_name=@Merchant_name, Address=@Address, Country_code=@Country_code";
                     SqlCommand cmd = new SqlCommand(query, cn);
                     cmd.Parameters.AddWithValue("@id", restaurants.IdRestaurant);
-                    cmd.Parameters.AddWithValue("@Firstname", restaurants.Merchant_name);
-                    cmd.Parameters.AddWithValue("@Lastname", restaurants.Address);
-                    cmd.Parameters.AddWithValue("@Login", restaurants.Country_code);
+                    cmd.Parameters.AddWithValue("@Merchant_name", restaurants.Merchant_name);
+                    cmd.Parameters.AddWithValue("@Address", restaurants.Address);
+                    cmd.Parameters.AddWithValue("@Country_code", restaurants.Country_code);
                    
                     cn.Open();
 

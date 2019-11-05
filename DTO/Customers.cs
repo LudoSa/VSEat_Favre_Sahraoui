@@ -17,7 +17,7 @@ namespace DTO
 
         public override string ToString()
         {
-            return $"{IdCustomer}|{Firstname}|{Lastname}|{Login}|{Password}|{Address}|{Country_code.ToString()}";
+            return $"{IdCustomer}|{Firstname}|{Lastname}|{Login}|{Password}|{Country_code.ToString()}|{Address}";
         }
 
     }

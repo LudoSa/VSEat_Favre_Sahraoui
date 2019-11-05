@@ -19,13 +19,13 @@ namespace DAL
             {
                 using (SqlConnection cn = new SqlConnection(connectionString))
                 {
-                    String query = "Insert into Order_dishes(IdProduct,Quantity) values(@IdProduct,@Quantity); SELECT SCOPE_IDENTITY()";
+                    String query = "Insert into Order_dishes(IdDish,Quantity) values(@IdDish,@Quantity); SELECT SCOPE_IDENTITY()";
                     SqlCommand cmd = new SqlCommand(query, cn);
-                    cmd.Parameters.AddWithValue("@IdProduct", orderdishes.IdProduct);
+                    cmd.Parameters.AddWithValue("@IdDish", orderdishes.IdDish);
                     cmd.Parameters.AddWithValue("@Quantity", orderdishes.Quantity);
           
                     cn.Open();
-                    //courier.IdCourier = Convert.ToInt32(cmd.ExecuteScalar());
+                    orderdishes.IdOrder = Convert.ToInt32(cmd.ExecuteScalar());
                 }
             }
             catch (Exception e)
@@ -62,7 +62,7 @@ namespace DAL
             return result;
         }
 
-        public OrderDishes getOrderDish(int id)
+        public OrderDishes GetOrderDish(int id)
         {
             OrderDishes orderdishes = null;
             string connectionString = Configuration.GetConnectionString("DefaultConnection");
@@ -87,7 +87,7 @@ namespace DAL
                             orderdishes = new OrderDishes();
 
                             orderdishes.IdOrder = (int)dr["IdOrder"];
-                            orderdishes.IdProduct = (int)dr["IdProduct"];
+                            orderdishes.IdDish = (int)dr["IdDish"];
                             orderdishes.Quantity = (int)dr["Quantity"];
                         }
                     }
@@ -101,7 +101,7 @@ namespace DAL
             return orderdishes;
         }
 
-        public List<OrderDishes> getOrderDishes()
+        public List<OrderDishes> GetOrderDishes()
         {
             List<OrderDishes> results = null;
             string connectionString = Configuration.GetConnectionString("DefaultConnection");
@@ -125,7 +125,7 @@ namespace DAL
                             OrderDishes orderDishes = new OrderDishes();
 
                             orderDishes.IdOrder = (int)dr["IdOrder"];
-                            orderDishes.IdProduct = (int)dr["IdProduct"];
+                            orderDishes.IdDish = (int)dr["IdDish"];
                             orderDishes.Quantity = (int)dr["Quantity"];
                       
                             results.Add(orderDishes);
@@ -150,10 +150,10 @@ namespace DAL
             {
                 using (SqlConnection cn = new SqlConnection(connectionString))
                 {
-                    string query = "UPDATE Order_dishes SET IdOrder=@IdOrder, IdProduct=@IdProduct, Quantity=@Quantity";
+                    string query = "UPDATE Order_dishes SET IdOrder=@IdOrder, IdDish=@IdDish, Quantity=@Quantity";
                     SqlCommand cmd = new SqlCommand(query, cn);
                     cmd.Parameters.AddWithValue("@IdOrder", orderdishes.IdOrder);
-                    cmd.Parameters.AddWithValue("@IdProduct", orderdishes.IdProduct);
+                    cmd.Parameters.AddWithValue("@IdDish", orderdishes.IdDish);
                     cmd.Parameters.AddWithValue("@Quantity", orderdishes.Quantity);
 
                     cn.Open();

@@ -9,11 +9,11 @@ namespace DTO
         public int IdCourier { get; set; }
         public string Firstname { get; set; }
         public string Lastname { get; set; }
-        public int CountryCode { get; set; }
+        public int Country_code { get; set; }
 
         public override string ToString()
         {
-            return $"{IdCourier}|{Firstname}|{Lastname}|{CountryCode}";
+            return $"{IdCourier}|{Firstname}|{Lastname}|{Country_code}";
         }
 
 

@@ -23,9 +23,9 @@ namespace DAL
                     SqlCommand cmd = new SqlCommand(query, cn);
                     cmd.Parameters.AddWithValue("@Firstname", courier.Firstname);
                     cmd.Parameters.AddWithValue("@Lastname", courier.Lastname);
-                    cmd.Parameters.AddWithValue("@Country_code", courier.CountryCode);
+                    cmd.Parameters.AddWithValue("@Country_code", courier.Country_code);
                     cn.Open();
-                    //courier.IdCourier = Convert.ToInt32(cmd.ExecuteScalar());
+                    courier.IdCourier = Convert.ToInt32(cmd.ExecuteScalar());
                 }
             }
             catch (Exception e)
@@ -62,7 +62,7 @@ namespace DAL
             return result;
         }
 
-        public Courier getCourier(int id)
+        public Courier GetCourier(int id)
         {
             Courier courier = null;
             string connectionString = Configuration.GetConnectionString("DefaultConnection");
@@ -89,7 +89,7 @@ namespace DAL
                             courier.IdCourier = (int)dr["IdCourier"];
                             courier.Firstname = (string)dr["Firstname"];
                             courier.Lastname = (String)dr["Lastname"];
-                            courier.CountryCode = (int)dr["Countrycode"];
+                            courier.Country_code = (int)dr["Country_code"];
                         }
                     }
                 }
@@ -102,7 +102,7 @@ namespace DAL
             return courier;
         }
 
-        public List<Courier> getCouriers()
+        public List<Courier> GetCouriers()
         {
             List<Courier> results = null;
             string connectionString = Configuration.GetConnectionString("DefaultConnection");
@@ -128,7 +128,7 @@ namespace DAL
                             courier.IdCourier = (int)dr["IdCourier"];
                             courier.Firstname = (string)dr["Firstname"];
                             courier.Lastname = (string)dr["Lastname"];
-                            courier.CountryCode = (int)dr["CountryCode"];
+                            courier.Country_code = (int)dr["Country_code"];
 
                             results.Add(courier);
                         }
@@ -153,12 +153,12 @@ namespace DAL
             {
                 using (SqlConnection cn = new SqlConnection(connectionString))
                 {
-                    string query = "UPDATE Courier SET Firstname=@Firstname, Lastname=@Lastname, Country_code=@Countrycode";
+                    string query = "UPDATE Courier SET Firstname=@Firstname, Lastname=@Lastname, Country_code=@Country_code";
                     SqlCommand cmd = new SqlCommand(query, cn);
                     cmd.Parameters.AddWithValue("@id", courier.IdCourier);
                     cmd.Parameters.AddWithValue("@Firstname", courier.Firstname);
                     cmd.Parameters.AddWithValue("@Lastname", courier.Lastname);
-                    cmd.Parameters.AddWithValue("@Countrycode", courier.CountryCode);
+                    cmd.Parameters.AddWithValue("@Country_code", courier.Country_code);
            
                     cn.Open();
 

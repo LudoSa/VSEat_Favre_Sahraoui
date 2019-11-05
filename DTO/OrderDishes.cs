@@ -8,12 +8,12 @@ namespace DTO
     {
 
         public int IdOrder { get; set; }
-        public int IdProduct { get; set; }
+        public int IdDish { get; set; }
         public int Quantity { get; set; }
 
         public override string ToString()
         {
-            return $"{IdOrder}|{IdProduct}|{Quantity}";
+            return $"{IdOrder}|{IdDish.ToString()}|{Quantity.ToString()}";
         }
 
     }

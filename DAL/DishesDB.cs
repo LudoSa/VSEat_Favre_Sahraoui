@@ -27,7 +27,7 @@ namespace DAL
                     cmd.Parameters.AddWithValue("@Created_at", dishes.Created_at);
                     cmd.Parameters.AddWithValue("@Restaurants_id", dishes.Restaurants_id);
                     cn.Open();
-                    //courier.IdCourier = Convert.ToInt32(cmd.ExecuteScalar());
+                    dishes.IdDishes = Convert.ToInt32(cmd.ExecuteScalar());
                 }
             }
             catch (Exception e)
@@ -64,7 +64,7 @@ namespace DAL
             return result;
         }
 
-        public Dishes getDish(int id)
+        public Dishes GetDish(int id)
         {
             Dishes dishes = null;
             string connectionString = Configuration.GetConnectionString("DefaultConnection");
@@ -105,7 +105,7 @@ namespace DAL
             return dishes;
         }
 
-        public List<Dishes> getDishes()
+        public List<Dishes> GetDishes()
         {
             List<Dishes> results = null;
             string connectionString = Configuration.GetConnectionString("DefaultConnection");

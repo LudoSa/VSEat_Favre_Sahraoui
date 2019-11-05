@@ -27,7 +27,7 @@ namespace DAL
                     cmd.Parameters.AddWithValue("@IdUser", orders.IdUser);
                     cmd.Parameters.AddWithValue("@IdCourier", orders.IdCourier);
                     cn.Open();
-                    //courier.IdCourier = Convert.ToInt32(cmd.ExecuteScalar());
+                    orders.IdOrder = Convert.ToInt32(cmd.ExecuteScalar());
                 }
             }
             catch (Exception e)
@@ -64,7 +64,7 @@ namespace DAL
             return result;
         }
 
-        public Orders getOrder(int id)
+        public Orders GetOrder(int id)
         {
             Orders orders = null;
             string connectionString = Configuration.GetConnectionString("DefaultConnection");
@@ -106,7 +106,7 @@ namespace DAL
             return orders;
         }
 
-        public List<Orders> getOrders()
+        public List<Orders> GetOrders()
         {
             List<Orders> results = null;
             string connectionString = Configuration.GetConnectionString("DefaultConnection");

@@ -15,7 +15,7 @@ namespace DTO
 
         public override string ToString()
         {
-            return $"{IdDishes}|{Name}|{Price}|{Status}|{Created_at}|{Restaurants_id.ToString()}";
+            return $"{IdDishes}|{Name}|{Price.ToString()}|{Status}|{Created_at.ToString()}|{Restaurants_id.ToString()}";
         }
 
     }

@@ -9,8 +9,8 @@ namespace DAL
     public interface IOrdersDB
     {
         IConfiguration Configuration { get; }
-        List<Orders> getOrders();
-        Orders getOrder(int id);
+        List<Orders> GetOrders();
+        Orders GetOrder(int id);
         Orders AddOrder(Orders orders);
         int UpdateOrder(Orders orders);
         int DeleteOrder(int id);

@@ -15,7 +15,7 @@ namespace DTO
 
         public override string ToString()
         {
-            return $"{IdOrder}|{Status}|{Created_at}|{Status}|{Delivery_time}|{IdUser.ToString()}";
+            return $"{IdOrder}|{Status}|{Created_at.ToString()}|{Status.ToString()}|{Delivery_time.ToString()}|{IdUser.ToString()}|{IdCourier.ToString()}";
         }
 
     }

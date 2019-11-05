@@ -14,7 +14,7 @@ namespace DTO
 
         public override string ToString()
         {
-            return $"{IdRestaurant}|{Merchant_name}|{Country_code}";
+            return $"{IdRestaurant}|{Merchant_name}|{Address}|{Country_code.ToString()}";
         }
 
     }

@@ -9,8 +9,8 @@ namespace DAL
     public interface ICitiesDB
     {
         IConfiguration Configuration { get; }
-        List<Cities> getCities();
-        Cities getCity(int id);
+        List<Cities> GetCities();
+        Cities GetCity(int id);
         Cities AddCity(Cities city);
         
         int DeleteCity(int id);

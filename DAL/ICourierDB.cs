@@ -9,8 +9,8 @@ namespace DAL
     public interface ICourierDB
     {
         IConfiguration Configuration { get; }
-        List<Courier> getCouriers();
-        Courier getCourier(int id);
+        List<Courier> GetCouriers();
+        Courier GetCourier(int id);
         Courier AddCourier(Courier courier);
         int UpdateCourier(Courier courier);
         int DeleteCity(int id);

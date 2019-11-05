@@ -28,7 +28,7 @@ namespace DAL
                     cmd.Parameters.AddWithValue("@Address", customers.Address);
                     cmd.Parameters.AddWithValue("@Country_code", customers.Country_code);
                     cn.Open();
-                    //courier.IdCourier = Convert.ToInt32(cmd.ExecuteScalar());
+                    customers.IdCustomer = Convert.ToInt32(cmd.ExecuteScalar());
                 }
             }
             catch (Exception e)
@@ -65,7 +65,7 @@ namespace DAL
             return result;
         }
 
-        public Customers getCustomer(int id)
+        public Customers GetCustomer(int id)
         {
             Customers customers = null;
             string connectionString = Configuration.GetConnectionString("DefaultConnection");
@@ -94,7 +94,7 @@ namespace DAL
                             customers.Lastname = (string)dr["Lastname"];
                             customers.Login = (String)dr["Login"];
                             customers.Password = (String)dr["Password"];
-                            customers.Password = (string)dr["Address"];
+                            customers.Address = (string)dr["Address"];
                             customers.Country_code = (int)dr["Country_code"];
                         }
                     }
@@ -108,7 +108,7 @@ namespace DAL
             return customers;
         }
 
-        public List<Customers> getCustomers()
+        public List<Customers> GetCustomers()
         {
             List<Customers> results = null;
             string connectionString = Configuration.GetConnectionString("DefaultConnection");
@@ -136,7 +136,7 @@ namespace DAL
                             customers.Lastname = (string)dr["Lastname"];
                             customers.Login = (string)dr["Login"];
                             customers.Password = (string)dr["Password"];
-                            customers.Password = (string)dr["Address"];
+                            customers.Address = (string)dr["Address"];
                             customers.Country_code = (int)dr["Country_code"];
 
                             results.Add(customers);

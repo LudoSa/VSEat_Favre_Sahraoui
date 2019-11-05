@@ -30,7 +30,7 @@ namespace DAL
                     cmd.Parameters.AddWithValue("@Name", city.Name);
                     cmd.Parameters.AddWithValue("@Code", city.Code);
                     cn.Open();
-                    //city.IdCity = Convert.ToInt32(cmd.ExecuteScalar());
+                    city.IdCity = Convert.ToInt32(cmd.ExecuteScalar());
                 }
             }
             catch (Exception e)
