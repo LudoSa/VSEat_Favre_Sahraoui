@@ -7,7 +7,7 @@ using DTO;
 
 namespace DAL
 {
-    class CitiesDB : ICitiesDB
+    public class CitiesDB : ICitiesDB
     {
         public IConfiguration Configuration { get; }
         
@@ -67,7 +67,7 @@ namespace DAL
             return result;
         }
 
-        public List<Cities> getCities()
+        public List<Cities> GetCities()
         {
             List<Cities> results = null;
             string connectionString = Configuration.GetConnectionString("DefaultConnection");
@@ -107,7 +107,7 @@ namespace DAL
             return results;
         }
 
-        public Cities getCity(int id)
+        public Cities GetCity(int id)
         {
             Cities city = null;
             string connectionString = Configuration.GetConnectionString("DefaultConnection");

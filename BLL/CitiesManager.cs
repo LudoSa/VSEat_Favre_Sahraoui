@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using System;
 using DTO;
+using DAL;
 using System.Collections.Generic;
 using System.Text;
 
@@ -10,18 +11,18 @@ namespace BLL
     {
 
 
-        public ICities CitiesDb { get; }
+        public ICitiesDB CitiesDb { get; }
 
         public CitiesManager(IConfiguration configuration)
         {
 
-            CitiesDb = new CitiesDb(configuration);
+            CitiesDb = new CitiesDB(configuration);
 
         }
 
         public List<Cities> GetCities()
         {
-            return CitiesDb.GetHotel();
+            return CitiesDb.GetCities();
         }
 
         public Cities GetCity(int id)

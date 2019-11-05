@@ -19,12 +19,13 @@ namespace DAL
             {
                 using (SqlConnection cn = new SqlConnection(connectionString))
                 {
-                    String query = "Insert into Customers(Firstname,Lastname,Login,Password,Country_code) values(@Firstname,@Lastname,@Login,@Password,@Country_code); SELECT SCOPE_IDENTITY()";
+                    String query = "Insert into Customers(Firstname,Lastname,Login,Password,Address,Country_code) values(@Firstname,@Lastname,@Login,@Password,@Address,@Country_code); SELECT SCOPE_IDENTITY()";
                     SqlCommand cmd = new SqlCommand(query, cn);
                     cmd.Parameters.AddWithValue("@Firstname", customers.Firstname);
                     cmd.Parameters.AddWithValue("@Lastname", customers.Lastname);
                     cmd.Parameters.AddWithValue("@Login", customers.Login);
                     cmd.Parameters.AddWithValue("@Password", customers.Password);
+                    cmd.Parameters.AddWithValue("@Address", customers.Address);
                     cmd.Parameters.AddWithValue("@Country_code", customers.Country_code);
                     cn.Open();
                     //courier.IdCourier = Convert.ToInt32(cmd.ExecuteScalar());
@@ -93,6 +94,7 @@ namespace DAL
                             customers.Lastname = (string)dr["Lastname"];
                             customers.Login = (String)dr["Login"];
                             customers.Password = (String)dr["Password"];
+                            customers.Password = (string)dr["Address"];
                             customers.Country_code = (int)dr["Country_code"];
                         }
                     }
@@ -134,6 +136,7 @@ namespace DAL
                             customers.Lastname = (string)dr["Lastname"];
                             customers.Login = (string)dr["Login"];
                             customers.Password = (string)dr["Password"];
+                            customers.Password = (string)dr["Address"];
                             customers.Country_code = (int)dr["Country_code"];
 
                             results.Add(customers);
@@ -158,13 +161,14 @@ namespace DAL
             {
                 using (SqlConnection cn = new SqlConnection(connectionString))
                 {
-                    string query = "UPDATE Customers SET Firstname=@Firstname, Lastname=@Lastname, Login=@Login, Password=@Password, Country_code=@Countrycode";
+                    string query = "UPDATE Customers SET Firstname=@Firstname, Lastname=@Lastname, Login=@Login, Password=@Password, Address=@Address, Country_code=@Countrycode";
                     SqlCommand cmd = new SqlCommand(query, cn);
                     cmd.Parameters.AddWithValue("@id", customers.IdCustomer);
                     cmd.Parameters.AddWithValue("@Firstname", customers.Firstname);
                     cmd.Parameters.AddWithValue("@Lastname", customers.Lastname);
                     cmd.Parameters.AddWithValue("@Login", customers.Login);
                     cmd.Parameters.AddWithValue("@Password", customers.Password);
+                    cmd.Parameters.AddWithValue("@Address", customers.Address);
                     cmd.Parameters.AddWithValue("@Countrycode", customers.Country_code);
 
                     cn.Open();

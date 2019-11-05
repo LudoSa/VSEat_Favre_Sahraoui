@@ -8,7 +8,7 @@ namespace DTO
     {
         public int IdDishes { get; set; }
         public string Name { get; set; }
-        public string Price { get; set; }
+        public int Price { get; set; }
         public string Status { get; set; }
         public int Created_at { get; set; }
         public int Restaurants_id { get; set; }
