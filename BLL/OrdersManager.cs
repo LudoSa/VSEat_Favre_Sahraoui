@@ -16,33 +16,33 @@ namespace BLL
         public OrdersManager(IConfiguration configuration)
         {
 
-            OrdersDb = new CourierDB(configuration);
+            OrdersDb = new OrdersDB(configuration);
 
         }
 
-        public List<Orders> GetHotels()
+        public List<Orders> GetOrders()
         {
-            return OrdersDb.GetHotel();
+            return OrdersDb.GetOrders();
         }
 
-        public Orders GetHotel(int id)
+        public Orders GetOrder(int id)
         {
-            return OrdersDb.GetHotel(id);
+            return OrdersDb.GetOrder(id);
         }
 
-        public Orders AddHotel(Orders courier)
+        public Orders AddOrder(Orders courier)
         {
-            return OrdersDb.AddHotel(courier);
+            return OrdersDb.AddOrder(courier);
         }
 
-        public int UpdateHotel(Orders courier)
+        public int UpdateOrder(Orders courier)
         {
-            return OrdersDb.UpdateHotel(courier);
+            return OrdersDb.UpdateOrder(courier);
         }
 
-        public int DeleteHotel(int id)
+        public int DeleteOrder(int id)
         {
-            return CourierDb.DeleteHotel(id);
+            return OrdersDb.DeleteOrder(id);
         }
 
     }

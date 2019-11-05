@@ -41,7 +41,7 @@ namespace DAL
             return courier;
         }
 
-        public int DeleteCity(int id)
+        public int DeleteCourier(int id)
         {
             int result = 0;
             string connectionString = Configuration.GetConnectionString("DefaultConnection");
@@ -177,6 +177,11 @@ namespace DAL
             }
 
             return result;
+        }
+
+        public int DeleteCity(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

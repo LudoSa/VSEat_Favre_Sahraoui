@@ -21,19 +21,20 @@ namespace VSEat_Favre_Sahraoui
             var cities = citiesDBManager.GetCities();
 
 
-            /*foreach (var hotel in hotels)
+            foreach (var City in Cities)
             {
-                Console.WriteLine(hotel.ToString());
-            }*/
+                Console.WriteLine(City.ToString());
+            }
 
             //Get on hotel
             /*Console.WriteLine("--NEW HOTEL--");
             var hotel2 = hotelsDBManager.GetHotel(2);
             Console.WriteLine(hotel2.Name);*/
 
+            /*
             //Add new cities
             Console.WriteLine("--Add Cities--");
-            var newCity = CitiesManager.AddCity(new Cities { Name = "Aigle", Code = 1860 });
+            Cities newCity = CitiesManager.AddCity(new Cities { Name = "Aigle", Code = 1860 });
             Console.WriteLine($"ID: {newCity.IdCity} Name: {newCity.Name}");
             cities = citiesDBManager.GetCities();
             foreach (var city in cities)
