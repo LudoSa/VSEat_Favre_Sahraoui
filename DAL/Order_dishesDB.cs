@@ -30,7 +30,7 @@ namespace DAL
                     cmd.Parameters.AddWithValue("@Quantity", orderdishes.Quantity);
           
                     cn.Open();
-                    orderdishes.IdOrder = Convert.ToInt32(cmd.ExecuteScalar());
+                    orderdishes.IdOrderDishes = Convert.ToInt32(cmd.ExecuteScalar());
                 }
             }
             catch (Exception e)
@@ -91,7 +91,7 @@ namespace DAL
 
                             orderdishes = new OrderDishes();
 
-                            orderdishes.IdOrder = (int)dr["IdOrder"];
+                            orderdishes.IdOrderDishes = (int)dr["IdOrderDishes"];
                             orderdishes.IdDish = (int)dr["IdDish"];
                             orderdishes.Quantity = (int)dr["Quantity"];
                         }
@@ -129,7 +129,7 @@ namespace DAL
 
                             OrderDishes orderDishes = new OrderDishes();
 
-                            orderDishes.IdOrder = (int)dr["IdOrder"];
+                            orderDishes.IdOrderDishes = (int)dr["IdOrderDishes"];
                             orderDishes.IdDish = (int)dr["IdDish"];
                             orderDishes.Quantity = (int)dr["Quantity"];
                       
@@ -157,7 +157,7 @@ namespace DAL
                 {
                     string query = "UPDATE Order_dishes SET IdOrder=@IdOrder, IdDish=@IdDish, Quantity=@Quantity";
                     SqlCommand cmd = new SqlCommand(query, cn);
-                    cmd.Parameters.AddWithValue("@IdOrder", orderdishes.IdOrder);
+                    cmd.Parameters.AddWithValue("@IdOrderDishes", orderdishes.IdOrderDishes);
                     cmd.Parameters.AddWithValue("@IdDish", orderdishes.IdDish);
                     cmd.Parameters.AddWithValue("@Quantity", orderdishes.Quantity);
 

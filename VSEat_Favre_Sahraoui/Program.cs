@@ -21,7 +21,7 @@ namespace VSEat_Favre_Sahraoui
             var cities = citiesDBManager.GetCities();
 
 
-            foreach (var City in Cities)
+            foreach (var City in cities)
             {
                 Console.WriteLine(City.ToString());
             }
@@ -31,10 +31,10 @@ namespace VSEat_Favre_Sahraoui
             var hotel2 = hotelsDBManager.GetHotel(2);
             Console.WriteLine(hotel2.Name);*/
 
-            /*
+            
             //Add new cities
             Console.WriteLine("--Add Cities--");
-            Cities newCity = CitiesManager.AddCity(new Cities { Name = "Aigle", Code = 1860 });
+            var newCity = citiesDBManager.AddCity(new Cities { Name = "Aigle", Code = 1860 });
             Console.WriteLine($"ID: {newCity.IdCity} Name: {newCity.Name}");
             cities = citiesDBManager.GetCities();
             foreach (var city in cities)

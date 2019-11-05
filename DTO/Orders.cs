@@ -10,12 +10,12 @@ namespace DTO
         public string Status { get; set; }
         public int Created_at { get; set; }
         public int Delivery_time { get; set; }
-        public int IdUser { get; set; }
+        public int IdCustomer { get; set; }
         public int IdCourier { get; set; }
 
         public override string ToString()
         {
-            return $"{IdOrder}|{Status}|{Created_at.ToString()}|{Status.ToString()}|{Delivery_time.ToString()}|{IdUser.ToString()}|{IdCourier.ToString()}";
+            return $"{IdOrder}|{Status}|{Created_at.ToString()}|{Delivery_time.ToString()}|{IdCustomer.ToString()}|{IdCourier.ToString()}";
         }
 
     }
