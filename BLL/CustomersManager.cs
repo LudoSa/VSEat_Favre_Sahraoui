@@ -1,4 +1,5 @@
 ﻿using DTO;
+using DAL;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -8,38 +9,38 @@ namespace BLL
 {
     public class CustomersManager
     {
-        public ICustomers CustomersDb { get; }
+        public ICustomersDB CustomersDb { get; }
 
         public CustomersManager(IConfiguration configuration)
         {
 
-            CustomersDb = new CustomersDb(configuration);
+            CustomersDb = new CustomersDB(configuration);
 
         }
 
         public List<Customers> GetCustomers()
         {
-            return CustomersDb.GetHotel();
+            return CustomersDb.GetCustomers();
         }
 
         public Customers GetCustomer(int id)
         {
-            return CustomersDb.GetHotel(id);
+            return CustomersDb.GetCustomer(id);
         }
 
         public Customers AddCustomer(Customers courier)
         {
-            return CustomersDb.AddHotel(courier);
+            return CustomersDb.AddCustomer(courier);
         }
 
         public int UpdateCustomer(Customers courier)
         {
-            return CustomersDb.UpdateHotel(courier);
+            return CustomersDb.UpdateCustomer(courier);
         }
 
         public int DeleteCustomer(int id)
         {
-            return CustomersDb.DeleteHotel(id);
+            return CustomersDb.DeleteCustomer(id);
         }
 
 

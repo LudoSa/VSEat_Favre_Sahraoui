@@ -27,22 +27,17 @@ namespace BLL
 
         public Cities GetCity(int id)
         {
-            return CitiesDb.GetHotel(id);
+            return CitiesDb.GetCity(id);
         }
 
         public Cities AddCity(Cities hotel)
         {
-            return CitiesDb.AddHotel(hotel);
-        }
-
-        public int UpdateCity(Cities hotel)
-        {
-            return CitiesDb.UpdateHotel(hotel);
+            return CitiesDb.AddCity(hotel);
         }
 
         public int DeleteCity(int id)
         {
-            return CitiesDb.DeleteHotel(id);
+            return CitiesDb.DeleteCity(id);
         }
 
 

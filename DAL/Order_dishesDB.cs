@@ -11,6 +11,11 @@ namespace DAL
     {
         public IConfiguration Configuration { get; }
 
+        public Order_dishesDB(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
         public OrderDishes AddOrderDish(OrderDishes orderdishes)
         {
             string connectionString = Configuration.GetConnectionString("DefaultConnection");

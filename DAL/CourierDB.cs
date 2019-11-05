@@ -7,9 +7,15 @@ using Microsoft.Extensions.Configuration;
 
 namespace DAL
 {
-    class CourierDB : ICourierDB
+    public class CourierDB : ICourierDB
     {
         public IConfiguration Configuration { get; }
+
+        public CourierDB(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
 
         public Courier AddCourier(Courier courier)
         {

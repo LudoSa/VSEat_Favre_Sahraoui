@@ -11,6 +11,11 @@ namespace DAL
     {
         public IConfiguration Configuration { get; }
 
+        public OrdersDB(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
         public Orders AddOrder(Orders orders)
         {
             string connectionString = Configuration.GetConnectionString("DefaultConnection");

@@ -1,4 +1,5 @@
 ﻿using DTO;
+using DAL;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -9,38 +10,38 @@ namespace BLL
     public class CourierManager
     {
 
-        public ICourier CourierDb { get; }
+        public ICourierDB CourierDb { get; }
 
         public CourierManager(IConfiguration configuration)
         {
 
-            CourierDb = new CourierDb(configuration);
+            CourierDb = new CourierDB(configuration);
 
         }
 
         public List<Courier> GetCouriers()
         {
-            return CourierDb.GetHotel();
+            return CourierDb.GetCouriers();
         }
 
         public Courier GetCourier(int id)
         {
-            return CourierDb.GetHotel(id);
+            return CourierDb.GetCourier(id);
         }
 
         public Courier AddCourier(Courier courier)
         {
-            return CourierDb.AddHotel(courier);
+            return CourierDb.AddCourier(courier);
         }
 
         public int UpdateCourier(Courier courier)
         {
-            return CourierDb.UpdateHotel(courier);
+            return CourierDb.UpdateCourier(courier);
         }
 
         public int DeleteCourier(int id)
         {
-            return CourierDb.DeleteHotel(id);
+            return CourierDb.DeleteCity(id);
         }
 
 

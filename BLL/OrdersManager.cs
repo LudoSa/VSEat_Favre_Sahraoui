@@ -1,6 +1,7 @@
 ﻿using DTO;
 using Microsoft.Extensions.Configuration;
 using System;
+using DAL;
 using System.Collections.Generic;
 using System.Text;
 
@@ -10,12 +11,12 @@ namespace BLL
     {
 
 
-        public IOrdersManager OrdersDb { get; }
+        public IOrdersDB OrdersDb { get; }
 
         public OrdersManager(IConfiguration configuration)
         {
 
-            OrdersDb = new CourierDb(configuration);
+            OrdersDb = new CourierDB(configuration);
 
         }
 

@@ -11,6 +11,11 @@ namespace DAL
     {
         public IConfiguration Configuration { get; }
 
+        public DishesDB(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
         public Dishes AddDish(Dishes dishes)
         {
             string connectionString = Configuration.GetConnectionString("DefaultConnection");

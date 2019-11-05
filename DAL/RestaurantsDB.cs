@@ -11,6 +11,11 @@ namespace DAL
     {
         public IConfiguration Configuration { get; }
 
+        public RestaurantsDB(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
         public Restaurants AddRestaurant(Restaurants restaurants)
         {
             string connectionString = Configuration.GetConnectionString("DefaultConnection");
