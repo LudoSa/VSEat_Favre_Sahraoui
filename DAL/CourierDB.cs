@@ -108,46 +108,7 @@ namespace DAL
             return courier;
         }
 
-        public List<Courier> GetCouriers()
-        {
-            List<Courier> results = null;
-            string connectionString = Configuration.GetConnectionString("DefaultConnection");
-
-            try
-            {
-                using (SqlConnection cn = new SqlConnection(connectionString))
-                {
-                    string query = "SELECT * FROM Courier";
-                    SqlCommand cmd = new SqlCommand(query, cn);
-
-                    cn.Open();
-
-                    using (SqlDataReader dr = cmd.ExecuteReader())
-                    {
-                        while (dr.Read())
-                        {
-                            if (results == null)
-                                results = new List<Courier>();
-
-                            Courier courier = new Courier();
-
-                            courier.IdCourier = (int)dr["IdCourier"];
-                            courier.Firstname = (string)dr["Firstname"];
-                            courier.Lastname = (string)dr["Lastname"];
-                            courier.Country_code = (int)dr["Country_code"];
-
-                            results.Add(courier);
-                        }
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-
-            return results;
-        }
+        
 
         public int UpdateCourier(Courier courier)
         {

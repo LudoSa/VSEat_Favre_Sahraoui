@@ -16,58 +16,7 @@ namespace DAL
             Configuration = configuration;
         }
 
-        public Dishes AddDish(Dishes dishes)
-        {
-            string connectionString = Configuration.GetConnectionString("DefaultConnection");
-
-            try
-            {
-                using (SqlConnection cn = new SqlConnection(connectionString))
-                {
-                    String query = "Insert into Dishes(Name,Price,Status,Created_at,Restaurants_id) values(@Name,@Price,@Status,@Created_at,@Restaurants_id); SELECT SCOPE_IDENTITY()";
-                    SqlCommand cmd = new SqlCommand(query, cn);
-                    cmd.Parameters.AddWithValue("@Name", dishes.Name);
-                    cmd.Parameters.AddWithValue("@Price", dishes.Price);
-                    cmd.Parameters.AddWithValue("@Status", dishes.Status);
-                    cmd.Parameters.AddWithValue("@Created_at", dishes.Created_at);
-                    cmd.Parameters.AddWithValue("@Restaurants_id", dishes.Restaurants_id);
-                    cn.Open();
-                    dishes.IdDishes = Convert.ToInt32(cmd.ExecuteScalar());
-                }
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-            return dishes;
-        }
-
-        public int DeleteDish(int id)
-        {
-            int result = 0;
-            string connectionString = Configuration.GetConnectionString("DefaultConnection");
-
-            try
-            {
-                using (SqlConnection cn = new SqlConnection(connectionString))
-                {
-                    string query = "DELETE Dishes where IdDishes = @id";
-                    SqlCommand cmd = new SqlCommand(query, cn);
-                    cmd.Parameters.AddWithValue("@id", id);
-
-
-                    cn.Open();
-
-                    result = cmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-
-            return result;
-        }
+       
 
         public Dishes GetDish(int id)
         {
@@ -153,35 +102,6 @@ namespace DAL
             return results;
         }
 
-        public int UpdateDish(Dishes dishes)
-        {
-            int result = 0;
-            string connectionString = Configuration.GetConnectionString("DefaultConnection");
-
-            try
-            {
-                using (SqlConnection cn = new SqlConnection(connectionString))
-                {
-                    string query = "UPDATE Dishes SET Name=@Name, Price=@Price, Status=@Status, Created_at=@Created_at, Restaurants_id=@Restaurants_id";
-                    SqlCommand cmd = new SqlCommand(query, cn);
-                    cmd.Parameters.AddWithValue("@id", dishes.IdDishes);
-                    cmd.Parameters.AddWithValue("@Name", dishes.Name);
-                    cmd.Parameters.AddWithValue("@Price", dishes.Price);
-                    cmd.Parameters.AddWithValue("@Status", dishes.Status);
-                    cmd.Parameters.AddWithValue("@Created_at", dishes.Created_at);
-                    cmd.Parameters.AddWithValue("@Restaurants_id", dishes.Restaurants_id);
-
-                    cn.Open();
-
-                    result = cmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-
-            return result;
-        }
+       
     }
 }

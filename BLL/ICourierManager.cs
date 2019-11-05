@@ -11,7 +11,7 @@ namespace BLL
 
         ICourierDB CourierDb { get; }
 
-        List<Courier> GetCouriers();
+
 
         Courier GetCourier(int id);
 

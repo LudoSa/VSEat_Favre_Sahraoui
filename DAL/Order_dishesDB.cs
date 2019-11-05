@@ -16,56 +16,7 @@ namespace DAL
             Configuration = configuration;
         }
 
-        public OrderDishes AddOrderDish(OrderDishes orderdishes)
-        {
-            string connectionString = Configuration.GetConnectionString("DefaultConnection");
-
-            try
-            {
-                using (SqlConnection cn = new SqlConnection(connectionString))
-                {
-                    String query = "Insert into Order_dishes(IdDish,Quantity) values(@IdDish,@Quantity); SELECT SCOPE_IDENTITY()";
-                    SqlCommand cmd = new SqlCommand(query, cn);
-                    cmd.Parameters.AddWithValue("@IdDish", orderdishes.IdDish);
-                    cmd.Parameters.AddWithValue("@Quantity", orderdishes.Quantity);
-          
-                    cn.Open();
-                    orderdishes.IdOrderDishes = Convert.ToInt32(cmd.ExecuteScalar());
-                }
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-            return orderdishes;
-        }
-
-        public int DeleteOrderDish(int id)
-        {
-            int result = 0;
-            string connectionString = Configuration.GetConnectionString("DefaultConnection");
-
-            try
-            {
-                using (SqlConnection cn = new SqlConnection(connectionString))
-                {
-                    string query = "DELETE Order_dishes where IdOrderDishes = @id";
-                    SqlCommand cmd = new SqlCommand(query, cn);
-                    cmd.Parameters.AddWithValue("@id", id);
-
-
-                    cn.Open();
-
-                    result = cmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-
-            return result;
-        }
+       
 
         public OrderDishes GetOrderDish(int id)
         {
@@ -144,34 +95,6 @@ namespace DAL
             }
 
             return results;
-        }
-
-        public int UpdateOrderDish(OrderDishes orderdishes)
-        {
-            int result = 0;
-            string connectionString = Configuration.GetConnectionString("DefaultConnection");
-
-            try
-            {
-                using (SqlConnection cn = new SqlConnection(connectionString))
-                {
-                    string query = "UPDATE Order_dishes SET IdOrder=@IdOrder, IdDish=@IdDish, Quantity=@Quantity";
-                    SqlCommand cmd = new SqlCommand(query, cn);
-                    cmd.Parameters.AddWithValue("@IdOrder", orderdishes.IdOrder);
-                    cmd.Parameters.AddWithValue("@IdDish", orderdishes.IdDish);
-                    cmd.Parameters.AddWithValue("@Quantity", orderdishes.Quantity);
-
-                    cn.Open();
-
-                    result = cmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-
-            return result;
         }
     }
 }

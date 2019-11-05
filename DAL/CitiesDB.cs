@@ -106,45 +106,5 @@ namespace DAL
 
             return results;
         }
-
-        public Cities GetCity(int id)
-        {
-            Cities city = null;
-            string connectionString = Configuration.GetConnectionString("DefaultConnection");
-
-            try
-            {
-                using (SqlConnection cn = new SqlConnection(connectionString))
-                {
-
-
-                    string query = "Select * from Cities where idCity = @id";
-                    SqlCommand cmd = new SqlCommand(query, cn);
-                    cmd.Parameters.AddWithValue("@id", id);
-
-                    cn.Open();
-
-                    using (SqlDataReader dr = cmd.ExecuteReader())
-                    {
-                        if (dr.Read())
-                        {
-
-                            city = new Cities();
-
-                            city.IdCity = (int)dr["IdCity"];
-                            city.Name = (string)dr["Name"];
-                            city.Code = (int)dr["Code"];
-                        }
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-
-            return city;
-
-        }
     }
 }

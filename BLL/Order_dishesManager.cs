@@ -29,20 +29,6 @@ namespace BLL
             return Order_dishesDb.GetOrderDish(id);
         }
 
-        public OrderDishes AddOrderDish(OrderDishes Order_dishes)
-        {
-            return Order_dishesDb.AddOrderDish(Order_dishes);
-        }
-
-        public int UpdateOrderDish(OrderDishes Order_dishes)
-        {
-            return Order_dishesDb.UpdateOrderDish(Order_dishes);
-        }
-
-        public int DeleteOrderDish(int id)
-        {
-            return Order_dishesDb.DeleteOrderDish(id);
-        }
 
 
 

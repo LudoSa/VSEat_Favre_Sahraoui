@@ -11,8 +11,6 @@ namespace DAL
         IConfiguration Configuration { get; }
         List<Dishes> GetDishes();
         Dishes GetDish(int id);
-        Dishes AddDish(Dishes dishes);
-        int UpdateDish(Dishes dishes);
-        int DeleteDish(int id);
+
     }
 }

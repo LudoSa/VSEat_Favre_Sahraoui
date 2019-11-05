@@ -19,11 +19,6 @@ namespace BLL
 
         }
 
-        public List<Courier> GetCouriers()
-        {
-            return CourierDb.GetCouriers();
-        }
-
         public Courier GetCourier(int id)
         {
             return CourierDb.GetCourier(id);
@@ -41,7 +36,7 @@ namespace BLL
 
         public int DeleteCourier(int id)
         {
-            return CourierDb.DeleteCity(id);
+            return CourierDb.DeleteCourier(id);
         }
 
 

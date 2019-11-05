@@ -16,57 +16,7 @@ namespace DAL
             Configuration = configuration;
         }
 
-        public Restaurants AddRestaurant(Restaurants restaurants)
-        {
-            string connectionString = Configuration.GetConnectionString("DefaultConnection");
-
-            try
-            {
-                using (SqlConnection cn = new SqlConnection(connectionString))
-                {
-                    String query = "Insert into Customers(Merchant_name,Address,Country_code) values(@Merchant_name,@Address,@Country_code); SELECT SCOPE_IDENTITY()";
-                    SqlCommand cmd = new SqlCommand(query, cn);
-                    cmd.Parameters.AddWithValue("@Merchant_name", restaurants.Merchant_name);
-                    cmd.Parameters.AddWithValue("@Address", restaurants.Address);
-                    cmd.Parameters.AddWithValue("@Country_code", restaurants.Country_code);
-                  
-                    cn.Open();
-                    restaurants.IdRestaurant = Convert.ToInt32(cmd.ExecuteScalar());
-                }
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-            return restaurants;
-        }
-
-        public int DeleteRestaurant(int id)
-        {
-            int result = 0;
-            string connectionString = Configuration.GetConnectionString("DefaultConnection");
-
-            try
-            {
-                using (SqlConnection cn = new SqlConnection(connectionString))
-                {
-                    string query = "DELETE Restaurants where IdRestaurant = @id";
-                    SqlCommand cmd = new SqlCommand(query, cn);
-                    cmd.Parameters.AddWithValue("@id", id);
-
-
-                    cn.Open();
-
-                    result = cmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-
-            return result;
-        }
+        
 
         public Restaurants GetRestaurant(int id)
         {
@@ -150,33 +100,6 @@ namespace DAL
             return results;
         }
 
-        public int UpdateRestaurant(Restaurants restaurants)
-        {
-            int result = 0;
-            string connectionString = Configuration.GetConnectionString("DefaultConnection");
-
-            try
-            {
-                using (SqlConnection cn = new SqlConnection(connectionString))
-                {
-                    string query = "UPDATE Restaurants SET Merchant_name=@Merchant_name, Address=@Address, Country_code=@Country_code";
-                    SqlCommand cmd = new SqlCommand(query, cn);
-                    cmd.Parameters.AddWithValue("@id", restaurants.IdRestaurant);
-                    cmd.Parameters.AddWithValue("@Merchant_name", restaurants.Merchant_name);
-                    cmd.Parameters.AddWithValue("@Address", restaurants.Address);
-                    cmd.Parameters.AddWithValue("@Country_code", restaurants.Country_code);
-                   
-                    cn.Open();
-
-                    result = cmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-
-            return result;
-        }
+       
     }
 }

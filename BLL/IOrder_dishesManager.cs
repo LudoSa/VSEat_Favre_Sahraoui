@@ -16,11 +16,7 @@ namespace BLL
 
         OrderDishes GetOrderDish(int id);
 
-        OrderDishes AddOrderDish(OrderDishes hotel);
-
-        int UpdateOrderDish(OrderDishes hotel);
-
-        int DeleteOrderDish(int id);
+      
 
 
     }

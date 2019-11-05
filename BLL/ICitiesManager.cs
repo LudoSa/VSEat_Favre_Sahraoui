@@ -13,7 +13,7 @@ namespace BLL
 
         List<Cities> GetCities();
 
-        Cities GetCity(int id);
+    
 
         Cities AddCity(Cities cities);
 

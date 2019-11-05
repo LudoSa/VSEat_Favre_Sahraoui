@@ -10,7 +10,7 @@ namespace DAL
     {
         IConfiguration Configuration { get; }
         List<Cities> GetCities();
-        Cities GetCity(int id);
+        
         Cities AddCity(Cities city);
         
         int DeleteCity(int id);

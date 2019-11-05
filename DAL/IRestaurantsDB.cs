@@ -11,8 +11,6 @@ namespace DAL
         IConfiguration Configuration { get; }
         List<Restaurants> GetRestaurants();
         Restaurants GetRestaurant(int id);
-        Restaurants AddRestaurant(Restaurants restaurants);
-        int UpdateRestaurant(Restaurants restaurants);
-        int DeleteRestaurant(int id);
+        
     }
 }

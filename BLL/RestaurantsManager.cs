@@ -29,21 +29,6 @@ namespace BLL
             return RestaurantsDb.GetRestaurant(id);
         }
 
-        public Restaurants AddHotel(Restaurants courier)
-        {
-            return RestaurantsDb.AddRestaurant(courier);
-        }
-
-        public int UpdateHotel(Restaurants courier)
-        {
-            return RestaurantsDb.UpdateRestaurant(courier);
-        }
-
-        public int DeleteHotel(int id)
-        {
-            return RestaurantsDb.DeleteRestaurant(id);
-        }
-
 
 
     }

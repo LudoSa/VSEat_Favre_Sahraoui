@@ -25,11 +25,6 @@ namespace BLL
             return CitiesDb.GetCities();
         }
 
-        public Cities GetCity(int id)
-        {
-            return CitiesDb.GetCity(id);
-        }
-
         public Cities AddCity(Cities hotel)
         {
             return CitiesDb.AddCity(hotel);
