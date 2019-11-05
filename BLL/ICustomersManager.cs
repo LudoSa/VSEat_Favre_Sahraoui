@@ -11,7 +11,6 @@ namespace BLL
 
         ICustomersDB CustomersDb { get; }
 
-        List<Customers> GetCustomers();
 
         Customers GetCustomer(int id);
 

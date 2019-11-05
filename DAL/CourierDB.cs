@@ -41,32 +41,7 @@ namespace DAL
             return courier;
         }
 
-        public int DeleteCourier(int id)
-        {
-            int result = 0;
-            string connectionString = Configuration.GetConnectionString("DefaultConnection");
-
-            try
-            {
-                using (SqlConnection cn = new SqlConnection(connectionString))
-                {
-                    string query = "DELETE Courier where IdCourier = @id";
-                    SqlCommand cmd = new SqlCommand(query, cn);
-                    cmd.Parameters.AddWithValue("@id", id);
-
-
-                    cn.Open();
-
-                    result = cmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-
-            return result;
-        }
+       
 
         public Courier GetCourier(int id)
         {
@@ -140,9 +115,6 @@ namespace DAL
             return result;
         }
 
-        public int DeleteCity(int id)
-        {
-            throw new NotImplementedException();
-        }
+      
     }
 }

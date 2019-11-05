@@ -11,6 +11,7 @@ namespace DAL
         IConfiguration Configuration { get; }
         List<OrderDishes> GetOrderDishes();
         OrderDishes GetOrderDish(int id);
-       
+        int UpdateOrderDish(OrderDishes orderDish);
+
     }
 }

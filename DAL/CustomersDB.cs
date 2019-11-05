@@ -113,50 +113,6 @@ namespace DAL
             return customers;
         }
 
-        public List<Customers> GetCustomers()
-        {
-            List<Customers> results = null;
-            string connectionString = Configuration.GetConnectionString("DefaultConnection");
-
-            try
-            {
-                using (SqlConnection cn = new SqlConnection(connectionString))
-                {
-                    string query = "SELECT * FROM Customers";
-                    SqlCommand cmd = new SqlCommand(query, cn);
-
-                    cn.Open();
-
-                    using (SqlDataReader dr = cmd.ExecuteReader())
-                    {
-                        while (dr.Read())
-                        {
-                            if (results == null)
-                                results = new List<Customers>();
-
-                            Customers customers = new Customers();
-
-                            customers.IdCustomer = (int)dr["IdCustomer"];
-                            customers.Firstname= (string)dr["Firstname"];
-                            customers.Lastname = (string)dr["Lastname"];
-                            customers.Login = (string)dr["Login"];
-                            customers.Password = (string)dr["Password"];
-                            customers.Address = (string)dr["Address"];
-                            customers.Country_code = (int)dr["Country_code"];
-
-                            results.Add(customers);
-                        }
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-
-            return results;
-        }
-
         public int UpdateCustomer(Customers customers)
         {
             int result = 0;

@@ -18,10 +18,6 @@ namespace BLL
 
         }
 
-        public List<Customers> GetCustomers()
-        {
-            return CustomersDb.GetCustomers();
-        }
 
         public Customers GetCustomer(int id)
         {

@@ -16,7 +16,7 @@ namespace BLL
 
         OrderDishes GetOrderDish(int id);
 
-      
+        int UpdateOrderDish(OrderDishes orderDish);
 
 
     }

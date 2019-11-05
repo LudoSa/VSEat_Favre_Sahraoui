@@ -13,13 +13,5 @@ namespace BLL
 
         List<Cities> GetCities();
 
-    
-
-        Cities AddCity(Cities cities);
-
-        int UpdateCity(Cities cities);
-
-        int DeleteCity(int id);
-
     }
 }

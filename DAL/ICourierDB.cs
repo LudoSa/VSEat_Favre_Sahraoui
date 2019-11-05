@@ -12,6 +12,5 @@ namespace DAL
         Courier GetCourier(int id);
         Courier AddCourier(Courier courier);
         int UpdateCourier(Courier courier);
-        int DeleteCourier(int id);
     }
 }

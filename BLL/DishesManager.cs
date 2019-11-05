@@ -28,21 +28,6 @@ namespace BLL
             return DishesDb.GetDish(id);
         }
 
-        public Dishes AddDish(Dishes dishes)
-        {
-            return DishesDb.AddDish(dishes);
-        }
-
-        public int UpdateDish(Dishes dishes)
-        {
-            return DishesDb.UpdateDish(dishes);
-        }
-
-        public int DeleteDish(int id)
-        {
-            return DishesDb.DeleteDish(id);
-        }
-
 
 
     }

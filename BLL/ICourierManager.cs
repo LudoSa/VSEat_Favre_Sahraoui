@@ -19,7 +19,6 @@ namespace BLL
 
         int UpdateCourier(Courier courier);
 
-        int DeleteCourier(int id);
 
 
 

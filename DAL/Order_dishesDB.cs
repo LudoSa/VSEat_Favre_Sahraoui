@@ -43,7 +43,7 @@ namespace DAL
                             orderdishes = new OrderDishes();
 
                             orderdishes.IdOrder = (int)dr["IdOrder"];
-                            orderdishes.IdDish = (int)dr["IdDish"];
+                            orderdishes.IdDishes = (int)dr["IdDishes"];
                             orderdishes.Quantity = (int)dr["Quantity"];
                         }
                     }
@@ -81,7 +81,7 @@ namespace DAL
                             OrderDishes orderDishes = new OrderDishes();
 
                             orderDishes.IdOrder = (int)dr["IdOrder"];
-                            orderDishes.IdDish = (int)dr["IdDish"];
+                            orderDishes.IdDishes = (int)dr["IdDishes"];
                             orderDishes.Quantity = (int)dr["Quantity"];
                       
                             results.Add(orderDishes);
@@ -95,6 +95,34 @@ namespace DAL
             }
 
             return results;
+        }
+
+        public int UpdateOrderDish(OrderDishes orderDishes)
+        {
+            int result = 0;
+            string connectionString = Configuration.GetConnectionString("DefaultConnection");
+
+            try
+            {
+                using (SqlConnection cn = new SqlConnection(connectionString))
+                {
+                    string query = "UPDATE Order_dishes SET IdOrder=@IdOrder, IdDishes=@IdDishes, Quantity=@Quantity";
+                    SqlCommand cmd = new SqlCommand(query, cn);
+                    cmd.Parameters.AddWithValue("@IdOrder", orderDishes.IdOrder);
+                    cmd.Parameters.AddWithValue("@IdDishes", orderDishes.IdDishes);
+                    cmd.Parameters.AddWithValue("@Quantity", orderDishes.Quantity);
+
+                    cn.Open();
+
+                    result = cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+            return result;
         }
     }
 }

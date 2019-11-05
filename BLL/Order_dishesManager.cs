@@ -29,7 +29,11 @@ namespace BLL
             return Order_dishesDb.GetOrderDish(id);
         }
 
+        public int UpdateOrderDish(OrderDishes orderDish)
+        {
+            return Order_dishesDb.UpdateOrderDish(orderDish);
 
+        }
 
 
 
