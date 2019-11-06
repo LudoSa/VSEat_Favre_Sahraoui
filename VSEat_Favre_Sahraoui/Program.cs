@@ -23,7 +23,7 @@ namespace VSEat_Favre_Sahraoui
 
             //Add new customer
             Console.WriteLine("--Add customer --");
-            customerDBManager.AddCustomer(new Customers {Firstname = "Ludovic", Lastname = "Sahraoui", Login="Baba", Password="Test1", Country_code=1, Address="Chemin des Salines 40" });
+            customerDBManager.AddCustomer(new Customers { Firstname = "Ludovic", Lastname = "Sahraoui", Login = "Baba", Password = "Test1", Country_code = 1, Address = "Chemin des Salines 40" }); ;
 
 
             //Delete customer
@@ -43,18 +43,34 @@ namespace VSEat_Favre_Sahraoui
 
 
             /*--Courier--*/
-
-
+            Console.WriteLine("--Get courier 1 --");
+            var courierDBManager = new CourierManager(Configuration);
+            var courier = courierDBManager.GetCourier(1);
+            Console.WriteLine(courier.Firstname);
 
             /*--Dishes--*/
 
 
+            //Get dishes
+            Console.WriteLine("--Get dishes --");
+            var dishesDBManager = new DishesManager(Configuration);
+            var dishes=dishesDBManager.GetDishes();
+
+            foreach (var dish in dishes)
+            {
+                Console.WriteLine(dish.Name);
+            }
 
             /*--OrderDishes--*/
 
 
 
             /*--Orders--*/
+
+            //add order
+            Console.WriteLine("--Add order --");
+            var ordersDBManager = new OrdersManager(Configuration);
+            ordersDBManager.AddOrder(new Orders { Status = "Ready", Created_at = 02042019, Delivery_time = 2, IdCourier = 1, IdCustomer = 1 }); ;
 
 
             /*--Restaurants--*/
