@@ -24,7 +24,7 @@ namespace DAL
             {
                 using (SqlConnection cn = new SqlConnection(connectionString))
                 {
-                    String query = "Insert into Customers(Firstname,Lastname,Login,Password,Address,Country_code) values(@Firstname,@Lastname,@Login,@Password,@Address,@Country_code); SELECT SCOPE_IDENTITY()";
+                    String query = "INSERT INTO Customers(Firstname,Lastname,Login,Password,Address,Country_code) values(@Firstname,@Lastname,@Login,@Password,@Address,@Country_code); SELECT SCOPE_IDENTITY()";
                     SqlCommand cmd = new SqlCommand(query, cn);
                     cmd.Parameters.AddWithValue("@Firstname", customers.Firstname);
                     cmd.Parameters.AddWithValue("@Lastname", customers.Lastname);
@@ -33,7 +33,7 @@ namespace DAL
                     cmd.Parameters.AddWithValue("@Address", customers.Address);
                     cmd.Parameters.AddWithValue("@Country_code", customers.Country_code);
                     cn.Open();
-                    //customers.IdCustomer = Convert.ToInt32(cmd.ExecuteScalar());
+                    customers.IdCustomer = Convert.ToInt32(cmd.ExecuteScalar());
                 }
             }
             catch (Exception e)
@@ -81,7 +81,7 @@ namespace DAL
                 {
 
 
-                    string query = "Select * from Customers where IdCustomer = @id";
+                    string query = "SELECT * from Customers WHERE IdCustomer = @id";
                     SqlCommand cmd = new SqlCommand(query, cn);
                     cmd.Parameters.AddWithValue("@id", id);
 
