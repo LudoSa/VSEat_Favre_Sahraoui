@@ -33,7 +33,7 @@ namespace DAL
                     cmd.Parameters.AddWithValue("@Address", customers.Address);
                     cmd.Parameters.AddWithValue("@Country_code", customers.Country_code);
                     cn.Open();
-                    customers.IdCustomer = Convert.ToInt32(cmd.ExecuteScalar());
+                    //customers.IdCustomer = Convert.ToInt32(cmd.ExecuteScalar());
                 }
             }
             catch (Exception e)
@@ -81,7 +81,7 @@ namespace DAL
                 {
 
 
-                    string query = "Select * from Customers where IdCustomers = @id";
+                    string query = "Select * from Customers where IdCustomer = @id";
                     SqlCommand cmd = new SqlCommand(query, cn);
                     cmd.Parameters.AddWithValue("@id", id);
 

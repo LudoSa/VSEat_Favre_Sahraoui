@@ -7,7 +7,7 @@ using System.Text;
 
 namespace BLL
 {
-    public class CitiesManager
+    public class CitiesManager : ICitiesManager
     {
 
 

@@ -7,7 +7,7 @@ using System.Text;
 
 namespace BLL
 {
-    public class OrdersManager
+    public class OrdersManager : IOrdersManager
     {
 
 

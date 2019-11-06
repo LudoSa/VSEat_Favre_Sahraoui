@@ -31,7 +31,7 @@ namespace DAL
                     cmd.Parameters.AddWithValue("@Lastname", courier.Lastname);
                     cmd.Parameters.AddWithValue("@Country_code", courier.Country_code);
                     cn.Open();
-                    courier.IdCourier = Convert.ToInt32(cmd.ExecuteScalar());
+                    //courier.IdCourier = Convert.ToInt32(cmd.ExecuteScalar());
                 }
             }
             catch (Exception e)

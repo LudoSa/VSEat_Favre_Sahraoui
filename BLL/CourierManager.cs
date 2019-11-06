@@ -7,7 +7,7 @@ using System.Text;
 
 namespace BLL
 {
-    public class CourierManager
+    public class CourierManager : ICourierManager
     {
 
         public ICourierDB CourierDb { get; }

@@ -7,7 +7,7 @@ using System.Text;
 
 namespace BLL
 {
-    public class DishesManager
+    public class DishesManager : IDishesManager
     {
         public IDishesDB DishesDb { get; }
 

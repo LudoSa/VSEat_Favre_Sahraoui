@@ -7,31 +7,31 @@ using System.Text;
 
 namespace BLL
 {
-    public class Order_dishesManager
+    public class Order_dishesManager : IOrder_dishesManager
     {
 
-        public IOrder_dishesDB Order_dishesDb { get; }
+        public IOrder_dishesDB OrderDishesDb { get; }
 
         public Order_dishesManager(IConfiguration configuration)
         {
 
-            Order_dishesDb = new Order_dishesDB(configuration);
+            OrderDishesDb = new Order_dishesDB(configuration);
 
         }
 
         public List<OrderDishes> GetOrderDishes()
         {
-            return Order_dishesDb.GetOrderDishes();
+            return OrderDishesDb.GetOrderDishes();
         }
 
         public OrderDishes GetOrderDish(int id)
         {
-            return Order_dishesDb.GetOrderDish(id);
+            return OrderDishesDb.GetOrderDish(id);
         }
 
         public int UpdateOrderDish(OrderDishes orderDish)
         {
-            return Order_dishesDb.UpdateOrderDish(orderDish);
+            return OrderDishesDb.UpdateOrderDish(orderDish);
 
         }
 

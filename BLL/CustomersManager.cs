@@ -7,7 +7,7 @@ using System.Text;
 
 namespace BLL
 {
-    public class CustomersManager
+    public class CustomersManager : ICustomersManager
     {
         public ICustomersDB CustomersDb { get; }
 
@@ -24,14 +24,14 @@ namespace BLL
             return CustomersDb.GetCustomer(id);
         }
 
-        public Customers AddCustomer(Customers courier)
+        public Customers AddCustomer(Customers customer)
         {
-            return CustomersDb.AddCustomer(courier);
+            return CustomersDb.AddCustomer(customer);
         }
 
-        public int UpdateCustomer(Customers courier)
+        public int UpdateCustomer(Customers customer)
         {
-            return CustomersDb.UpdateCustomer(courier);
+            return CustomersDb.UpdateCustomer(customer);
         }
 
         public int DeleteCustomer(int id)

@@ -24,12 +24,21 @@ namespace VSEat_Favre_Sahraoui
             //Add new customer
             Console.WriteLine("--Add customer --");
             customerDBManager.AddCustomer(new Customers { Firstname = "Ludovic", Lastname = "Sahraoui", Login = "Baba", Password = "Test1", Country_code = 1, Address = "Chemin des Salines 40" }); ;
+            //var customers = customerDBManager.GetCustomer(1);
+            //Console.WriteLine(customers.Firstname);
 
+            /*
+            //Update new customer
+            var newCustomer = customerDBManager.GetCustomer(1);
+            newCustomer.Firstname = "Léo";
+            newCustomer.Lastname = "Favre";
+            customerDBManager.UpdateCustomer(newCustomer);
 
+            /*
             //Delete customer
             Console.WriteLine("--Delete customer --");
             customerDBManager.DeleteCustomer(1);
-
+            */
 
             /*--Cities--*/
             //Get Cities

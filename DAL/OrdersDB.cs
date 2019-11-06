@@ -32,7 +32,7 @@ namespace DAL
                     cmd.Parameters.AddWithValue("@IdCustomer", orders.IdCustomer);
                     cmd.Parameters.AddWithValue("@IdCourier", orders.IdCourier);
                     cn.Open();
-                    orders.IdOrder = Convert.ToInt32(cmd.ExecuteScalar());
+                    //orders.IdOrder = Convert.ToInt32(cmd.ExecuteScalar());
                 }
             }
             catch (Exception e)

@@ -7,7 +7,7 @@ using System.Text;
 
 namespace BLL
 {
-    public class RestaurantsManager
+    public class RestaurantsManager : IRestaurantsManager
     {
 
         public IRestaurantsDB RestaurantsDb { get; }
@@ -19,12 +19,12 @@ namespace BLL
 
         }
 
-        public List<Restaurants> GetHotels()
+        public List<Restaurants> GetRestaurants()
         {
             return RestaurantsDb.GetRestaurants();
         }
 
-        public Restaurants GetHotel(int id)
+        public Restaurants GetRestaurant(int id)
         {
             return RestaurantsDb.GetRestaurant(id);
         }
