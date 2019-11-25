@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29306.81
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VSEat_Favre_Sahraoui", "VSEat_Favre_Sahraoui\VSEat_Favre_Sahraoui.csproj", "{CD60F9AD-9CF8-434F-947E-A67FA593B791}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VSEat_Favre_Sahraoui", "VSEat_Favre_Sahraoui\VSEat_Favre_Sahraoui.csproj", "{CD60F9AD-9CF8-434F-947E-A67FA593B791}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{29E348DB-919E-4485-B0FF-198D6605E055}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL", "DAL\DAL.csproj", "{29E348DB-919E-4485-B0FF-198D6605E055}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{AACB230D-341C-4805-A686-BF8364DB9D35}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BLL", "BLL\BLL.csproj", "{AACB230D-341C-4805-A686-BF8364DB9D35}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTO", "DTO\DTO.csproj", "{6C06E7AF-922E-4637-9CCE-5D2249745D99}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DTO", "DTO\DTO.csproj", "{6C06E7AF-922E-4637-9CCE-5D2249745D99}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication", "WebApplication\WebApplication.csproj", "{F1A7618B-C43E-404C-A9CE-494A037ADDA3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{6C06E7AF-922E-4637-9CCE-5D2249745D99}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C06E7AF-922E-4637-9CCE-5D2249745D99}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C06E7AF-922E-4637-9CCE-5D2249745D99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1A7618B-C43E-404C-A9CE-494A037ADDA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1A7618B-C43E-404C-A9CE-494A037ADDA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1A7618B-C43E-404C-A9CE-494A037ADDA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1A7618B-C43E-404C-A9CE-494A037ADDA3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
