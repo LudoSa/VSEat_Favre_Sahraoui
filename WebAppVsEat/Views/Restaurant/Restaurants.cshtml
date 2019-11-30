@@ -1,0 +1,47 @@
+﻿@model IEnumerable<DTO.Restaurants>
+
+@{
+    ViewData["Title"] = "getRestaurants";
+}
+
+<h2>Restaurants</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <b>The Restaurants</b>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @if (item.IdRestaurant == 1)
+                {
+                    <img src="~/images/Downtown.jpg" alt="ASP.NET" class="img-responsive" style="width:550px;height:309px;" />
+
+                }
+                @if (item.IdRestaurant == 2)
+                {
+                    <img src="~/images/pizzeria.jpg" alt="ASP.NET" class="img-responsive" style="width:550px;height:309px;" />
+                }
+
+                <b>@Html.DisplayFor(modelItem => item.Merchant_name)</b>
+                <br />
+                @Html.DisplayFor(modelItem => item.Address)
+                <br/>
+                @Html.DisplayFor(modelItem => item.Country_code)
+<td>
+                
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

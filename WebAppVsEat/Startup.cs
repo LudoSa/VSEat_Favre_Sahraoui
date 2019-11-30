@@ -44,7 +44,7 @@ namespace WebAppVsEat
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Restaurant/Error");
                 app.UseHsts();
             }
 
@@ -56,7 +56,7 @@ namespace WebAppVsEat
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Restaurant}/{action=Index}/{id?}");
             });
         }
     }
