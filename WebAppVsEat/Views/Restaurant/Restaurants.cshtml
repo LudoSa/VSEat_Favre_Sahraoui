@@ -6,9 +6,7 @@
 
 <h2>Restaurants</h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
 <table class="table">
     <thead>
         <tr>
@@ -23,24 +21,27 @@
             <td>
                 @if (item.IdRestaurant == 1)
                 {
+                <a href="Details/1">
                     <img src="~/images/Downtown.jpg" alt="ASP.NET" class="img-responsive" style="width:550px;height:309px;" />
-
+                </a>
                 }
                 @if (item.IdRestaurant == 2)
                 {
-                    <img src="~/images/pizzeria.jpg" alt="ASP.NET" class="img-responsive" style="width:550px;height:309px;" />
+            <a href="Details/2">
+                <img src="~/images/pizzeria.jpg" alt="ASP.NET" class="img-responsive" style="width:550px;height:309px;" />
+            </a>
                 }
 
                 <b>@Html.DisplayFor(modelItem => item.Merchant_name)</b>
                 <br />
                 @Html.DisplayFor(modelItem => item.Address)
-                <br/>
+                <br />
                 @Html.DisplayFor(modelItem => item.Country_code)
-<td>
-                
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
             </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.IdRestaurant })
+            </td>
+            
         </tr>
 }
     </tbody>

@@ -19,7 +19,7 @@ namespace WebAppVsEat.Views
         }
 
 
-        public ActionResult getRestaurants()
+        public ActionResult Restaurants()
         {
             IRestaurantsManager hmanager = new RestaurantsManager(Configuration);
             var restaurantlist = hmanager.GetRestaurants();
@@ -35,30 +35,10 @@ namespace WebAppVsEat.Views
         // GET: Restaurant/Details/5
         public ActionResult Details(int id)
         {
-            return View();
-        }
+            IRestaurantsManager hman = new RestaurantsManager(Configuration);
+            var hotel = hman.GetRestaurant(id);
 
-        // GET: Restaurant/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Restaurant/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            return View(hotel);
         }
     }
 }

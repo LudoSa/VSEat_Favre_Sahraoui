@@ -29,7 +29,6 @@ namespace BLL
             return RestaurantsDb.GetRestaurant(id);
         }
 
-
-
+        
     }
 }
