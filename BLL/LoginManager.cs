@@ -6,7 +6,7 @@ using System.Text;
 
 namespace BLL
 {
-    class LoginManager
+    public class LoginManager : ILoginManager
     {
         public IloginDB LoginDbObject { get; }
 

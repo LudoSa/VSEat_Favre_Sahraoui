@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BLL;
+using DAL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -31,6 +33,25 @@ namespace WebAppVsEat
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddSession();
+
+            services.AddScoped<ICitiesManager, CitiesManager>();
+            services.AddScoped<ICitiesDB, CitiesDB>();
+            services.AddScoped<ICourierManager, CourierManager>();
+            services.AddScoped<ICourierDB, CourierDB>();
+            services.AddScoped<ICustomersManager, CustomersManager>();
+            services.AddScoped<ICustomersDB, CustomersDB>();
+            services.AddScoped<IDishesManager, DishesManager>();
+            services.AddScoped<IDishesDB, DishesDB>();
+            services.AddScoped<ILoginManager, LoginManager>();
+            services.AddScoped<IloginDB, LoginDB>();
+            services.AddScoped<IOrder_dishesManager, Order_dishesManager>();
+            services.AddScoped<IOrder_dishesDB, Order_dishesDB>();
+            services.AddScoped<IOrdersManager, OrdersManager>();
+            services.AddScoped<IOrdersDB, OrdersDB>();
+            services.AddScoped<IRestaurantsManager, RestaurantsManager>();
+            services.AddScoped<IRestaurantsDB, RestaurantsDB>();
+
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -51,6 +72,7 @@ namespace WebAppVsEat
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseSession();
 
             app.UseMvc(routes =>
             {
