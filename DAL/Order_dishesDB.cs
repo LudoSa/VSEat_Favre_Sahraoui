@@ -9,11 +9,12 @@ namespace DAL
 {
     public class Order_dishesDB : IOrder_dishesDB
     {
-        public IConfiguration Configuration { get; }
+        private string connectionString = null;
 
         public Order_dishesDB(IConfiguration configuration)
         {
-            Configuration = configuration;
+            var Config = configuration;
+            connectionString = Config.GetConnectionString("DefaultConnection");
         }
 
        
@@ -21,7 +22,7 @@ namespace DAL
         public OrderDish GetOrderDish(int id)
         {
             OrderDish orderdishes = null;
-            string connectionString = Configuration.GetConnectionString("DefaultConnection");
+            
 
             try
             {
@@ -60,7 +61,7 @@ namespace DAL
         public List<OrderDish> GetOrderDishes()
         {
             List<OrderDish> results = null;
-            string connectionString = Configuration.GetConnectionString("DefaultConnection");
+            
 
             try
             {
@@ -100,7 +101,7 @@ namespace DAL
         public int UpdateOrderDish(OrderDish orderDishes)
         {
             int result = 0;
-            string connectionString = Configuration.GetConnectionString("DefaultConnection");
+           
 
             try
             {

@@ -9,17 +9,18 @@ namespace DAL
 {
     public class CourierDB : ICourierDB
     {
-        public IConfiguration Configuration { get; }
+        private string connectionString = null;
 
         public CourierDB(IConfiguration configuration)
         {
-            Configuration = configuration;
+            var Config = configuration;
+            connectionString = Config.GetConnectionString("DefaultConnection");
         }
 
 
         public Courier AddCourier(Courier courier)
         {
-            string connectionString = Configuration.GetConnectionString("DefaultConnection");
+           
 
             try
             {
@@ -46,7 +47,7 @@ namespace DAL
         public Courier GetCourier(int id)
         {
             Courier courier = null;
-            string connectionString = Configuration.GetConnectionString("DefaultConnection");
+            
 
             try
             {
@@ -89,7 +90,7 @@ namespace DAL
         {
 
             int result = 0;
-            string connectionString = Configuration.GetConnectionString("DefaultConnection");
+            
 
             try
             {

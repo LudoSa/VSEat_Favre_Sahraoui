@@ -10,8 +10,6 @@ namespace BLL
     {
 
 
-        IOrdersDB OrdersDb { get; }
-
         List<Order> GetOrders();
 
         Order GetOrder(int id);

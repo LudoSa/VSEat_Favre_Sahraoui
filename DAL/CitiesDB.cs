@@ -9,12 +9,13 @@ namespace DAL
 {
     public class CitiesDB : ICitiesDB
     {
-        public IConfiguration Configuration { get; }
-        
+        private string connectionString = null;
+
 
         public CitiesDB(IConfiguration configuration)
         {
-            Configuration = configuration;
+            var Config = configuration;
+            connectionString = Config.GetConnectionString("DefaultConnection");
         }
 
        
@@ -24,7 +25,7 @@ namespace DAL
         public List<City> GetCities()
         {
             List<City> results = null;
-            string connectionString = Configuration.GetConnectionString("DefaultConnection");
+            
 
             try
             {

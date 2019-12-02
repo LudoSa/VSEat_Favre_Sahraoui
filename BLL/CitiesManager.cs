@@ -11,18 +11,18 @@ namespace BLL
     {
 
 
-        public ICitiesDB CitiesDb { get; }
+        public ICitiesDB CitiesDbObject { get; }
 
-        public CitiesManager(IConfiguration configuration)
+        public CitiesManager(ICitiesDB citiesDb)
         {
 
-            CitiesDb = new CitiesDB(configuration);
+            CitiesDbObject = citiesDb;
 
         }
 
         public List<City> GetCities()
         {
-            return CitiesDb.GetCities();
+            return CitiesDbObject.GetCities();
         }
 
 

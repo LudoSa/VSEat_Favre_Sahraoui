@@ -10,28 +10,28 @@ namespace BLL
     public class Order_dishesManager : IOrder_dishesManager
     {
 
-        public IOrder_dishesDB OrderDishesDb { get; }
+        public IOrder_dishesDB OrderDishesDbObject { get; }
 
-        public Order_dishesManager(IConfiguration configuration)
+        public Order_dishesManager(IOrder_dishesDB orderDishesDb)
         {
 
-            OrderDishesDb = new Order_dishesDB(configuration);
+            OrderDishesDbObject = orderDishesDb;
 
         }
 
         public List<OrderDish> GetOrderDishes()
         {
-            return OrderDishesDb.GetOrderDishes();
+            return OrderDishesDbObject.GetOrderDishes();
         }
 
         public OrderDish GetOrderDish(int id)
         {
-            return OrderDishesDb.GetOrderDish(id);
+            return OrderDishesDbObject.GetOrderDish(id);
         }
 
         public int UpdateOrderDish(OrderDish orderDish)
         {
-            return OrderDishesDb.UpdateOrderDish(orderDish);
+            return OrderDishesDbObject.UpdateOrderDish(orderDish);
 
         }
 

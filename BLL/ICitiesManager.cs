@@ -9,7 +9,6 @@ namespace BLL
     public interface ICitiesManager
     {
 
-        ICitiesDB CitiesDb { get; }
 
         List<City> GetCities();
 

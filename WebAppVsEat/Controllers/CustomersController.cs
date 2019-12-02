@@ -41,7 +41,7 @@ namespace WebAppVsEat.Controllers
         // POST: Customers/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(DTO.Customers c)
+        public ActionResult Create(DTO.Customer c)
         {
             
                 ICustomersManager cManager = new CustomersManager(Configuration);
@@ -98,9 +98,5 @@ namespace WebAppVsEat.Controllers
             }
         }
 
-        public ActionResult Verify(int )
-        {
-
-        }
     }
 }

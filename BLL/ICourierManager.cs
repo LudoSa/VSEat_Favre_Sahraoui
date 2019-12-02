@@ -9,10 +9,6 @@ namespace BLL
     public interface ICourierManager
     {
 
-        ICourierDB CourierDb { get; }
-
-
-
         Courier GetCourier(int id);
 
         Courier AddCourier(Courier courier);

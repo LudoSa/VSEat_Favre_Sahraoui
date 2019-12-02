@@ -9,39 +9,39 @@ namespace BLL
 {
     public class CustomersManager : ICustomersManager
     {
-        public ICustomersDB CustomersDb { get; }
+        public ICustomersDB CustomersDbObject { get; }
 
-        public CustomersManager(IConfiguration configuration)
+        public CustomersManager(ICustomersDB customersDB)
         {
 
-            CustomersDb = new CustomersDB(configuration);
+            CustomersDbObject = customersDB;
 
         }
 
 
         public Customer GetCustomer(int id)
         {
-            return CustomersDb.GetCustomer(id);
+            return CustomersDbObject.GetCustomer(id);
         }
 
         public Customer AddCustomer(Customer customer)
         {
-            return CustomersDb.AddCustomer(customer);
+            return CustomersDbObject.AddCustomer(customer);
         }
 
         public int UpdateCustomer(Customer customer)
         {
-            return CustomersDb.UpdateCustomer(customer);
+            return CustomersDbObject.UpdateCustomer(customer);
         }
 
         public int DeleteCustomer(int id)
         {
-            return CustomersDb.DeleteCustomer(id);
+            return CustomersDbObject.DeleteCustomer(id);
         }
 
         public Boolean Verify(string login, string password)
         {
-            var loginsPasswords = CustomersDb.GetLoginPasswordCustomers();
+            var loginsPasswords = CustomersDbObject.GetLoginPasswordCustomers();
 
 
             foreach (var loginPassword in loginsPasswords)

@@ -11,38 +11,38 @@ namespace BLL
     {
 
 
-        public IOrdersDB OrdersDb { get; }
+        public IOrdersDB OrdersDbObject { get; }
 
-        public OrdersManager(IConfiguration configuration)
+        public OrdersManager(IOrdersDB ordersDb)
         {
 
-            OrdersDb = new OrdersDB(configuration);
+            OrdersDbObject = ordersDb;
 
         }
 
         public List<Order> GetOrders()
         {
-            return OrdersDb.GetOrders();
+            return OrdersDbObject.GetOrders();
         }
 
         public Order GetOrder(int id)
         {
-            return OrdersDb.GetOrder(id);
+            return OrdersDbObject.GetOrder(id);
         }
 
         public Order AddOrder(Order courier)
         {
-            return OrdersDb.AddOrder(courier);
+            return OrdersDbObject.AddOrder(courier);
         }
 
         public int UpdateOrder(Order courier)
         {
-            return OrdersDb.UpdateOrder(courier);
+            return OrdersDbObject.UpdateOrder(courier);
         }
 
         public int DeleteOrder(int id)
         {
-            return OrdersDb.DeleteOrder(id);
+            return OrdersDbObject.DeleteOrder(id);
         }
 
     }

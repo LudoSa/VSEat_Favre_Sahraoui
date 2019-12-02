@@ -9,19 +9,19 @@ namespace DAL
 {
     public class DishesDB : IDishesDB
     {
-        public IConfiguration Configuration { get; }
+        private string connectionString = null;
 
         public DishesDB(IConfiguration configuration)
         {
-            Configuration = configuration;
+            var Config = configuration;
+            connectionString = Config.GetConnectionString("DefaultConnection");
         }
 
        
 
         public Dish GetDish(int id)
         {
-            Dish dishes = null;
-            string connectionString = Configuration.GetConnectionString("DefaultConnection");
+            Dish dishes = null; string connectionString = Configuration.GetConnectionString("DefaultConnection");
 
             try
             {
@@ -62,7 +62,7 @@ namespace DAL
         public List<Dish> GetDishes()
         {
             List<Dish> results = null;
-            string connectionString = Configuration.GetConnectionString("DefaultConnection");
+            
 
             try
             {

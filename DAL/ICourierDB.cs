@@ -8,7 +8,6 @@ namespace DAL
 {
     public interface ICourierDB
     {
-        IConfiguration Configuration { get; }
         Courier GetCourier(int id);
         Courier AddCourier(Courier courier);
         int UpdateCourier(Courier courier);

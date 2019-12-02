@@ -9,11 +9,14 @@ namespace DAL
 {
     public class RestaurantsDB : IRestaurantsDB
     {
-        public IConfiguration Configuration { get; }
+
+
+        private string connectionString = null;
 
         public RestaurantsDB(IConfiguration configuration)
         {
-            Configuration = configuration;
+            var Config = configuration;
+            connectionString = Config.GetConnectionString("DefaultConnection");
         }
 
         
@@ -21,7 +24,7 @@ namespace DAL
         public Restaurant GetRestaurant(int id)
         {
             Restaurant restaurants = null;
-            string connectionString = Configuration.GetConnectionString("DefaultConnection");
+            
 
             try
             {
@@ -62,7 +65,7 @@ namespace DAL
         public List<Restaurant> GetRestaurants()
         {
             List<Restaurant> results = null;
-            string connectionString = Configuration.GetConnectionString("DefaultConnection");
+            
 
             try
             {

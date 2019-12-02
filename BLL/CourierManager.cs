@@ -10,28 +10,28 @@ namespace BLL
     public class CourierManager : ICourierManager
     {
 
-        public ICourierDB CourierDb { get; }
+        public ICourierDB CourierDbObject { get; }
 
-        public CourierManager(IConfiguration configuration)
+        public CourierManager(ICourierDB courierDb)
         {
 
-            CourierDb = new CourierDB(configuration);
+            CourierDbObject = courierDb;
 
         }
 
         public Courier GetCourier(int id)
         {
-            return CourierDb.GetCourier(id);
+            return CourierDbObject.GetCourier(id);
         }
 
         public Courier AddCourier(Courier courier)
         {
-            return CourierDb.AddCourier(courier);
+            return CourierDbObject.AddCourier(courier);
         }
 
         public int UpdateCourier(Courier courier)
         {
-            return CourierDb.UpdateCourier(courier);
+            return CourierDbObject.UpdateCourier(courier);
         }
 
 

@@ -9,16 +9,17 @@ namespace DAL
 {
     public class CustomersDB : ICustomersDB
     {
-        public IConfiguration Configuration { get; }
+        private string connectionString = null;
 
         public CustomersDB(IConfiguration configuration)
         {
-            Configuration = configuration;
+            var Config = configuration;
+            connectionString = Config.GetConnectionString("DefaultConnection");
         }
 
         public Customer AddCustomer(Customer customers)
         {
-            string connectionString = Configuration.GetConnectionString("DefaultConnection");
+           
 
             try
             {
@@ -46,7 +47,7 @@ namespace DAL
         public int DeleteCustomer(int id)
         {
             int result = 0;
-            string connectionString = Configuration.GetConnectionString("DefaultConnection");
+           
 
             try
             {
@@ -73,7 +74,7 @@ namespace DAL
         public Customer GetCustomer(int id)
         {
             Customer customers = null;
-            string connectionString = Configuration.GetConnectionString("DefaultConnection");
+            
 
             try
             {
@@ -116,7 +117,7 @@ namespace DAL
         public int UpdateCustomer(Customer customers)
         {
             int result = 0;
-            string connectionString = Configuration.GetConnectionString("DefaultConnection");
+            
 
             try
             {
@@ -148,7 +149,7 @@ namespace DAL
         public List<Customer> GetLoginPasswordCustomers()
         {
             List<Customer> results = null;
-            string connectionString = Configuration.GetConnectionString("DefaultConnection");
+            
 
             try
             {

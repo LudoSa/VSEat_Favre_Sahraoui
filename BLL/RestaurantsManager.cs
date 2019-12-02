@@ -10,23 +10,23 @@ namespace BLL
     public class RestaurantsManager : IRestaurantsManager
     {
 
-        public IRestaurantsDB RestaurantsDb { get; }
+        public IRestaurantsDB RestaurantsDbObject { get; }
 
-        public RestaurantsManager(IConfiguration configuration)
+        public RestaurantsManager(IRestaurantsDB RestaurantsDb)
         {
 
-            RestaurantsDb = new RestaurantsDB(configuration);
+            RestaurantsDbObject = RestaurantsDb;
 
         }
 
         public List<Restaurant> GetRestaurants()
         {
-            return RestaurantsDb.GetRestaurants();
+            return RestaurantsDbObject.GetRestaurants();
         }
 
         public Restaurant GetRestaurant(int id)
         {
-            return RestaurantsDb.GetRestaurant(id);
+            return RestaurantsDbObject.GetRestaurant(id);
         }
 
         

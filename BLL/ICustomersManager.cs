@@ -9,7 +9,6 @@ namespace BLL
     public interface ICustomersManager
     {
 
-        ICustomersDB CustomersDb { get; }
 
         Boolean Verify(string login, string password);
 

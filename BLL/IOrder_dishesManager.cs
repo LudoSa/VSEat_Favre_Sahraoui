@@ -10,8 +10,6 @@ namespace BLL
     {
 
 
-        IOrder_dishesDB OrderDishesDb { get; }
-
         List<OrderDish> GetOrderDishes();
 
         OrderDish GetOrderDish(int id);
