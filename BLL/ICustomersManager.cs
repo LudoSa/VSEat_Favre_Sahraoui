@@ -13,11 +13,11 @@ namespace BLL
 
         Boolean Verify(string login, string password);
 
-        Customers GetCustomer(int id);
+        Customer GetCustomer(int id);
 
-        Customers AddCustomer(Customers customer);
+        Customer AddCustomer(Customer customer);
 
-        int UpdateCustomer(Customers customer);
+        int UpdateCustomer(Customer customer);
 
         int DeleteCustomer(int id);
 

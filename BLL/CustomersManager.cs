@@ -19,17 +19,17 @@ namespace BLL
         }
 
 
-        public Customers GetCustomer(int id)
+        public Customer GetCustomer(int id)
         {
             return CustomersDb.GetCustomer(id);
         }
 
-        public Customers AddCustomer(Customers customer)
+        public Customer AddCustomer(Customer customer)
         {
             return CustomersDb.AddCustomer(customer);
         }
 
-        public int UpdateCustomer(Customers customer)
+        public int UpdateCustomer(Customer customer)
         {
             return CustomersDb.UpdateCustomer(customer);
         }

@@ -11,9 +11,9 @@ namespace BLL
 
         IRestaurantsDB RestaurantsDb { get; }
 
-        List<Restaurants> GetRestaurants();
+        List<Restaurant> GetRestaurants();
 
-        Restaurants GetRestaurant(int id);
+        Restaurant GetRestaurant(int id);
 
     }
 }

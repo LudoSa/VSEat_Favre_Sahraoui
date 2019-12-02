@@ -19,12 +19,12 @@ namespace BLL
 
         }
 
-        public List<Restaurants> GetRestaurants()
+        public List<Restaurant> GetRestaurants()
         {
             return RestaurantsDb.GetRestaurants();
         }
 
-        public Restaurants GetRestaurant(int id)
+        public Restaurant GetRestaurant(int id)
         {
             return RestaurantsDb.GetRestaurant(id);
         }
