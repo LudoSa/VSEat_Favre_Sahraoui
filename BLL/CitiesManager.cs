@@ -20,7 +20,7 @@ namespace BLL
 
         }
 
-        public List<Cities> GetCities()
+        public List<City> GetCities()
         {
             return CitiesDb.GetCities();
         }

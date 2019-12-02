@@ -12,13 +12,13 @@ namespace BLL
 
         IOrdersDB OrdersDb { get; }
 
-        List<Orders> GetOrders();
+        List<Order> GetOrders();
 
-        Orders GetOrder(int id);
+        Order GetOrder(int id);
 
-        Orders AddOrder(Orders orders);
+        Order AddOrder(Order orders);
 
-        int UpdateOrder(Orders orders);
+        int UpdateOrder(Order orders);
 
         int DeleteOrder(int id);
 

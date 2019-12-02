@@ -18,9 +18,9 @@ namespace DAL
 
        
 
-        public Dishes GetDish(int id)
+        public Dish GetDish(int id)
         {
-            Dishes dishes = null;
+            Dish dishes = null;
             string connectionString = Configuration.GetConnectionString("DefaultConnection");
 
             try
@@ -40,7 +40,7 @@ namespace DAL
                         if (dr.Read())
                         {
 
-                            dishes = new Dishes();
+                            dishes = new Dish();
 
                             dishes.IdDishes = (int)dr["IdDishes"];
                             dishes.Price = (int)dr["Price"];
@@ -59,9 +59,9 @@ namespace DAL
             return dishes;
         }
 
-        public List<Dishes> GetDishes()
+        public List<Dish> GetDishes()
         {
-            List<Dishes> results = null;
+            List<Dish> results = null;
             string connectionString = Configuration.GetConnectionString("DefaultConnection");
 
             try
@@ -78,9 +78,9 @@ namespace DAL
                         while (dr.Read())
                         {
                             if (results == null)
-                                results = new List<Dishes>();
+                                results = new List<Dish>();
 
-                            Dishes dishes = new Dishes();
+                            Dish dishes = new Dish();
 
                             dishes.IdDishes = (int)dr["IdDishes"];
                             dishes.Name = (string)dr["Name"];

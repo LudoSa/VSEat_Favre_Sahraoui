@@ -18,9 +18,9 @@ namespace DAL
 
         
 
-        public Restaurants GetRestaurant(int id)
+        public Restaurant GetRestaurant(int id)
         {
-            Restaurants restaurants = null;
+            Restaurant restaurants = null;
             string connectionString = Configuration.GetConnectionString("DefaultConnection");
 
             try
@@ -40,7 +40,7 @@ namespace DAL
                         if (dr.Read())
                         {
 
-                            restaurants = new Restaurants();
+                            restaurants = new Restaurant();
 
                             restaurants.IdRestaurant = (int)dr["IdRestaurant"];
                             restaurants.Merchant_name = (string)dr["Merchant_name"];
@@ -59,9 +59,9 @@ namespace DAL
             return restaurants;
         }
 
-        public List<Restaurants> GetRestaurants()
+        public List<Restaurant> GetRestaurants()
         {
-            List<Restaurants> results = null;
+            List<Restaurant> results = null;
             string connectionString = Configuration.GetConnectionString("DefaultConnection");
 
             try
@@ -78,9 +78,9 @@ namespace DAL
                         while (dr.Read())
                         {
                             if (results == null)
-                                results = new List<Restaurants>();
+                                results = new List<Restaurant>();
 
-                            Restaurants restaurants = new Restaurants();
+                            Restaurant restaurants = new Restaurant();
 
                             restaurants.IdRestaurant = (int)dr["IdRestaurant"];
                             restaurants.Merchant_name = (string)dr["Merchant_name"];

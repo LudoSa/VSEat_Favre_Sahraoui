@@ -79,7 +79,7 @@ namespace VSEat_Favre_Sahraoui
             //add order
             Console.WriteLine("--Add order --");
             var ordersDBManager = new OrdersManager(Configuration);
-            ordersDBManager.AddOrder(new Orders { Status = "Ready", Created_at = 02042019, Delivery_time = 2, IdCourier = 1, IdCustomer = 1 }); ;
+            ordersDBManager.AddOrder(new Order { Status = "Ready", Created_at = 02042019, Delivery_time = 2, IdCourier = 1, IdCustomer = 1 }); ;
 
 
             /*--Restaurants--*/

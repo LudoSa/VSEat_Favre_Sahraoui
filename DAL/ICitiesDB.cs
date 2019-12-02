@@ -9,7 +9,7 @@ namespace DAL
     public interface ICitiesDB
     {
         IConfiguration Configuration { get; }
-        List<Cities> GetCities();
+        List<City> GetCities();
         
 
     }

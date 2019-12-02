@@ -18,9 +18,9 @@ namespace DAL
 
        
 
-        public OrderDishes GetOrderDish(int id)
+        public OrderDish GetOrderDish(int id)
         {
-            OrderDishes orderdishes = null;
+            OrderDish orderdishes = null;
             string connectionString = Configuration.GetConnectionString("DefaultConnection");
 
             try
@@ -40,7 +40,7 @@ namespace DAL
                         if (dr.Read())
                         {
 
-                            orderdishes = new OrderDishes();
+                            orderdishes = new OrderDish();
 
                             orderdishes.IdOrder = (int)dr["IdOrder"];
                             orderdishes.IdDishes = (int)dr["IdDishes"];
@@ -57,9 +57,9 @@ namespace DAL
             return orderdishes;
         }
 
-        public List<OrderDishes> GetOrderDishes()
+        public List<OrderDish> GetOrderDishes()
         {
-            List<OrderDishes> results = null;
+            List<OrderDish> results = null;
             string connectionString = Configuration.GetConnectionString("DefaultConnection");
 
             try
@@ -76,9 +76,9 @@ namespace DAL
                         while (dr.Read())
                         {
                             if (results == null)
-                                results = new List<OrderDishes>();
+                                results = new List<OrderDish>();
 
-                            OrderDishes orderDishes = new OrderDishes();
+                            OrderDish orderDishes = new OrderDish();
 
                             orderDishes.IdOrder = (int)dr["IdOrder"];
                             orderDishes.IdDishes = (int)dr["IdDishes"];
@@ -97,7 +97,7 @@ namespace DAL
             return results;
         }
 
-        public int UpdateOrderDish(OrderDishes orderDishes)
+        public int UpdateOrderDish(OrderDish orderDishes)
         {
             int result = 0;
             string connectionString = Configuration.GetConnectionString("DefaultConnection");

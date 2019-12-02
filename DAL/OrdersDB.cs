@@ -16,7 +16,7 @@ namespace DAL
             Configuration = configuration;
         }
 
-        public Orders AddOrder(Orders orders)
+        public Order AddOrder(Order orders)
         {
             string connectionString = Configuration.GetConnectionString("DefaultConnection");
 
@@ -69,9 +69,9 @@ namespace DAL
             return result;
         }
 
-        public Orders GetOrder(int id)
+        public Order GetOrder(int id)
         {
-            Orders orders = null;
+            Order orders = null;
             string connectionString = Configuration.GetConnectionString("DefaultConnection");
 
             try
@@ -91,7 +91,7 @@ namespace DAL
                         if (dr.Read())
                         {
 
-                            orders = new Orders();
+                            orders = new Order();
 
                             orders.IdOrder = (int)dr["IdOrder"];
                             orders.Status = (string)dr["Status"];
@@ -111,9 +111,9 @@ namespace DAL
             return orders;
         }
 
-        public List<Orders> GetOrders()
+        public List<Order> GetOrders()
         {
-            List<Orders> results = null;
+            List<Order> results = null;
             string connectionString = Configuration.GetConnectionString("DefaultConnection");
 
             try
@@ -130,9 +130,9 @@ namespace DAL
                         while (dr.Read())
                         {
                             if (results == null)
-                                results = new List<Orders>();
+                                results = new List<Order>();
 
-                            Orders orders = new Orders();
+                            Order orders = new Order();
 
                             orders.IdOrder = (int)dr["IdOrder"];
                             orders.Status = (string)dr["Status"];
@@ -154,7 +154,7 @@ namespace DAL
             return results;
         }
 
-        public int UpdateOrder(Orders orders)
+        public int UpdateOrder(Order orders)
         {
             int result = 0;
             string connectionString = Configuration.GetConnectionString("DefaultConnection");

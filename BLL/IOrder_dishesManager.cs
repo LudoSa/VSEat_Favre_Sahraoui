@@ -12,11 +12,11 @@ namespace BLL
 
         IOrder_dishesDB OrderDishesDb { get; }
 
-        List<OrderDishes> GetOrderDishes();
+        List<OrderDish> GetOrderDishes();
 
-        OrderDishes GetOrderDish(int id);
+        OrderDish GetOrderDish(int id);
 
-        int UpdateOrderDish(OrderDishes orderDish);
+        int UpdateOrderDish(OrderDish orderDish);
 
 
     }

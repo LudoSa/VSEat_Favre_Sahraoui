@@ -39,7 +39,24 @@ namespace BLL
             return CustomersDb.DeleteCustomer(id);
         }
 
+        public Boolean Verify(string login, string password)
+        {
+            var loginsPasswords = CustomersDb.GetLoginPasswordCustomers();
 
+
+            foreach (var loginPassword in loginsPasswords)
+            {
+                string loginDB = loginPassword.Login;
+                string passwordDB = loginPassword.Password;
+
+                if (login.Equals(loginDB) && password.Equals(passwordDB))
+                {
+                    return true;
+                }
+
+            }
+            return false;
+        }
 
     }
 }

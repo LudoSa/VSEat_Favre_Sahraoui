@@ -16,7 +16,7 @@ namespace DAL
             Configuration = configuration;
         }
 
-        public Customers AddCustomer(Customers customers)
+        public Customer AddCustomer(Customer customers)
         {
             string connectionString = Configuration.GetConnectionString("DefaultConnection");
 
@@ -70,9 +70,9 @@ namespace DAL
             return result;
         }
 
-        public Customers GetCustomer(int id)
+        public Customer GetCustomer(int id)
         {
-            Customers customers = null;
+            Customer customers = null;
             string connectionString = Configuration.GetConnectionString("DefaultConnection");
 
             try
@@ -92,7 +92,7 @@ namespace DAL
                         if (dr.Read())
                         {
 
-                            customers = new Customers();
+                            customers = new Customer();
 
                             customers.IdCustomer = (int)dr["IdCustomer"];
                             customers.Firstname = (string)dr["Firstname"];
@@ -113,7 +113,7 @@ namespace DAL
             return customers;
         }
 
-        public int UpdateCustomer(Customers customers)
+        public int UpdateCustomer(Customer customers)
         {
             int result = 0;
             string connectionString = Configuration.GetConnectionString("DefaultConnection");
@@ -144,5 +144,45 @@ namespace DAL
 
             return result;
         }
+
+        public List<Customer> GetLoginPasswordCustomers()
+        {
+            List<Customer> results = null;
+            string connectionString = Configuration.GetConnectionString("DefaultConnection");
+
+            try
+            {
+                using (SqlConnection cn = new SqlConnection(connectionString))
+                {
+                    string query = "SELECT Login, Password FROM Customers";
+                    SqlCommand cmd = new SqlCommand(query, cn);
+
+                    cn.Open();
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            if (results == null)
+                                results = new List<Customer>();
+
+                            Customer customer = new Customer();
+
+                            customer.Login = (string)dr["Login"];
+                            customer.Password = (string)dr["Password"];
+
+                            results.Add(customer);
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+            return results;
+        }
+
     }
 }

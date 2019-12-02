@@ -11,6 +11,7 @@ namespace BLL
 
         ICustomersDB CustomersDb { get; }
 
+        Boolean Verify(string login, string password);
 
         Customers GetCustomer(int id);
 

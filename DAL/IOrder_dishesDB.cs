@@ -9,9 +9,9 @@ namespace DAL
     public interface IOrder_dishesDB
     {
         IConfiguration Configuration { get; }
-        List<OrderDishes> GetOrderDishes();
-        OrderDishes GetOrderDish(int id);
-        int UpdateOrderDish(OrderDishes orderDish);
+        List<OrderDish> GetOrderDishes();
+        OrderDish GetOrderDish(int id);
+        int UpdateOrderDish(OrderDish orderDish);
 
     }
 }

@@ -19,17 +19,17 @@ namespace BLL
 
         }
 
-        public List<OrderDishes> GetOrderDishes()
+        public List<OrderDish> GetOrderDishes()
         {
             return OrderDishesDb.GetOrderDishes();
         }
 
-        public OrderDishes GetOrderDish(int id)
+        public OrderDish GetOrderDish(int id)
         {
             return OrderDishesDb.GetOrderDish(id);
         }
 
-        public int UpdateOrderDish(OrderDishes orderDish)
+        public int UpdateOrderDish(OrderDish orderDish)
         {
             return OrderDishesDb.UpdateOrderDish(orderDish);
 

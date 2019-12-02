@@ -21,9 +21,9 @@ namespace DAL
 
        
 
-        public List<Cities> GetCities()
+        public List<City> GetCities()
         {
-            List<Cities> results = null;
+            List<City> results = null;
             string connectionString = Configuration.GetConnectionString("DefaultConnection");
 
             try
@@ -40,9 +40,9 @@ namespace DAL
                         while (dr.Read())
                         {
                             if (results == null)
-                                results = new List<Cities>();
+                                results = new List<City>();
 
-                            Cities city = new Cities();
+                            City city = new City();
 
                             city.IdCity = (int)dr["IdCity"];
                             city.Name = (string)dr["Name"];

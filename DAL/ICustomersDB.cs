@@ -9,9 +9,10 @@ namespace DAL
     public interface ICustomersDB
     {
         IConfiguration Configuration { get; }
-        Customers GetCustomer(int id);
-        Customers AddCustomer(Customers customers);
-        int UpdateCustomer(Customers customers);
+        Customer GetCustomer(int id);
+        Customer AddCustomer(Customer customers);
+        int UpdateCustomer(Customer customers);
         int DeleteCustomer(int id);
+        List<Customer> GetLoginPasswordCustomers();
     }
 }

@@ -9,8 +9,8 @@ namespace DAL
     public interface IRestaurantsDB
     {
         IConfiguration Configuration { get; }
-        List<Restaurants> GetRestaurants();
-        Restaurants GetRestaurant(int id);
+        List<Restaurant> GetRestaurants();
+        Restaurant GetRestaurant(int id);
         
     }
 }

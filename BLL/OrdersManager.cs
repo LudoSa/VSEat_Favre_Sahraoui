@@ -20,22 +20,22 @@ namespace BLL
 
         }
 
-        public List<Orders> GetOrders()
+        public List<Order> GetOrders()
         {
             return OrdersDb.GetOrders();
         }
 
-        public Orders GetOrder(int id)
+        public Order GetOrder(int id)
         {
             return OrdersDb.GetOrder(id);
         }
 
-        public Orders AddOrder(Orders courier)
+        public Order AddOrder(Order courier)
         {
             return OrdersDb.AddOrder(courier);
         }
 
-        public int UpdateOrder(Orders courier)
+        public int UpdateOrder(Order courier)
         {
             return OrdersDb.UpdateOrder(courier);
         }

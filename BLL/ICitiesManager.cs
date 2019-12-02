@@ -11,7 +11,7 @@ namespace BLL
 
         ICitiesDB CitiesDb { get; }
 
-        List<Cities> GetCities();
+        List<City> GetCities();
 
     }
 }
