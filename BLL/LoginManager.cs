@@ -18,7 +18,18 @@ namespace BLL
 
         public bool IsUserValid(Login l)
         {
-            return LoginDbObject.IsUserValid(l);
+
+            var LoginPasswords = LoginDbObject.GetLoginPassword();
+
+            foreach(var loginPassword in LoginPasswords)
+            {
+                if (l.Username.Equals(loginPassword.Username) && l.Password.Equals(loginPassword.Password))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

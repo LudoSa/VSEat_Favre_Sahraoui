@@ -2,25 +2,59 @@
 using System.Collections.Generic;
 using DTO;
 using System.Text;
+using System.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
 
 namespace DAL
 {
     public class LoginDB : IloginDB
     {
 
-        public LoginDB()
+        private string connectionString = null;
+        public LoginDB(IConfiguration configuration)
         {
-
+            var Config = configuration;
+            connectionString = Config.GetConnectionString("DefaultConnection");
         }
 
-        public bool IsUserValid(Login l)
+        public List<Login> GetLoginPassword()
         {
 
+            List<Login> results = null;
 
 
+            try
+            {
+                using (SqlConnection cn = new SqlConnection(connectionString))
+                {
+                    string query = "SELECT Login, Password FROM Customers";
+                    SqlCommand cmd = new SqlCommand(query, cn);
 
+                    cn.Open();
 
-            return true;
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            if (results == null)
+                                results = new List<Login>();
+
+                            Login login = new Login();
+
+                            login.Username = (string)dr["Login"];
+                            login.Password = (string)dr["Password"];
+
+                            results.Add(login);
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+            return results;
         }
     }
 }

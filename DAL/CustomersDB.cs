@@ -146,44 +146,7 @@ namespace DAL
             return result;
         }
 
-        public List<Customer> GetLoginPasswordCustomers()
-        {
-            List<Customer> results = null;
-            
 
-            try
-            {
-                using (SqlConnection cn = new SqlConnection(connectionString))
-                {
-                    string query = "SELECT Login, Password FROM Customers";
-                    SqlCommand cmd = new SqlCommand(query, cn);
-
-                    cn.Open();
-
-                    using (SqlDataReader dr = cmd.ExecuteReader())
-                    {
-                        while (dr.Read())
-                        {
-                            if (results == null)
-                                results = new List<Customer>();
-
-                            Customer customer = new Customer();
-
-                            customer.Login = (string)dr["Login"];
-                            customer.Password = (string)dr["Password"];
-
-                            results.Add(customer);
-                        }
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-
-            return results;
-        }
 
     }
 }

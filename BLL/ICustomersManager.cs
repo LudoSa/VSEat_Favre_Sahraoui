@@ -10,8 +10,6 @@ namespace BLL
     {
 
 
-        Boolean Verify(string login, string password);
-
         Customer GetCustomer(int id);
 
         Customer AddCustomer(Customer customer);

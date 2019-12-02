@@ -21,7 +21,7 @@ namespace DAL
 
         public Dish GetDish(int id)
         {
-            Dish dishes = null; string connectionString = Configuration.GetConnectionString("DefaultConnection");
+            Dish dishes = null; 
 
             try
             {

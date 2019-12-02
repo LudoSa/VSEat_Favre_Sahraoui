@@ -7,7 +7,7 @@ namespace DAL
 {
     public interface IloginDB
     {
-        bool IsUserValid(Login l);
+        List<Login> GetLoginPassword();
 
     }
 }

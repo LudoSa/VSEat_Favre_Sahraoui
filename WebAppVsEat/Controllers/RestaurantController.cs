@@ -12,17 +12,16 @@ namespace WebAppVsEat.Views
     public class RestaurantController : Controller
     {
         //Configuration
-        private IConfiguration Configuration { get; }
-        public RestaurantController(IConfiguration configuration)
+        private IRestaurantsManager RestaurantsManager { get;  }
+        public RestaurantController(IRestaurantsManager restaurantsManager)
         {
-            Configuration = configuration;
+            RestaurantsManager = restaurantsManager;
         }
 
 
         public ActionResult Restaurants()
         {
-            IRestaurantsManager hmanager = new RestaurantsManager(Configuration);
-            var restaurantlist = hmanager.GetRestaurants();
+            var restaurantlist = RestaurantsManager.GetRestaurants();
             return View(restaurantlist);
         }
         
@@ -35,8 +34,7 @@ namespace WebAppVsEat.Views
         // GET: Restaurant/Details/5
         public ActionResult Details(int id)
         {
-            IRestaurantsManager hman = new RestaurantsManager(Configuration);
-            var hotel = hman.GetRestaurant(id);
+            var hotel = RestaurantsManager.GetRestaurant(id);
 
             return View(hotel);
         }

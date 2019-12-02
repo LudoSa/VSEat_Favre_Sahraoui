@@ -13,10 +13,10 @@ namespace WebAppVsEat.Controllers
     {
 
         //Configuration
-        private IConfiguration Configuration { get; }
-        public CustomersController(IConfiguration configuration)
+        private ICustomersManager CustomersManager { get; }
+        public CustomersController(ICustomersManager customersManager)
         {
-            Configuration = configuration;
+            CustomersManager = customersManager;
         }
 
 
@@ -43,9 +43,8 @@ namespace WebAppVsEat.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(DTO.Customer c)
         {
-            
-                ICustomersManager cManager = new CustomersManager(Configuration);
-                cManager.AddCustomer(c);
+
+                CustomersManager.AddCustomer(c);
 
                 return RedirectToAction(nameof(Index));
             

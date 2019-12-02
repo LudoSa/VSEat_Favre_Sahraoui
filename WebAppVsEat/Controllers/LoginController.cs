@@ -34,7 +34,8 @@ namespace WebAppVsEat.Controllers
             {
 
                 HttpContext.Session.SetString("Username", l.Username);
-                return RedirectToAction("GetHotels", "Hotel", new { isValid = isValid, user = "Antoine" });
+                HttpContext.Session.SetString("Password", l.Password);
+                return RedirectToAction("GetHotels", "Hotel", new { isValid = isValid, user = l.Username });
             }
             else
             {
