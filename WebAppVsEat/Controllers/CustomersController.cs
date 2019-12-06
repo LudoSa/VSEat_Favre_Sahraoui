@@ -45,7 +45,7 @@ namespace WebAppVsEat.Controllers
         {
 
                 CustomersManager.AddCustomer(c);
-
+                
                 return RedirectToAction(nameof(Index));
             
   

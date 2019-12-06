@@ -7,6 +7,8 @@ namespace DAL
 {
     public interface IloginDB
     {
+
+        List<Login> GetCustomerLoginPassword();
         List<Login> GetLoginPassword();
 
     }

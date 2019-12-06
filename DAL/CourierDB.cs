@@ -26,11 +26,13 @@ namespace DAL
             {
                 using (SqlConnection cn = new SqlConnection(connectionString))
                 {
-                    String query = "Insert into Courier(Firstname,Lastname,Country_code) values(@Firstname,@Lastname,@Country_code); SELECT SCOPE_IDENTITY()";
+                    String query = "Insert into Courier(Firstname,Lastname,Country_code,Email,Password) values(@Firstname,@Lastname,@Country_code,@Email,@Password); SELECT SCOPE_IDENTITY()";
                     SqlCommand cmd = new SqlCommand(query, cn);
                     cmd.Parameters.AddWithValue("@Firstname", courier.Firstname);
                     cmd.Parameters.AddWithValue("@Lastname", courier.Lastname);
                     cmd.Parameters.AddWithValue("@Country_code", courier.Country_code);
+                    cmd.Parameters.AddWithValue("@Email", courier.Email);
+                    cmd.Parameters.AddWithValue("@Password", courier.Password);
                     cn.Open();
                     //courier.IdCourier = Convert.ToInt32(cmd.ExecuteScalar());
                 }
@@ -72,6 +74,8 @@ namespace DAL
                             courier.Firstname = (string)dr["Firstname"];
                             courier.Lastname = (String)dr["Lastname"];
                             courier.Country_code = (int)dr["Country_code"];
+                            courier.Email = (String)dr["Email"];
+                            courier.Password = (String)dr["Password"];
                         }
                     }
                 }
@@ -96,13 +100,14 @@ namespace DAL
             {
                 using (SqlConnection cn = new SqlConnection(connectionString))
                 {
-                    string query = "UPDATE Courier SET Firstname=@Firstname, Lastname=@Lastname, Country_code=@Country_code";
+                    string query = "UPDATE Courier SET Firstname=@Firstname, Lastname=@Lastname, Country_code=@Country_code, Email=@Email, Password=@Password";
                     SqlCommand cmd = new SqlCommand(query, cn);
                     cmd.Parameters.AddWithValue("@id", courier.IdCourier);
                     cmd.Parameters.AddWithValue("@Firstname", courier.Firstname);
                     cmd.Parameters.AddWithValue("@Lastname", courier.Lastname);
                     cmd.Parameters.AddWithValue("@Country_code", courier.Country_code);
-           
+                    cmd.Parameters.AddWithValue("@Email", courier.Email);
+                    cmd.Parameters.AddWithValue("@Password", courier.Password);
                     cn.Open();
 
                     result = cmd.ExecuteNonQuery();

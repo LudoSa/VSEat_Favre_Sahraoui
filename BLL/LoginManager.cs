@@ -23,7 +23,7 @@ namespace BLL
 
             foreach(var loginPassword in LoginPasswords)
             {
-                if (l.Username.Equals(loginPassword.Username) && l.Password.Equals(loginPassword.Password))
+                if (l.Email.Equals(loginPassword.Email) && l.Password.Equals(loginPassword.Password))
                 {
                     return true;
                 }
@@ -31,5 +31,24 @@ namespace BLL
 
             return false;
         }
+
+        public bool IsCustomerValid(Login l)
+        {
+
+            var LoginPasswords = LoginDbObject.GetCustomerLoginPassword();
+
+            foreach(var loginPassword in LoginPasswords)
+            {
+                if (l.Email.Equals(loginPassword.Email) && l.Password.Equals(loginPassword.Password))
+                {
+                    return true;
+                }
+            }
+
+            return false; 
+        }
+            
+
+        
     }
 }

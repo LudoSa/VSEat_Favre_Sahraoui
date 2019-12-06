@@ -9,6 +9,6 @@ namespace BLL
     {
 
         bool IsUserValid(Login l);
-
+        bool IsCustomerValid(Login l);
     }
 }
