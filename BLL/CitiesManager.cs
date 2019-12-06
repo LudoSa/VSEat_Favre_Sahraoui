@@ -19,7 +19,10 @@ namespace BLL
             CitiesDbObject = citiesDb;
 
         }
-
+        public City getCity(int id)
+        {
+            return CitiesDbObject.getCity(id);
+        }
         public List<City> GetCities()
         {
             return CitiesDbObject.GetCities();

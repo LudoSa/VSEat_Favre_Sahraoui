@@ -36,7 +36,7 @@
                 <br />
                 @Html.DisplayFor(modelItem => item.Address)
                 <br />
-                @Html.DisplayFor(modelItem => item.Country_code)
+                @ViewData["Address"]
             </td>
             <td>
                 @Html.ActionLink("Details", "Details", new { id = item.IdRestaurant })

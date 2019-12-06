@@ -22,6 +22,13 @@ namespace WebAppVsEat.Views
         public ActionResult Restaurants()
         {
             var restaurantlist = RestaurantsManager.GetRestaurants();
+            foreach (var citycode in restaurantlist)
+            {
+                var city = RestaurantsManager.getRestaurantCity(citycode.Country_code);
+                ViewData["Address"] = city.Code + " " + city.Name;
+            }
+            
+
             return View(restaurantlist);
         }
         
@@ -30,13 +37,16 @@ namespace WebAppVsEat.Views
         {
             return View();
         }
-
+        
         // GET: Restaurant/Details/5
         public ActionResult Details(int id)
         {
-            var hotel = RestaurantsManager.GetRestaurant(id);
-
-            return View(hotel);
+            var restaurant = RestaurantsManager.GetRestaurant(id);
+            var city = RestaurantsManager.getRestaurantCity(restaurant.Country_code);
+            ViewData["Address"] = city.Code + " " + city.Name;
+            
+            return View(restaurant);
         }
+        
     }
 }

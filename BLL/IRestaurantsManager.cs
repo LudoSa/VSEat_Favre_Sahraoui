@@ -12,6 +12,7 @@ namespace BLL
         List<Restaurant> GetRestaurants();
 
         Restaurant GetRestaurant(int id);
+        City getRestaurantCity(int id);
 
     }
 }

@@ -18,9 +18,45 @@ namespace DAL
             connectionString = Config.GetConnectionString("DefaultConnection");
         }
 
-       
+        public City getCity(int id)
+        {
+            City city = null;
 
-       
+
+            try
+            {
+                using (SqlConnection cn = new SqlConnection(connectionString))
+                {
+
+
+                    string query = "Select * from Cities where IdCity = @id";
+                    SqlCommand cmd = new SqlCommand(query, cn);
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    cn.Open();
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        if (dr.Read())
+                        {
+
+                            city = new City();
+
+                            city.IdCity = (int)dr["IdCity"];
+                            city.Code = (int)dr["Code"];
+                            city.Name = (String)dr["Name"];
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            return city;
+        }
+
+
 
         public List<City> GetCities()
         {

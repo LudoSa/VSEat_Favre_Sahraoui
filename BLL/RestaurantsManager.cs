@@ -11,19 +11,23 @@ namespace BLL
     {
 
         public IRestaurantsDB RestaurantsDbObject { get; }
-
-        public RestaurantsManager(IRestaurantsDB RestaurantsDb)
+        public ICitiesDB CitiesDB { get; }
+        public RestaurantsManager(IRestaurantsDB RestaurantsDb, ICitiesDB citiesDB)
         {
 
             RestaurantsDbObject = RestaurantsDb;
-
+            CitiesDB = citiesDB;
         }
 
         public List<Restaurant> GetRestaurants()
         {
             return RestaurantsDbObject.GetRestaurants();
-        }
 
+        }
+        public City getRestaurantCity(int id)
+        {
+            return CitiesDB.getCity(id);
+        }
         public Restaurant GetRestaurant(int id)
         {
             return RestaurantsDbObject.GetRestaurant(id);
