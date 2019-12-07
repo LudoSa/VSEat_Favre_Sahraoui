@@ -22,16 +22,17 @@ namespace WebAppVsEat.Views
         public ActionResult Restaurants()
         {
             var restaurantlist = RestaurantsManager.GetRestaurants();
+            IList <string> cityaddress = new List<string>();
             foreach (var citycode in restaurantlist)
             {
                 var city = RestaurantsManager.getRestaurantCity(citycode.Country_code);
-                ViewData["Address"] = city.Code + " " + city.Name;
+                cityaddress.Add(city.Code + " " + city.Name);
             }
-            
+            ViewData["Address"] = cityaddress;
 
             return View(restaurantlist);
         }
-        
+       
         // GET: Restaurant
         public ActionResult Index()
         {

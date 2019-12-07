@@ -19,13 +19,13 @@ namespace WebAppVsEat.Controllers
             LoginManager = loginManager;
         }
 
-
+        
         // GET: Login
         public ActionResult Index()
         {
             return View();
         }
-
+        
         [HttpPost]
         public IActionResult Index(Login l)
         {
@@ -33,9 +33,9 @@ namespace WebAppVsEat.Controllers
             if (isValid)
             {
 
-                HttpContext.Session.SetString("Username", l.Username);
+                HttpContext.Session.SetString("Username", l.Email);
                 HttpContext.Session.SetString("Password", l.Password);
-                return RedirectToAction("GetHotels", "Index", new { isValid = isValid, user = l.Username });
+                return RedirectToAction("GetHotels", "Index", new { isValid = isValid, user = l.Email });
                 
             }
             else
