@@ -69,7 +69,7 @@ namespace DAL
             {
                 using (SqlConnection cn = new SqlConnection(connectionString))
                 {
-                    string query = "SELECT Email, Password FROM Customers, Courier";
+                    string query = "SELECT Email, Password FROM Customers UNION SELECT Email, Password FROM Courier";
                     SqlCommand cmd = new SqlCommand(query, cn);
 
                     cn.Open();
@@ -83,7 +83,7 @@ namespace DAL
 
                             Login login = new Login();
 
-                            login.Email = (string)dr["Login"];
+                            login.Email = (string)dr["Email"];
                             login.Password = (string)dr["Password"];
 
                             results.Add(login);

@@ -6,6 +6,7 @@ using BLL;
 using DTO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 
 namespace WebAppVsEat.Controllers
 {
@@ -30,19 +31,26 @@ namespace WebAppVsEat.Controllers
         public IActionResult Index(Login l)
         {
             bool isValid = LoginManager.IsUserValid(l);
+            bool isCustomerValid = LoginManager.IsCustomerValid(l);
             if (isValid)
             {
 
-                HttpContext.Session.SetString("Username", l.Username);
-                HttpContext.Session.SetString("Password", l.Password);
-                return RedirectToAction("GetHotels", "Index", new { isValid = isValid, user = l.Username });
-                
+                if (isCustomerValid)
+                {
+
+                    //return RedirectToAction("customerLayout", "Login",  new { isValid = isValid, isCustomerValid = isCustomerValid });
+                    return View("Shared/customerLayout");
+                }
+                else
+                {
+                    return View();
+                }
+
             }
             else
             {
                 return View();
             }
-
         }
     }
 }
