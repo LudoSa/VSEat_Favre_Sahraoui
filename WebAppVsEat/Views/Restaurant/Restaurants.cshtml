@@ -21,23 +21,27 @@
             <td>
                 @if (item.IdRestaurant == 1)
                 {
-                <a href="Details/1">
-                    <img src="~/images/Downtown.jpg" alt="ASP.NET" class="img-responsive" style="width:550px;height:309px;" />
-                </a>
+                    <a href="Details/1">
+                        <img src="~/images/Downtown.jpg" alt="ASP.NET" class="img-responsive" style="width:550px;height:309px;" />
+                    </a>
                 }
                 @if (item.IdRestaurant == 2)
                 {
-            <a href="Details/2">
-                <img src="~/images/pizzeria.jpg" alt="ASP.NET" class="img-responsive" style="width:550px;height:309px;" />
-            </a>
+                    <a href="Details/2">
+                        <img src="~/images/pizzeria.jpg" alt="ASP.NET" class="img-responsive" style="width:550px;height:309px;" />
+                    </a>
                 }
 
                 <b>@Html.DisplayFor(modelItem => item.Merchant_name)</b>
                 <br />
                 @Html.DisplayFor(modelItem => item.Address)
                 <br />
-                @ViewData["Address"]
-            </td>
+                @{ 
+                    List<string> list = ViewData["Address"] as List<string>;
+                
+                    @list[item.IdRestaurant-1]
+                }
+                </td>
             <td>
                 @Html.ActionLink("Details", "Details", new { id = item.IdRestaurant })
             </td>
