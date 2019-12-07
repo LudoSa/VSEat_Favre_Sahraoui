@@ -35,12 +35,27 @@
                     <li><a asp-area="" asp-controller="Restaurant" asp-action="Restaurants">Our restaurants</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
                 </ul>
+                @if (@ViewBag.Role == "Customer")
+                {
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a asp-area="" asp-controller="Customers" asp-action="Create"><span class="glyphicon glyphicon-user"></span>Sign up</a></li>
+                    <li><a asp-area="" asp-controller="Customers" asp-action="Create"><span class="glyphicon glyphicon-user"></span>Customer</a></li>
                     <li><a asp-area="" asp-controller="Login" asp-action="Index"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
                 </ul>
-
-
+                }
+                else if(@ViewBag.Role == "Courier")
+                {
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a asp-area="" asp-controller="Customers" asp-action="Create"><span class="glyphicon glyphicon-user"></span>Courier</a></li>
+                    <li><a asp-area="" asp-controller="Login" asp-action="Index"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+                </ul>
+                }
+                else
+                {
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a asp-area="" asp-controller="Customers" asp-action="Create"><span class="glyphicon glyphicon-user"></span>Sign up</a></li>
+                        <li><a asp-area="" asp-controller="Login" asp-action="Index"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+                    </ul>
+                }
 
             </div>
         </div>

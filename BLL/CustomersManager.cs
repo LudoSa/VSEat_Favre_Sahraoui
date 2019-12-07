@@ -11,11 +11,13 @@ namespace BLL
     {
         public ICustomersDB CustomersDbObject { get; }
 
-        public CustomersManager(ICustomersDB customersDB)
+        public ICitiesDB CitiesDB { get; }
+
+        public CustomersManager(ICustomersDB customersDB, ICitiesDB citiesDB)
         {
 
             CustomersDbObject = customersDB;
-
+            CitiesDB = citiesDB;
         }
 
 
@@ -39,6 +41,10 @@ namespace BLL
             return CustomersDbObject.DeleteCustomer(id);
         }
 
+        public List<City> getCustomerCities()
+        {
+            return CitiesDB.GetCities();
+        }
 
     }
 }

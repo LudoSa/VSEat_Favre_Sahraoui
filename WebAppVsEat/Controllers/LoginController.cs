@@ -37,13 +37,15 @@ namespace WebAppVsEat.Controllers
 
                 if (isCustomerValid)
                 {
-
-                    //return RedirectToAction("customerLayout", "Login",  new { isValid = isValid, isCustomerValid = isCustomerValid });
-                    return View("Shared/customerLayout");
+                    ViewBag.Role = "Customer";
+                    //return RedirectToAction("Index", "Restaurant",  new { isValid = isValid, isCustomerValid = isCustomerValid });
+                    return View("Index");
                 }
                 else
                 {
-                    return View();
+                    ViewBag.Role = "Courier";
+                    //return RedirectToAction("Index", "Restaurant", new { isValid = isValid, isCustomerValid = isCustomerValid });
+                    return View("Index");
                 }
 
             }

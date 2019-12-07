@@ -12,6 +12,8 @@ namespace WebAppVsEat.Controllers
     public class CustomersController : Controller
     {
 
+        
+
         //Configuration
         private ICustomersManager CustomersManager { get; }
         public CustomersController(ICustomersManager customersManager)
@@ -42,13 +44,15 @@ namespace WebAppVsEat.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(DTO.Customer c)
-        {
+        { 
 
-                CustomersManager.AddCustomer(c);
                 
-                return RedirectToAction(nameof(Index));
+            var cities = CustomersManager.getCustomerCities();
+            ViewData["Cities"] = cities;
+            CustomersManager.AddCustomer(c);
+            return RedirectToAction(nameof(Index));
             
-  
+                
         }
 
         // GET: Customers/Edit/5
