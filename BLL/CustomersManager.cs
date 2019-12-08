@@ -41,9 +41,9 @@ namespace BLL
             return CustomersDbObject.DeleteCustomer(id);
         }
 
-        public List<City> getCustomerCities()
+        public List<string> GetCitiesName()
         {
-            return CitiesDB.GetCities();
+            return CitiesDB.GetNames();
         }
 
     }

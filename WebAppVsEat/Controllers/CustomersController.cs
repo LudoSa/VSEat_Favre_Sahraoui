@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using BLL;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Configuration;
 
 namespace WebAppVsEat.Controllers
@@ -37,6 +38,15 @@ namespace WebAppVsEat.Controllers
         // GET: Customers/Create
         public ActionResult Create()
         {
+           
+              var cities = CustomersManager.GetCitiesName();
+            IList<string> citiesList = new List<string>();
+            foreach (var name in cities)
+            {
+                citiesList.Add(name);
+            }
+            ViewData["City"] = citiesList;
+
             return View();
         }
 
@@ -44,15 +54,10 @@ namespace WebAppVsEat.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(DTO.Customer c)
-        { 
-
-                
-            var cities = CustomersManager.getCustomerCities();
-            ViewData["Cities"] = cities;
-            CustomersManager.AddCustomer(c);
-            return RedirectToAction(nameof(Index));
-            
-                
+        {
+           
+                return View();
+           
         }
 
         // GET: Customers/Edit/5

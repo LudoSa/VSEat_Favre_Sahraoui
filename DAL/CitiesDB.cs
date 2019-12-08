@@ -97,5 +97,46 @@ namespace DAL
 
             return results;
         }
+
+
+        public List<string> GetNames()
+        {
+            List<string> results = null;
+
+
+            try
+            {
+                using (SqlConnection cn = new SqlConnection(connectionString))
+                {
+                    string query = "SELECT Name FROM Cities";
+                    SqlCommand cmd = new SqlCommand(query, cn);
+
+                    cn.Open();
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            if (results == null)
+                                results = new List<string>();
+
+                            City city = new City();
+
+                            
+                            city.Name = (string)dr["Name"];
+                            
+
+                            results.Add(city.Name);
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+            return results;
+        }
     }
 }

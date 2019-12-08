@@ -18,7 +18,7 @@ namespace BLL
 
         int DeleteCustomer(int id);
 
-        List<City> getCustomerCities();
+        List<string> GetCitiesName();
 
     }
 }
