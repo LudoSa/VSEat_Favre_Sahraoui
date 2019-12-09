@@ -36,7 +36,7 @@
                 <label asp-for="Country_code" class="control-label"></label>
                 <select asp-for="Country_code" class="form-control">
                     @{
-                        foreach (string name in ViewData["City"] as List<string>)
+                        foreach (string name in TempData["City"] as List<string>)
                         {
                             <option>@name</option>
                         }

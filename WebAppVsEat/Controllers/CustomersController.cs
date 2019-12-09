@@ -12,9 +12,6 @@ namespace WebAppVsEat.Controllers
 {
     public class CustomersController : Controller
     {
-
-        
-
         //Configuration
         private ICustomersManager CustomersManager { get; }
         public CustomersController(ICustomersManager customersManager)
@@ -39,13 +36,13 @@ namespace WebAppVsEat.Controllers
         public ActionResult Create()
         {
            
-              var cities = CustomersManager.GetCitiesName();
+            var cities = CustomersManager.GetCitiesName();
             IList<string> citiesList = new List<string>();
             foreach (var name in cities)
             {
                 citiesList.Add(name);
             }
-            ViewData["City"] = citiesList;
+            TempData["City"] = citiesList;
 
             return View();
         }
@@ -55,55 +52,8 @@ namespace WebAppVsEat.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(DTO.Customer c)
         {
-           
-                return View();
-           
-        }
-
-        // GET: Customers/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Customers/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Customers/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Customers/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            CustomersManager.AddCustomer(c);
+            return RedirectToAction(nameof(Index));
         }
 
     }
