@@ -28,7 +28,19 @@ namespace BLL
 
         public Customer AddCustomer(Customer customer)
         {
-            return CustomersDbObject.AddCustomer(customer);
+
+            var cities = CitiesDB.GetCities();
+
+            foreach(var city in cities)
+            {
+                if (customer.Country_code.Equals(city.Name))
+                {
+                    customer.Country_code=city.IdCity;
+                    return CustomersDbObject.AddCustomer(customer);
+                }
+            }
+
+            return null;
         }
 
         public int UpdateCustomer(Customer customer)
