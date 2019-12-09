@@ -47,7 +47,7 @@ namespace WebAppVsEat.Views
             var city = RestaurantsManager.getRestaurantCity(restaurant.Country_code);
             ViewData["Address"] = city.Code + " " + city.Name;
 
-            var dish = DishesManager.GetDishes(id);
+           // (à faire encore) var dish = DishesManager.GetDishes(id);
             
             return View(restaurant);
         }
