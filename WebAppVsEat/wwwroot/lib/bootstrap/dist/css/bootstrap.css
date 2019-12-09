@@ -4349,7 +4349,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-brand {
   float: left;
-  height: 50px;
+  height: 500px;
   padding: 15px 15px;
   font-size: 18px;
   line-height: 20px;
@@ -4359,7 +4359,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   text-decoration: none;
 }
     .navbar-brand > img {
-        background-image: url('~/images/drapeau_vs2.jpg');
+        display:block;
     }
 @media (min-width: 768px) {
   .navbar > .container .navbar-brand,
