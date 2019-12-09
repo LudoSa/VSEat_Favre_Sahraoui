@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BLL;
+using DTO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -14,6 +15,7 @@ namespace WebAppVsEat.Controllers
     {
         //Configuration
         private ICustomersManager CustomersManager { get; }
+        private ICitiesManager CitiesManager { get; }
         public CustomersController(ICustomersManager customersManager)
         {
             CustomersManager = customersManager;
@@ -29,14 +31,14 @@ namespace WebAppVsEat.Controllers
         // GET: Customers/Create
         public ActionResult Create()
         {
-           
+
             var cities = CustomersManager.GetCitiesName();
             IList<string> citiesList = new List<string>();
             foreach (var name in cities)
             {
                 citiesList.Add(name);
             }
-            TempData["City"] = citiesList;
+            TempData["City"] = cities;
 
             return View();
         }
@@ -48,6 +50,7 @@ namespace WebAppVsEat.Controllers
         {
 
             CustomersManager.AddCustomer(c);
+            
             return RedirectToAction(nameof(Index));
         }
 
