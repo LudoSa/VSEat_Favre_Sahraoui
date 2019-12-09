@@ -38,10 +38,13 @@ namespace WebAppVsEat.Controllers
         public ActionResult Create()
         {
 
-            //Pas fini
-            var cities = CitiesManager.GetCities();
-
-            ViewBag.Cities = new SelectList(cities., "Name");
+            var cities = CustomersManager.GetCitiesName();
+            IList<string> citiesList = new List<string>();
+            foreach (var name in cities)
+            {
+                citiesList.Add(name);
+            }
+            TempData["City"] = cities;
 
             return View();
         }
