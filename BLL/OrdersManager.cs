@@ -20,10 +20,6 @@ namespace BLL
 
         }
 
-        public List<Order> GetOrders()
-        {
-            return OrdersDbObject.GetOrders();
-        }
 
         public Order GetOrder(int id)
         {

@@ -10,7 +10,6 @@ namespace BLL
     {
 
 
-        List<Order> GetOrders();
 
         Order GetOrder(int id);
 
