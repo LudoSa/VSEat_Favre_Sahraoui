@@ -28,12 +28,6 @@ namespace WebAppVsEat.Controllers
             return View();
         }
 
-        // GET: Customers/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
         // GET: Customers/Create
         public ActionResult Create()
         {

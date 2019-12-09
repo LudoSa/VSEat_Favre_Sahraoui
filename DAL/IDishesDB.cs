@@ -8,7 +8,7 @@ namespace DAL
 {
     public interface IDishesDB
     {
-        List<Dish> GetDishes();
+        List<Dish> GetDishes(int id);
         Dish GetDish(int id);
 
     }

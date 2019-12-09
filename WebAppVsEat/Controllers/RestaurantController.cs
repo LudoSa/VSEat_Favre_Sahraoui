@@ -13,6 +13,7 @@ namespace WebAppVsEat.Views
     {
         //Configuration
         private IRestaurantsManager RestaurantsManager { get;  }
+        private IDishesManager DishesManager { get; }
         public RestaurantController(IRestaurantsManager restaurantsManager)
         {
             RestaurantsManager = restaurantsManager;
@@ -45,6 +46,8 @@ namespace WebAppVsEat.Views
             var restaurant = RestaurantsManager.GetRestaurant(id);
             var city = RestaurantsManager.getRestaurantCity(restaurant.Country_code);
             ViewData["Address"] = city.Code + " " + city.Name;
+
+           // (à faire encore) var dish = DishesManager.GetDishes(id);
             
             return View(restaurant);
         }

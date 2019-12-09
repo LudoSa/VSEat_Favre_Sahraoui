@@ -59,7 +59,7 @@ namespace DAL
             return dishes;
         }
 
-        public List<Dish> GetDishes()
+        public List<Dish> GetDishes(int id)
         {
             List<Dish> results = null;
             
@@ -68,8 +68,9 @@ namespace DAL
             {
                 using (SqlConnection cn = new SqlConnection(connectionString))
                 {
-                    string query = "SELECT * FROM Dishes";
+                    string query = "SELECT * FROM Dishes WHERE Restaurants_id = @id";
                     SqlCommand cmd = new SqlCommand(query, cn);
+                    cmd.Parameters.AddWithValue("@id", id);
 
                     cn.Open();
 
