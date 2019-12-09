@@ -28,6 +28,7 @@ namespace BLL
 
         public Customer AddCustomer(Customer customer)
         {
+
             return CustomersDbObject.AddCustomer(customer);
         }
 

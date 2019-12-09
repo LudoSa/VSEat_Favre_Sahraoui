@@ -52,6 +52,7 @@ namespace WebAppVsEat.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(DTO.Customer c)
         {
+
             CustomersManager.AddCustomer(c);
             return RedirectToAction(nameof(Index));
         }
