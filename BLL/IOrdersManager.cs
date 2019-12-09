@@ -21,6 +21,5 @@ namespace BLL
         int DeleteOrder(int id);
 
 
-
     }
 }

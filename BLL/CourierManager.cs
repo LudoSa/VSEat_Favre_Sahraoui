@@ -12,6 +12,7 @@ namespace BLL
 
         public ICourierDB CourierDbObject { get; }
 
+        public IOrdersDB OrderDbObject { get; }
         public CourierManager(ICourierDB courierDb)
         {
 
@@ -34,7 +35,11 @@ namespace BLL
             return CourierDbObject.UpdateCourier(courier);
         }
 
+        public List<Order> GetCourierOrders(int id)
+        {
 
+            return OrderDbObject.GetCourierOrders(id);
+        }
 
 
     }

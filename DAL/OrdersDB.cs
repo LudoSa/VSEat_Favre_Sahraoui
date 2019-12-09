@@ -112,7 +112,7 @@ namespace DAL
             return orders;
         }
 
-        public List<Order> GetOrders()
+        public List<Order> GetCourierOrders(int idCourier)
         {
             List<Order> results = null;
             
@@ -121,7 +121,7 @@ namespace DAL
             {
                 using (SqlConnection cn = new SqlConnection(connectionString))
                 {
-                    string query = "SELECT * FROM Orders";
+                    string query = "SELECT * FROM Orders WHERE IdCourier = @idCourier";
                     SqlCommand cmd = new SqlCommand(query, cn);
 
                     cn.Open();
