@@ -39,8 +39,24 @@ namespace BLL
         {
 
             return OrderDbObject.GetCourierOrders(id);
+
         }
 
+        public int GetCourierId(String email)
+        {
 
+            List<Courier> couriers = CourierDbObject.GetCouriers();
+
+            foreach(Courier courier in couriers)
+            {
+
+                if (courier.Email.Equals(email))
+                {
+                    return courier.IdCourier;
+                }
+            }
+
+            return 0;
+        }
     }
 }

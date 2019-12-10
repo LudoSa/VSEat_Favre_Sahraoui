@@ -96,7 +96,7 @@ namespace DAL
 
                             orders.IdOrder = (int)dr["IdOrder"];
                             orders.Status = (string)dr["Status"];
-                            orders.Created_at = (int)dr["Created_at"];
+                            orders.Created_at = (long)dr["Created_at"];
                             orders.Delivery_time = (int)dr["Delivery_time"];
                             orders.IdCustomer = (int)dr["IdCustomer"];
                             orders.IdCourier = (int)dr["IdCourier"];
@@ -112,7 +112,7 @@ namespace DAL
             return orders;
         }
 
-        public List<Order> GetCourierOrders(int idCourier)
+        public List<Order> GetCourierOrders(int id)
         {
             List<Order> results = null;
             
@@ -121,8 +121,9 @@ namespace DAL
             {
                 using (SqlConnection cn = new SqlConnection(connectionString))
                 {
-                    string query = "SELECT * FROM Orders WHERE IdCourier = @idCourier";
+                    string query = "SELECT * FROM Orders WHERE IdCourier = @id";
                     SqlCommand cmd = new SqlCommand(query, cn);
+                    cmd.Parameters.AddWithValue("@id", id);
 
                     cn.Open();
 
@@ -137,7 +138,7 @@ namespace DAL
 
                             orders.IdOrder = (int)dr["IdOrder"];
                             orders.Status = (string)dr["Status"];
-                            orders.Created_at = (int)dr["Created_at"];
+                            orders.Created_at = (long)dr["Created_at"];
                             orders.Delivery_time = (int)dr["Delivery_time"];
                             orders.IdCustomer = (int)dr["IdCustomer"];
                             orders.IdCourier = (int)dr["IdCourier"];
