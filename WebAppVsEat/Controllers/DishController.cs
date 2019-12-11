@@ -17,18 +17,18 @@ namespace WebAppVsEat.Controllers
             DishesManager = dishesManager;
     }
     // GET: Dish/Details/5
-    public ActionResult Details(int id)
+    public ActionResult DishesRestaurant(int id)
         {
 
-            var restaurant = RestaurantsManager.GetRestaurant(id);
+           /* var restaurant = RestaurantsManager.GetRestaurant(id);
 
             ViewData["Address"] = restaurant;
 
             var dish = DishesManager.GetDishes(id);
+            */
 
 
-
-            return View(restaurant);
+            return View();
         }
 
     }
