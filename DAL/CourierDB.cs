@@ -44,7 +44,50 @@ namespace DAL
             return courier;
         }
 
-       
+
+        public List<Courier> GetCouriers()
+        {
+            List<Courier> results = null;
+
+
+            try
+            {
+                using (SqlConnection cn = new SqlConnection(connectionString))
+                {
+                    string query = "Select * from Courier";
+                    SqlCommand cmd = new SqlCommand(query, cn);
+
+                    cn.Open();
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            if (results == null)
+                                results = new List<Courier>();
+
+                            Courier courier = new Courier();
+
+                            courier.IdCourier = (int)dr["IdCourier"];
+                            courier.Firstname = (string)dr["Firstname"];
+                            courier.Lastname = (String)dr["Lastname"];
+                            courier.Country_code = (int)dr["Country_code"];
+                            courier.Email = (String)dr["Email"];
+                            courier.Password = (String)dr["Password"];
+
+                            results.Add(courier);
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+            return results;
+        }
+
 
         public Courier GetCourier(int id)
         {

@@ -9,6 +9,7 @@ namespace DAL
     public interface ICourierDB
     {
         Courier GetCourier(int id);
+        List<Courier> GetCouriers();
         Courier AddCourier(Courier courier);
         int UpdateCourier(Courier courier);
     }

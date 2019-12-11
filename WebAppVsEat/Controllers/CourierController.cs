@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BLL;
+using DTO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,6 +14,7 @@ namespace WebAppVsEat.Controllers
 
 
         private ICourierManager CourierManager { get; }
+        public int id { get; set; }
         public CourierController(ICourierManager courierManager)
         {
             CourierManager = courierManager;
@@ -30,12 +32,17 @@ namespace WebAppVsEat.Controllers
             return View();
         }
 
-        public ActionResult Orders(int id)
+        [HttpGet]
+        public ActionResult GetOrders(string email)
         {
 
+            
+            id = CourierManager.GetCourierId(email);
+            var orders = CourierManager.GetCourierOrders(id);
 
 
-            return View();
+            return View(orders);
+
         }
     }
 }

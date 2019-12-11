@@ -38,14 +38,14 @@ namespace WebAppVsEat.Controllers
                 if (isCustomerValid)
                 {
                     ViewBag.Role = "Customer";
-                    //return RedirectToAction("Index", "Restaurant",  new { isValid = isValid, isCustomerValid = isCustomerValid });
-                    return View("Index");
+
+                    return RedirectToAction("Index", "Restaurant");
                 }
                 else
                 {
                     ViewBag.Role = "Courier";
                     //return RedirectToAction("Index", "Restaurant", new { isValid = isValid, isCustomerValid = isCustomerValid });
-                    return View("Index");
+                    return RedirectToAction("GetOrders", "Courier", new  { email = l.Email });
                 }
 
             }
@@ -53,6 +53,13 @@ namespace WebAppVsEat.Controllers
             {
                 return View();
             }
+        }
+
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            ViewBag.Role = "";
+            return RedirectToAction("Index", "Restaurant");
         }
     }
 }

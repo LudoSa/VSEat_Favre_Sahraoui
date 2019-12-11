@@ -32,7 +32,7 @@ namespace DAL
                 {
 
 
-                    string query = "Select * from Restaurants where IdRestaurant = @id";
+                    string query = "Select * from Restaurants WHERE IdRestaurant = @id";
                     SqlCommand cmd = new SqlCommand(query, cn);
                     cmd.Parameters.AddWithValue("@id", id);
 
