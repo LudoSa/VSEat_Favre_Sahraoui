@@ -1,11 +1,11 @@
 ﻿@model IEnumerable<DTO.Order>
 
 @{
-    ViewData["Title"] = "GetOrders";
+    ViewData["Title"] = "GetArchivedOrders";
 }
 
-<h2>My orders: </h2>
-
+<h2>My archived orders: </h2>
+<p>@Html.ActionLink("My orders", "GetOrders", new { email = ViewBag.email, isAccountValid = ViewBag.isAccountValid, isCourierValid = ViewBag.isCourierValid })</p>
 
 <table class="table">
     <thead>
@@ -50,20 +50,13 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Quantity)
                     </td>
-                    <td>
-                        @Html.ActionLink("Status", "EditOrder", new { id = item.IdOrder, isAccountValid = ViewBag.isAccountValid, isCourierValid = ViewBag.isCourierValid })
-                    </td>
                 </tr>
-
-                <p>
-                    @Html.ActionLink("Delivered", "GetArchivedOrders", new { email = ViewBag.email, isAccountValid = ViewBag.isAccountValid, isCourierValid = ViewBag.isCourierValid })
-                </p>
             }
         }
         else
         {
-            <h3><p>Il n'y a pas de commandes en cours</p></h3>
+            
+            <h3><p>Il n'y a pas de commandes archivées</p></h3>
         }
-
     </tbody>
 </table>

@@ -6,19 +6,15 @@
 
 <h2>Change the status: </h2>
 
-<h4>Order</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="EditOrder">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
             <div class="form-group">
                 <input asp-for="IdOrder" type="hidden" class="form-control" />
                 <span asp-validation-for="IdOrder" class="text-danger"></span>
             </div>
-
-
             <div class="form-group">
                 <label asp-for="Status" class="control-label"></label>
                 <select asp-for="Status" class="form-control">
@@ -27,7 +23,6 @@
                 </select>
                 <span asp-validation-for="Status" class="text-danger"></span>
             </div>
-
             <div class="form-group">
                 <input asp-for="Delivery_time" type="hidden" class="form-control" />
                 <span asp-validation-for="Delivery_time" class="text-danger"></span>
@@ -40,7 +35,15 @@
                 <input asp-for="IdCourier" type="hidden" class="form-control" />
                 <span asp-validation-for="IdCourier" class="text-danger"></span>
             </div>
-            <div class="form-group" type="hidden">
+            <div class="form-group">
+                <input asp-for="CustomerName" type="hidden" class="form-control" />
+                <span asp-validation-for="CustomerName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="Quantity" type="hidden" class="form-control" />
+                <span asp-validation-for="Quantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input name="isAccountValid" type="hidden" value="@ViewBag.isAccountValid" />
                 <input name="isCourierValid" type="hidden" value="@ViewBag.isCourierValid" />
                 <input name="email" type="hidden" value="@ViewBag.email" />
@@ -49,5 +52,4 @@
         </form>
     </div>
 </div>
-
 

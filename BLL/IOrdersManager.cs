@@ -19,6 +19,7 @@ namespace BLL
 
         int DeleteOrder(int id);
         List<Order> GetCourierOrders(int id);
+        List<Order> GetArchivedCourierOrders(int id);
 
     }
 }

@@ -11,5 +11,7 @@ namespace DTO
         public DateTime Delivery_time { get; set; }
         public int IdCustomer { get; set; }
         public int IdCourier { get; set; }
+        public string CustomerName { get; set; } 
+        public int Quantity { get; set; }
     }
 }

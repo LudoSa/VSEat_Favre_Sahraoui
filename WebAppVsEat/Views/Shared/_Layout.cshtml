@@ -49,7 +49,7 @@
                 else if (@Context.Session.GetString("Role") == "Courier")
                 {
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a asp-area="" asp-controller="Courier" asp-action="GetOrders"> My orders</a></li>
+                        <li><a asp-area="" asp-controller="" asp-action=""><span class="glyphicon glyphicon-user"></span> @Context.Session.GetString("User")</a></li>
                         <li><a asp-area="" asp-controller="Login" asp-action="Logout"><span class="glyphicon glyphicon-log-out"></span></a></li>
                     </ul>
                 }

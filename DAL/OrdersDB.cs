@@ -119,7 +119,11 @@ namespace DAL
             {
                 using (SqlConnection cn = new SqlConnection(connectionString))
                 {
-                    string query = "SELECT IdOrder, Status, Delivery_time, IdCustomer, IdOrder  FROM Orders WHERE IdCourier = @id AND NOT Status='Delivered'";
+                    //string query = "SELECT IdOrder, Status, Delivery_time, IdCustomer, IdOrder  FROM Orders WHERE IdCourier = @id AND NOT Status='Delivered'";
+                    string query = "SELECT Orders.IdOrder, Orders.Status, Orders.Delivery_time, Orders.IdCustomer, Orders.IdOrder, Order_dishes.Quantity,  Customers.Firstname, Customers.Lastname FROM Orders " +
+                        "LEFT JOIN Customers ON Customers.IdCustomer = Orders.IdCustomer " +
+                        "INNER JOIN Order_dishes ON Order_dishes.IdOrder = Orders.IdOrder " +
+                        "WHERE Orders.IdCourier = @id AND NOT Orders.Status='Delivered'";
                     SqlCommand cmd = new SqlCommand(query, cn);
                     cmd.Parameters.AddWithValue("@id", id);
 
@@ -140,7 +144,58 @@ namespace DAL
                             orders.Delivery_time = (DateTime)dr["Delivery_time"];
                             orders.IdCustomer = (int)dr["IdCustomer"];
                             orders.IdOrder = (int)dr["IdOrder"];
-                            
+                            orders.CustomerName = (string)dr["Firstname"] + " " + dr["Lastname"];
+                            orders.Quantity = (int)dr["Quantity"];
+
+                            results.Add(orders);
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+            return results;
+        }
+
+        public List<Order> GetArchivedCourierOrders(int id)
+        {
+            List<Order> results = null;
+
+
+            try
+            {
+                using (SqlConnection cn = new SqlConnection(connectionString))
+                {
+                    //string query = "SELECT IdOrder, Status, Delivery_time, IdCustomer, IdOrder  FROM Orders WHERE IdCourier = @id AND NOT Status='Delivered'";
+                    string query = "SELECT Orders.IdOrder, Orders.Status, Orders.Delivery_time, Orders.IdCustomer, Orders.IdOrder, Order_dishes.Quantity,  Customers.Firstname, Customers.Lastname FROM Orders " +
+                        "LEFT JOIN Customers ON Customers.IdCustomer = Orders.IdCustomer " +
+                        "INNER JOIN Order_dishes ON Order_dishes.IdOrder = Orders.IdOrder " +
+                        "WHERE Orders.IdCourier = @id AND NOT Orders.Status='Ready'";
+                    SqlCommand cmd = new SqlCommand(query, cn);
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    cn.Open();
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+
+                        while (dr.Read())
+                        {
+                            if (results == null)
+                                results = new List<Order>();
+
+                            Order orders = new Order();
+
+                            orders.IdOrder = (int)dr["IdOrder"];
+                            orders.Status = (string)dr["Status"];
+                            orders.Delivery_time = (DateTime)dr["Delivery_time"];
+                            orders.IdCustomer = (int)dr["IdCustomer"];
+                            orders.IdOrder = (int)dr["IdOrder"];
+                            orders.CustomerName = (string)dr["Firstname"] + " " + dr["Lastname"];
+                            orders.Quantity = (int)dr["Quantity"];
 
                             results.Add(orders);
                         }

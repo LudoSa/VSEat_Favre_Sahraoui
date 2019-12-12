@@ -48,5 +48,10 @@ namespace BLL
 
         }
 
+        public List<Order> GetArchivedCourierOrders(int id)
+        {
+            return OrdersDbObject.GetArchivedCourierOrders(id);
+        }
+
     }
 }

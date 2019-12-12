@@ -47,6 +47,24 @@ namespace WebAppVsEat.Controllers
 
         }
 
+        //Méthode qui retourne les orders qui ont été livrées (Archivage)
+        public ActionResult GetArchivedOrders(string email, [FromQuery(Name = "isAccountValid")] string isAccountValid, [FromQuery(Name = "isCourierValid")] string isCourier)
+        {
+            // On récupère les orders correspondantes à un id
+            int id = CourierManager.GetCourierId(email);
+            var orders = OrderManager.GetArchivedCourierOrders(id);
+
+            //On stock dans des views bags les boolean de connection
+            ViewBag.isAccountValid = isAccountValid;
+            ViewBag.isCourierValid = isCourier;
+            ViewBag.email = email;
+
+            return View(orders);
+
+
+        }
+
+
         //Méthode pour modifier le statut d'une commande
         public ActionResult EditOrder(int id, string isAccoutValid, string isCourier)
         {
