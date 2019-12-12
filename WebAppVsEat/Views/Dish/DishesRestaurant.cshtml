@@ -22,7 +22,7 @@
                 
             </th>
             <th>
-                
+                Delivery Time
             </th>
             <th>
                 Quantity
@@ -43,10 +43,10 @@
                 
             </td>
             <td>
-                
+                <input class="form-control" type="datetime-local" value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" min="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" step="900" a  />
             </td>
             <td>
-                
+                <input class="form-control" type="number" value="0" min="0" style="width:50px;"/>
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
