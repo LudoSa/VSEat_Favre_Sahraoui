@@ -1,4 +1,4 @@
-﻿@model IEnumerable<DTO.Dish>
+﻿@model IEnumerable<WebAppVsEat.Models.OrderDishmodel>
 
 @{
     ViewData["Title"] = "DishesRestaurant";
@@ -13,10 +13,10 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.DisplayNameFor(model => model)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Price)
+                @Html.DisplayNameFor(model => model.dish.Price)
             </th>
             <th>
                 
@@ -34,10 +34,10 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
+                @Html.DisplayFor(modelItem => item.dish.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Price)
+                @Html.DisplayFor(modelItem => item.dish.Price)
             </td>
             <td>
                 
