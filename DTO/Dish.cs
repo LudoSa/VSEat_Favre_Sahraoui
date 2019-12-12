@@ -13,10 +13,7 @@ namespace DTO
         public string Created_at { get; set; }
         public int Restaurants_id { get; set; }
 
-        public override string ToString()
-        {
-            return $"{IdDishes}|{Name}|{Price.ToString()}|{Status}|{Created_at}|{Restaurants_id.ToString()}";
-        }
+       
 
     }
 }

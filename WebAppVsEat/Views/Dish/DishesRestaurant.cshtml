@@ -13,22 +13,22 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.IdDishes)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Name)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Price)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Status)
+                
+            </th>
+            <th>
+                
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Created_at)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Restaurants_id)
+                Quantity
             </th>
             <th></th>
         </tr>
@@ -37,22 +37,22 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.IdDishes)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Status)
+                
+            </td>
+            <td>
+                
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Created_at)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Restaurants_id)
+                
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |

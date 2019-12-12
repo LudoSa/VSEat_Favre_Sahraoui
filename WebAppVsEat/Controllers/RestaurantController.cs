@@ -16,9 +16,10 @@ namespace WebAppVsEat.Views
         //Configuration
         private IRestaurantsManager RestaurantsManager { get;  }
         private IDishesManager DishesManager { get; }
-        public RestaurantController(IRestaurantsManager restaurantsManager)
+        public RestaurantController(IRestaurantsManager restaurantsManager, IDishesManager dishesManager)
         {
             RestaurantsManager = restaurantsManager;
+            DishesManager = dishesManager;
         }
 
 
@@ -35,6 +36,25 @@ namespace WebAppVsEat.Views
 
             return View(restaurantlist);
         }
+       
+        // GET: Restaurant
+        public ActionResult Index()
+        {
+            return View();
+        }
         
+       /* // GET: Restaurant/Details/5
+        public ActionResult Details(int id)
+        {
+
+            var restaurant = RestaurantsManager.GetRestaurant(id);
+            var city = RestaurantsManager.getRestaurantCity(restaurant.Country_code);
+            ViewData["Address"] = city.Code + " " + city.Name;
+
+            
+            
+            return View(restaurant);
+        }
+        */
     }
 }

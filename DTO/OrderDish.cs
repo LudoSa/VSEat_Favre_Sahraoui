@@ -11,10 +11,7 @@ namespace DTO
         public int IdDishes { get; set; }
         public int Quantity { get; set; }
 
-        public override string ToString()
-        {
-            return $"{IdOrder}|{IdDishes}|{Quantity.ToString()}";
-        }
+       
 
     }
 }

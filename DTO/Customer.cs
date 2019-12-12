@@ -15,10 +15,7 @@ namespace DTO
         public int Country_code { get; set; }
         public string Address { get; set; }
 
-        public override string ToString()
-        {
-            return $"{IdCustomer}|{Firstname}|{Lastname}|{Email}|{Password}|{Country_code.ToString()}|{Address}";
-        }
+        
 
     }
 }

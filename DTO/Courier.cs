@@ -14,10 +14,7 @@ namespace DTO
         public string Email { get; set; }
 
         public string Password { get; set; }
-        public override string ToString()
-        {
-            return $"{IdCourier}|{Firstname}|{Lastname}|{Country_code}|{Email}|{Password}";
-        }
+      
 
 
     }
