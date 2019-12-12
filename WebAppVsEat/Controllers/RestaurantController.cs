@@ -35,25 +35,6 @@ namespace WebAppVsEat.Views
 
             return View(restaurantlist);
         }
-       
-        // GET: Restaurant
-        public ActionResult Index()
-        {
-            return View();
-        }
-        
-        // GET: Restaurant/Details/5
-        public ActionResult Details(int id)
-        {
-
-            var restaurant = RestaurantsManager.GetRestaurant(id);
-            var city = RestaurantsManager.getRestaurantCity(restaurant.Country_code);
-            ViewData["Address"] = city.Code + " " + city.Name;
-
-            
-            
-            return View(restaurant);
-        }
         
     }
 }

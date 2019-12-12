@@ -20,12 +20,12 @@ namespace WebAppVsEat.Controllers
     public ActionResult DishesRestaurant(int id)
         {
 
-           /* var restaurant = RestaurantsManager.GetRestaurant(id);
+            var restaurant = RestaurantsManager.GetRestaurant(id);
 
             ViewData["Address"] = restaurant;
 
             var dish = DishesManager.GetDishes(id);
-            */
+            
 
 
             return View();
