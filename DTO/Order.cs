@@ -8,8 +8,7 @@ namespace DTO
     {
         public int IdOrder { get; set; }
         public string Status { get; set; }
-        public DateTime Created_at { get; set; }
-        public int Delivery_time { get; set; }
+        public DateTime Delivery_time { get; set; }
         public int IdCustomer { get; set; }
         public int IdCourier { get; set; }
 

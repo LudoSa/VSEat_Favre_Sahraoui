@@ -25,10 +25,9 @@ namespace DAL
             {
                 using (SqlConnection cn = new SqlConnection(connectionString))
                 {
-                    String query = "Insert into Orders(Status,Created_at,Delivery_time,IdCustomer,IdCourier) values(@Status,@Created_at,@Delivery_time,@IdCustomer,@IdCourier); SELECT SCOPE_IDENTITY()";
+                    String query = "Insert into Orders(Status,Delivery_time,IdCustomer,IdCourier) values(@Status,@Delivery_time,@IdCustomer,@IdCourier); SELECT SCOPE_IDENTITY()";
                     SqlCommand cmd = new SqlCommand(query, cn);
                     cmd.Parameters.AddWithValue("@Status", orders.Status);
-                    cmd.Parameters.AddWithValue("@Created_at", orders.Created_at);
                     cmd.Parameters.AddWithValue("@Delivery_time", orders.Delivery_time);
                     cmd.Parameters.AddWithValue("@IdCustomer", orders.IdCustomer);
                     cmd.Parameters.AddWithValue("@IdCourier", orders.IdCourier);
@@ -96,8 +95,7 @@ namespace DAL
 
                             orders.IdOrder = (int)dr["IdOrder"];
                             orders.Status = (string)dr["Status"];
-                            orders.Created_at = (DateTime)dr["Created_at"];
-                            orders.Delivery_time = (int)dr["Delivery_time"];
+                            orders.Delivery_time = (DateTime)dr["Delivery_time"];
                             orders.IdCustomer = (int)dr["IdCustomer"];
                             orders.IdCourier = (int)dr["IdCourier"];
                         }
@@ -139,8 +137,7 @@ namespace DAL
 
                             orders.IdOrder = (int)dr["IdOrder"];
                             orders.Status = (string)dr["Status"];
-                            orders.Created_at = (DateTime)dr["Created_at"];
-                            orders.Delivery_time = (int)dr["Delivery_time"];
+                            orders.Delivery_time = (DateTime)dr["Delivery_time"];
                             orders.IdCustomer = (int)dr["IdCustomer"];
                             orders.IdCourier = (int)dr["IdCourier"];
 
@@ -166,11 +163,10 @@ namespace DAL
             {
                 using (SqlConnection cn = new SqlConnection(connectionString))
                 {
-                    string query = "UPDATE Orders SET Status=@Status, Created_at=@Created_at, Delivery_time=@Delivery_time, IdCustomer=@IdCustomer, IdCourier=@IdCourier";
+                    string query = "UPDATE Orders SET Status=@Status, Delivery_time=@Delivery_time, IdCustomer=@IdCustomer, IdCourier=@IdCourier";
                     SqlCommand cmd = new SqlCommand(query, cn);
                     cmd.Parameters.AddWithValue("@id", orders.IdOrder);
                     cmd.Parameters.AddWithValue("@Status", orders.Status);
-                    cmd.Parameters.AddWithValue("@Created_at", orders.Created_at);
                     cmd.Parameters.AddWithValue("@Delivery_time", orders.Delivery_time);
                     cmd.Parameters.AddWithValue("@IdCustomer", orders.IdCustomer);
                     cmd.Parameters.AddWithValue("@IdCourier", orders.IdCourier);
