@@ -119,7 +119,7 @@ namespace DAL
             {
                 using (SqlConnection cn = new SqlConnection(connectionString))
                 {
-                    string query = "SELECT * FROM Orders WHERE IdCourier = @id AND NOT Status='Ready'";
+                    string query = "SELECT IdOrder, Status, Delivery_time, IdCustomer, IdOrder  FROM Orders WHERE IdCourier = @id AND NOT Status='Delivered'";
                     SqlCommand cmd = new SqlCommand(query, cn);
                     cmd.Parameters.AddWithValue("@id", id);
 
@@ -139,7 +139,8 @@ namespace DAL
                             orders.Status = (string)dr["Status"];
                             orders.Delivery_time = (DateTime)dr["Delivery_time"];
                             orders.IdCustomer = (int)dr["IdCustomer"];
-                            orders.IdCourier = (int)dr["IdCourier"];
+                            orders.IdOrder = (int)dr["IdOrder"];
+                            
 
                             results.Add(orders);
                         }
@@ -163,7 +164,7 @@ namespace DAL
             {
                 using (SqlConnection cn = new SqlConnection(connectionString))
                 {
-                    string query = "UPDATE Orders SET Status=@Status, Delivery_time=@Delivery_time, IdCustomer=@IdCustomer, IdCourier=@IdCourier";
+                    string query = "UPDATE Orders SET Status=@Status, Delivery_time=@Delivery_time, IdCustomer=@IdCustomer, IdCourier=@IdCourier WHERE IdOrder=@id";
                     SqlCommand cmd = new SqlCommand(query, cn);
                     cmd.Parameters.AddWithValue("@id", orders.IdOrder);
                     cmd.Parameters.AddWithValue("@Status", orders.Status);
