@@ -4,11 +4,8 @@
     ViewData["Title"] = "GetOrders";
 }
 
-<h2>GetOrders</h2>
+<h2>Mes livraisons: </h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -17,9 +14,6 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Status)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Created_at)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Delivery_time)
@@ -47,9 +41,6 @@
                         @Html.DisplayFor(modelItem => item.Status)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Created_at)
-                    </td>
-                    <td>
                         @Html.DisplayFor(modelItem => item.Delivery_time)
                     </td>
                     <td>
@@ -69,7 +60,7 @@
         }
         else
         {
-            <p>Il n'y a pas de commande en cours</p>
+            <h3><p>Il n'y a pas de commande en cours</p></h3>
         }
 
         </tbody>
