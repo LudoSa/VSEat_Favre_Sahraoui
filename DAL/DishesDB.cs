@@ -45,7 +45,7 @@ namespace DAL
                             dishes.IdDishes = (int)dr["IdDishes"];
                             dishes.Price = (int)dr["Price"];
                             dishes.Status= (string)dr["Status"];
-                            dishes.Created_at = (string)dr["Created_at"];
+                            dishes.Created_at = (DateTime)dr["Created_at"];
                             dishes.Restaurants_id = (int)dr["Restaurants_id"];
                         }
                     }
@@ -87,7 +87,7 @@ namespace DAL
                             dishes.Name = (string)dr["Name"];
                             dishes.Price = (int)dr["Price"];
                             dishes.Status = (string)dr["Status"];
-                            dishes.Created_at = (string)dr["Created_at"];
+                            dishes.Created_at = (DateTime)dr["Created_at"];
                             dishes.Restaurants_id = (int)dr["Restaurants_id"];
 
                             results.Add(dishes);
