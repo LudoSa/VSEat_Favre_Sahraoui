@@ -35,12 +35,7 @@ namespace BLL
             return CourierDbObject.UpdateCourier(courier);
         }
 
-        public List<Order> GetCourierOrders(int id)
-        {
-
-            return OrderDbObject.GetCourierOrders(id);
-
-        }
+        
 
         public int GetCourierId(String email)
         {

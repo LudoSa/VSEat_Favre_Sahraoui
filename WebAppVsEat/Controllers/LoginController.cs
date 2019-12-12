@@ -22,6 +22,7 @@ namespace WebAppVsEat.Controllers
 
 
         // GET: Login
+        [HttpGet]
         public ActionResult Index()
         {
             return View();
@@ -39,13 +40,14 @@ namespace WebAppVsEat.Controllers
                 {
                     ViewBag.Role = "Customer";
 
-                    return RedirectToAction("Index", "Restaurant");
+                    return RedirectToAction("Index", "Restaurant", new { isAccountValid = isValid, isCustomer = isCustomerValid});
                 }
                 else
                 {
                     ViewBag.Role = "Courier";
                     //return RedirectToAction("Index", "Restaurant", new { isValid = isValid, isCustomerValid = isCustomerValid });
-                    return RedirectToAction("GetOrders", "Courier", new  { email = l.Email });
+                    string emailLog = l.Email;
+                    return RedirectToAction("GetOrders", "Courier", new  { email = emailLog, isAccountValid = isValid, isCourierValid = true });
                 }
 
             }

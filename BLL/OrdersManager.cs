@@ -41,5 +41,12 @@ namespace BLL
             return OrdersDbObject.DeleteOrder(id);
         }
 
+        public List<Order> GetCourierOrders(int id)
+        {
+
+            return OrdersDbObject.GetCourierOrders(id);
+
+        }
+
     }
 }

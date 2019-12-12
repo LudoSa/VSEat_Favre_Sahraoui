@@ -1,0 +1,61 @@
+﻿@model DTO.Order
+
+@{
+    ViewData["Title"] = "EditOrder";
+}
+
+<h2>EditOrder</h2>
+
+<h4>Order</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditOrder">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <input asp-for="IdOrder" type="hidden" class="form-control" />
+                <span asp-validation-for="IdOrder" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="Status" class="control-label"></label>
+                <select asp-for="Status" class="form-control">
+                    <option value="Ready">Ready</option>
+                    <option value="Delivered">Delivered</option>
+                </select>
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+
+          
+            <div class="form-group" type="hidden">
+                <input asp-for="Created_at" type="hidden" class="form-control" />
+                <span asp-validation-for="Created_at" class="text-danger"></span>
+            </div>
+            <div class="form-group" type="hidden">
+                <input asp-for="Delivery_time" type="hidden" class="form-control" />
+                <span asp-validation-for="Delivery_time" class="text-danger"></span>
+            </div>
+            <div class="form-group" type="hidden">
+                <input asp-for="IdCustomer" type="hidden" class="form-control" />
+                <span asp-validation-for="IdCustomer" class="text-danger"></span>
+            </div>
+            <div class="form-group" type="hidden">
+                <input asp-for="IdCourier" type="hidden" class="form-control" />
+                <span asp-validation-for="IdCourier" class="text-danger"></span>
+            </div>
+            <div class="form-group" type="hidden">
+                <input name="isAccountValid" type="hidden" value="@ViewBag.isAccountValid" />
+                <input name="isCourierValid" type="hidden" value="@ViewBag.isCourierValid" />
+                <input name="email" type="hidden" value="@ViewBag.email" />
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

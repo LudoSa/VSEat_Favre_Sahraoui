@@ -34,22 +34,31 @@ namespace WebAppVsEat
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            //Enable session
+            services.AddMemoryCache();
             services.AddSession();
 
             services.AddScoped<ICitiesManager, CitiesManager>();
             services.AddScoped<ICitiesDB, CitiesDB>();
+
             services.AddScoped<ICourierManager, CourierManager>();
             services.AddScoped<ICourierDB, CourierDB>();
+
             services.AddScoped<ICustomersManager, CustomersManager>();
             services.AddScoped<ICustomersDB, CustomersDB>();
+
             services.AddScoped<IDishesManager, DishesManager>();
             services.AddScoped<IDishesDB, DishesDB>();
+
             services.AddScoped<ILoginManager, LoginManager>();
             services.AddScoped<IloginDB, LoginDB>();
+
             services.AddScoped<IOrder_dishesManager, Order_dishesManager>();
             services.AddScoped<IOrder_dishesDB, Order_dishesDB>();
+
             services.AddScoped<IOrdersManager, OrdersManager>();
             services.AddScoped<IOrdersDB, OrdersDB>();
+
             services.AddScoped<IRestaurantsManager, RestaurantsManager>();
             services.AddScoped<IRestaurantsDB, RestaurantsDB>();
 

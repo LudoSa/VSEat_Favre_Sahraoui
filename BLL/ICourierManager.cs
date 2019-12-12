@@ -15,8 +15,6 @@ namespace BLL
 
         int UpdateCourier(Courier courier);
 
-        List<Order> GetCourierOrders(int id);
-
         int GetCourierId(String email);
 
 
