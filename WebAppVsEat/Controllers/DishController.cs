@@ -12,10 +12,12 @@ namespace WebAppVsEat.Controllers
     {
     private IDishesManager DishesManager { get; }
     private IRestaurantsManager RestaurantsManager { get; }
+  
     public DishController(IDishesManager dishesManager, IRestaurantsManager restaurantsManager)
     {
             DishesManager = dishesManager;
             RestaurantsManager = restaurantsManager;
+         
     }
     // GET: Dish/Details/5
     public ActionResult DishesRestaurant(int id)
@@ -25,7 +27,6 @@ namespace WebAppVsEat.Controllers
 
             ViewData["Address"] = restaurant;
             var dishes = DishesManager.GetDishes(id);
-
 
 
             return View(dishes);
