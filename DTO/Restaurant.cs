@@ -12,10 +12,7 @@ namespace DTO
         public string Address { get; set; }
         public int Country_code { get; set; }
 
-        public override string ToString()
-        {
-            return $"{IdRestaurant}|{Merchant_name}|{Address}|{Country_code.ToString()}";
-        }
+       
 
     }
 }

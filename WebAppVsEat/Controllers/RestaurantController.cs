@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using BLL;
+using WebAppVsEat.Models;
+
 
 namespace WebAppVsEat.Views
 {
@@ -14,9 +16,10 @@ namespace WebAppVsEat.Views
         //Configuration
         private IRestaurantsManager RestaurantsManager { get;  }
         private IDishesManager DishesManager { get; }
-        public RestaurantController(IRestaurantsManager restaurantsManager)
+        public RestaurantController(IRestaurantsManager restaurantsManager, IDishesManager dishesManager)
         {
             RestaurantsManager = restaurantsManager;
+            DishesManager = dishesManager;
         }
 
 
@@ -40,17 +43,18 @@ namespace WebAppVsEat.Views
             return View();
         }
         
-        // GET: Restaurant/Details/5
+       /* // GET: Restaurant/Details/5
         public ActionResult Details(int id)
         {
+
             var restaurant = RestaurantsManager.GetRestaurant(id);
             var city = RestaurantsManager.getRestaurantCity(restaurant.Country_code);
             ViewData["Address"] = city.Code + " " + city.Name;
 
-           // (à faire encore) var dish = DishesManager.GetDishes(id);
+            
             
             return View(restaurant);
         }
-        
+        */
     }
 }
