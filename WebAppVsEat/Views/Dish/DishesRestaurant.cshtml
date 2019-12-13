@@ -18,15 +18,6 @@
             <th>
                 Price
             </th>
-            <th>
-
-            </th>
-            <th>
-                Delivery Time
-            </th>
-            <th>
-                Quantity
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -35,20 +26,13 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.dish.Name)
+                    <p>@Html.DisplayFor(modelItem => item.dish.Name)</p>
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.dish.Price)
+                    <p>CHF @Html.DisplayFor(modelItem => item.dish.Price)</p>
                 </td>
                 <td>
-                </td>
-                <td>
-                   
-                </td>
-                <td>
-                    <input class="form-control" type="number" value="@item.Quantity" min="0" style="width:50px;" />
-                </td>
-                <td>
+                    <p>@Html.ActionLink("Add to card", "AddToCard", new { idDish = item.dish.IdDishes})</p>
                 </td>
             </tr>
 
@@ -57,6 +41,3 @@
     </tbody>
     
 </table>
-<button>
-    @Html.ActionLink("Cart", "Details", "Cart", new {  id=item.PrimaryKey })
-</button>

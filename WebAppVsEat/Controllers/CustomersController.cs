@@ -28,11 +28,13 @@ namespace WebAppVsEat.Controllers
             return View();
         }
 
-        // GET: Customers/Create
+        // Permet de créer un customer
         public ActionResult Create()
         {
 
+            //Permet d'extraire le nom des villes afin de les afficher dans un liste déroulante dans la view, plutôt que d'utiliser leurs id
             var cities = CustomersManager.GetCitiesName();
+
             IList<string> citiesList = new List<string>();
             foreach (var name in cities)
             {
@@ -43,7 +45,7 @@ namespace WebAppVsEat.Controllers
             return View();
         }
 
-        // POST: Customers/Create
+        //On réceptionne les informations rentrées et on ajoute à la BDD le nouveau customer
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(DTO.Customer c)

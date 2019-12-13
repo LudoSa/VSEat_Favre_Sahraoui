@@ -22,11 +22,6 @@ namespace WebAppVsEat.Controllers
         }
 
 
-        // GET: Courier/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
 
         
         //Méthode qui retourne la view de toutes les orders correspondantes à un livreur grâce à son id
@@ -80,13 +75,13 @@ namespace WebAppVsEat.Controllers
 
         }
 
+        //Méthode qui réceptionne les informations afin d'update l'order
         [HttpPost]
         public ActionResult EditOrder(Order order)
         {
             string isCourier = Request.Form["isCourierValid"];
             string isAccountValid = Request.Form["isAccountValid"];
             string email = Request.Form["email"];
-
 
             //On modifie l'order avec les nouvelles informations
             OrderManager.UpdateOrder(order);

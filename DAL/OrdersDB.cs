@@ -25,7 +25,7 @@ namespace DAL
             {
                 using (SqlConnection cn = new SqlConnection(connectionString))
                 {
-                    String query = "Insert into Orders(Status,Delivery_time,IdCustomer,IdCourier) values(@Status,@Delivery_time,@IdCustomer,@IdCourier); SELECT SCOPE_IDENTITY()";
+                    String query = "INSERT INTO Orders(Status,Delivery_time,IdCustomer,IdCourier) values(@Status,@Delivery_time,@IdCustomer,@IdCourier); SELECT SCOPE_IDENTITY()";
                     SqlCommand cmd = new SqlCommand(query, cn);
                     cmd.Parameters.AddWithValue("@Status", orders.Status);
                     cmd.Parameters.AddWithValue("@Delivery_time", orders.Delivery_time);
@@ -110,7 +110,7 @@ namespace DAL
             return orders;
         }
 
-        //Méthode qui récupère toutes les informations des commandes pour un livreur en prenant l'id du livreur en attribut.
+        //Méthode qui récupère toutes les informations des commandes en cours pour un livreur en prenant l'id du livreur en attribut
         public List<Order> GetCourierOrders(int id)
         {
             List<Order> results = null;
@@ -166,6 +166,7 @@ namespace DAL
             return results;
         }
 
+        //Méthode qui récupère toutes les informations des commandes livrées pour un livreur en prenant l'id du livreur en attribut
         public List<Order> GetArchivedCourierOrders(int id)
         {
             List<Order> results = null;

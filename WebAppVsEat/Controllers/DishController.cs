@@ -30,14 +30,12 @@ namespace WebAppVsEat.Controllers
             
             var order_dishes = new List<OrderDishmodel>();
             var dishes = DishesManager.GetDishes(id);
-            var datetime = RoundUp(DateTime.Now.AddMinutes(15),TimeSpan.FromMinutes(15));
+
             foreach (var item in dishes)
             {
                 var dishOrder = new Models.OrderDishmodel();
                 dishOrder.dish = DishesManager.GetDish(item.IdDishes);
                 dishOrder.dish.Name = item.Name;
-
-                dishOrder.Quantity = 0;
 
                 order_dishes.Add(dishOrder);
                 
@@ -45,11 +43,44 @@ namespace WebAppVsEat.Controllers
 
             return View(order_dishes);
         }
+
+
+        public ActionResult AddToCard(int idDish)
+        {
+            var order_dishes = new OrderDishmodel();
+            var datetime = RoundUp(DateTime.Now.AddMinutes(15), TimeSpan.FromMinutes(15));
+            
+            order_dishes.DeliveryTime = datetime;
+            
+
+            return View(order_dishes);
+
+
+
+        }
+        /*
+        //Méthode qui réceptionne les informations afin d'update l'order
+        [HttpPost]
+        public ActionResult AddToCard(Order order)
+        {
+            string isCourier = Request.Form["isCourierValid"];
+            string isAccountValid = Request.Form["isAccountValid"];
+            string email = Request.Form["email"];
+
+
+            //On modifie l'order avec les nouvelles informations
+            OrderManager.UpdateOrder(order);
+
+            return RedirectToAction(nameof(GetOrders));
+        }*/
+
+
+
         DateTime RoundUp(DateTime dt, TimeSpan d)
         {
             return new DateTime((dt.Ticks + d.Ticks - 1) / d.Ticks * d.Ticks, dt.Kind);
         }
-         <input class="form-control" style="width:300px;" type="datetime-local" value="@item.dateTime.ToString("yyyy-MM-ddTHH:mm")" min="@item.dateTime.ToString("yyyy-MM-ddTHH:mm")" step="900" a />
+         //<input class="form-control" style="width:300px;" type="datetime-local" value="@item.dateTime.ToString("yyyy-MM-ddTHH:mm")" min="@item.dateTime.ToString("yyyy-MM-ddTHH:mm")" step="900" a />
 
     }
 }

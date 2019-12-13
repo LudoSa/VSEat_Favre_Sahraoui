@@ -4,87 +4,96 @@
     ViewData["Title"] = "GetOrders";
 }
 
-<h2>My orders: </h2>
 
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                <p>@Html.DisplayNameFor(model => model.IdOrder)</p>
-            </th>
-            <th>
-                <p> @Html.DisplayNameFor(model => model.Status)</p>
-            </th>
-            <th>
-                <p> @Html.DisplayNameFor(model => model.Delivery_time)</p>
-            </th>
-            <th>
-                <p> @Html.DisplayNameFor(model => model.CustomerName)</p>
-            </th>
-            <th>
-                <p> @Html.DisplayNameFor(model => model.Quantity)</p>
-            </th>
-            <th>
-                <p> @Html.DisplayNameFor(model => model.Price)</p>
-            </th>
-            <th>
-                <p>  @Html.DisplayNameFor(model => model.DishName)</p>
-            </th>
-            <th>
-                <p>Customer's address</p>
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
+@if (ViewBag.email != null)
+{
 
-        @if (Model != null)
-        {
-            @foreach (var item in Model)
+    <h2>My orders: </h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    <p>@Html.DisplayNameFor(model => model.IdOrder)</p>
+                </th>
+                <th>
+                    <p> @Html.DisplayNameFor(model => model.Status)</p>
+                </th>
+                <th>
+                    <p> @Html.DisplayNameFor(model => model.Delivery_time)</p>
+                </th>
+                <th>
+                    <p> @Html.DisplayNameFor(model => model.CustomerName)</p>
+                </th>
+                <th>
+                    <p> @Html.DisplayNameFor(model => model.Quantity)</p>
+                </th>
+                <th>
+                    <p> @Html.DisplayNameFor(model => model.Price)</p>
+                </th>
+                <th>
+                    <p>  @Html.DisplayNameFor(model => model.DishName)</p>
+                </th>
+                <th>
+                    <p>Customer's address</p>
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @if (Model != null)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.IdOrder)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Status)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Delivery_time)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CustomerName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Quantity)
-                    </td>
-                    <td>
-                        <p>CHF @Html.DisplayFor(modelItem => item.Price)</p>
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DishName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Address)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Status", "EditOrder", new { id = item.IdOrder, isAccountValid = ViewBag.isAccountValid, isCourierValid = ViewBag.isCourierValid })
-                    </td>
-                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IdOrder)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Status)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Delivery_time)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CustomerName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Quantity)
+                        </td>
+                        <td>
+                            <p>CHF @Html.DisplayFor(modelItem => item.Price)</p>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DishName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Address)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Status", "EditOrder", new { id = item.IdOrder, isAccountValid = ViewBag.isAccountValid, isCourierValid = ViewBag.isCourierValid })
+                        </td>
+                    </tr>
 
+                    <p>
+                        @Html.ActionLink("Delivered", "GetArchivedOrders", new { email = ViewBag.email, isAccountValid = ViewBag.isAccountValid, isCourierValid = ViewBag.isCourierValid })
+                    </p>
+                }
+            }
+            else
+            {
+                <h3><p>Il n'y a pas de commandes en cours</p></h3>
                 <p>
                     @Html.ActionLink("Delivered", "GetArchivedOrders", new { email = ViewBag.email, isAccountValid = ViewBag.isAccountValid, isCourierValid = ViewBag.isCourierValid })
                 </p>
             }
-        }
-        else
-        {
-            <h3><p>Il n'y a pas de commandes en cours</p></h3>
-            <p>
-                @Html.ActionLink("Delivered", "GetArchivedOrders", new { email = ViewBag.email, isAccountValid = ViewBag.isAccountValid, isCourierValid = ViewBag.isCourierValid })
-            </p>
-        }
 
-    </tbody>
-</table>
+        </tbody>
+    </table>
+}
+else
+{
+    @Html.ActionLink("Restaurant", "Index")
+}
