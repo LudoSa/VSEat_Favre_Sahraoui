@@ -53,6 +53,7 @@ namespace WebAppVsEat.Controllers
                     //Si le compte est un livreur, on initialise le rôle pour la view Layout, on retient sur mail pour trouver par la suite son id pour les orders
                     //On retourne la view qui affichera toutes les commandes correspondantes à son id
                     HttpContext.Session.SetString("Role", "Courier");
+                    HttpContext.Session.SetString("User", l.Email);
                     string emailLog = l.Email;
                     return RedirectToAction("GetOrders", "Courier", new  { email = emailLog, isAccountValid = isValid, isCourierValid = true });
                 }

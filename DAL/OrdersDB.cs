@@ -110,6 +110,7 @@ namespace DAL
             return orders;
         }
 
+        //Méthode qui récupère toutes les informations des commandes pour un livreur en prenant l'id du livreur en attribut.
         public List<Order> GetCourierOrders(int id)
         {
             List<Order> results = null;
@@ -119,10 +120,12 @@ namespace DAL
             {
                 using (SqlConnection cn = new SqlConnection(connectionString))
                 {
-                    //string query = "SELECT IdOrder, Status, Delivery_time, IdCustomer, IdOrder  FROM Orders WHERE IdCourier = @id AND NOT Status='Delivered'";
-                    string query = "SELECT Orders.IdOrder, Orders.Status, Orders.Delivery_time, Orders.IdCustomer, Orders.IdOrder, Order_dishes.Quantity,  Customers.Firstname, Customers.Lastname FROM Orders " +
+
+                    string query = "SELECT Orders.IdOrder, Orders.Status, Orders.Delivery_time, Orders.IdCustomer, Orders.IdOrder, Order_dishes.Quantity,  Customers.Firstname, Customers.Lastname, (Dishes.Price*Order_dishes.Quantity) AS FinalPrice, Dishes.Name, Customers.Address, Customers.Country_code, Cities.Code, Cities.Name AS CityName FROM Orders " +
                         "LEFT JOIN Customers ON Customers.IdCustomer = Orders.IdCustomer " +
                         "INNER JOIN Order_dishes ON Order_dishes.IdOrder = Orders.IdOrder " +
+                        "LEFT JOIN Dishes ON Dishes.IdDishes = Order_dishes.IdDishes " +
+                        "LEFT JOIN Cities ON Cities.IdCity = Customers.Country_code " +
                         "WHERE Orders.IdCourier = @id AND NOT Orders.Status='Delivered'";
                     SqlCommand cmd = new SqlCommand(query, cn);
                     cmd.Parameters.AddWithValue("@id", id);
@@ -146,6 +149,9 @@ namespace DAL
                             orders.IdOrder = (int)dr["IdOrder"];
                             orders.CustomerName = (string)dr["Firstname"] + " " + dr["Lastname"];
                             orders.Quantity = (int)dr["Quantity"];
+                            orders.Price = (int)dr["FinalPrice"];
+                            orders.DishName = (string)dr["Name"];
+                            orders.Address = (string)dr["Address"] + ", " + dr["Code"] + " " + dr["CityName"];
 
                             results.Add(orders);
                         }
@@ -169,10 +175,12 @@ namespace DAL
             {
                 using (SqlConnection cn = new SqlConnection(connectionString))
                 {
-                    //string query = "SELECT IdOrder, Status, Delivery_time, IdCustomer, IdOrder  FROM Orders WHERE IdCourier = @id AND NOT Status='Delivered'";
-                    string query = "SELECT Orders.IdOrder, Orders.Status, Orders.Delivery_time, Orders.IdCustomer, Orders.IdOrder, Order_dishes.Quantity,  Customers.Firstname, Customers.Lastname FROM Orders " +
+
+                    string query = "SELECT Orders.IdOrder, Orders.Status, Orders.Delivery_time, Orders.IdCustomer, Orders.IdOrder, Order_dishes.Quantity,  Customers.Firstname, Customers.Lastname, (Dishes.Price*Order_dishes.Quantity) AS FinalPrice, Dishes.Name, Customers.Address, Customers.Country_code, Cities.Code, Cities.Name AS CityName FROM Orders " +
                         "LEFT JOIN Customers ON Customers.IdCustomer = Orders.IdCustomer " +
                         "INNER JOIN Order_dishes ON Order_dishes.IdOrder = Orders.IdOrder " +
+                        "LEFT JOIN Dishes ON Dishes.IdDishes = Order_dishes.IdDishes " +
+                        "LEFT JOIN Cities ON Cities.IdCity = Customers.Country_code " +
                         "WHERE Orders.IdCourier = @id AND NOT Orders.Status='Ready'";
                     SqlCommand cmd = new SqlCommand(query, cn);
                     cmd.Parameters.AddWithValue("@id", id);
@@ -196,6 +204,9 @@ namespace DAL
                             orders.IdOrder = (int)dr["IdOrder"];
                             orders.CustomerName = (string)dr["Firstname"] + " " + dr["Lastname"];
                             orders.Quantity = (int)dr["Quantity"];
+                            orders.Price = (int)dr["FinalPrice"];
+                            orders.DishName = (string)dr["Name"];
+                            orders.Address = (string)dr["Address"] + ", " + dr["Code"] + " " + dr["CityName"];
 
                             results.Add(orders);
                         }

@@ -11,19 +11,28 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.IdOrder)
+                <p>@Html.DisplayNameFor(model => model.IdOrder)</p>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Status)
+                <p> @Html.DisplayNameFor(model => model.Status)</p>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Delivery_time)
+                <p> @Html.DisplayNameFor(model => model.Delivery_time)</p>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CustomerName)
+                <p> @Html.DisplayNameFor(model => model.CustomerName)</p>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Quantity)
+                <p> @Html.DisplayNameFor(model => model.Quantity)</p>
+            </th>
+            <th>
+                <p> @Html.DisplayNameFor(model => model.Price)</p>
+            </th>
+            <th>
+                <p>  @Html.DisplayNameFor(model => model.DishName)</p>
+            </th>
+            <th>
+                <p>Customer's address</p>
             </th>
             <th></th>
         </tr>
@@ -51,6 +60,15 @@
                         @Html.DisplayFor(modelItem => item.Quantity)
                     </td>
                     <td>
+                        <p>CHF @Html.DisplayFor(modelItem => item.Price)</p>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DishName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>
+                    <td>
                         @Html.ActionLink("Status", "EditOrder", new { id = item.IdOrder, isAccountValid = ViewBag.isAccountValid, isCourierValid = ViewBag.isCourierValid })
                     </td>
                 </tr>
@@ -63,6 +81,9 @@
         else
         {
             <h3><p>Il n'y a pas de commandes en cours</p></h3>
+            <p>
+                @Html.ActionLink("Delivered", "GetArchivedOrders", new { email = ViewBag.email, isAccountValid = ViewBag.isAccountValid, isCourierValid = ViewBag.isCourierValid })
+            </p>
         }
 
     </tbody>

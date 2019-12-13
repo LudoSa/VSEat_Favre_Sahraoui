@@ -48,8 +48,14 @@
                 }
                 else if (@Context.Session.GetString("Role") == "Courier")
                 {
+
+                    <div class="navbar-header">
+                        <a style="float: left; height: 50px;  padding: 15px 15px;  font-size: 18px;  line-height: 20px; color: darkgrey; text-decoration: none;">WebAppVsEat</a>
+                    </div>
+
+
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a asp-area="" asp-controller="" asp-action=""><span class="glyphicon glyphicon-user"></span> @Context.Session.GetString("User")</a></li>
+                        <li><a><span class="glyphicon glyphicon-user"></span> @Context.Session.GetString("User")</a></li>
                         <li><a asp-area="" asp-controller="Login" asp-action="Logout"><span class="glyphicon glyphicon-log-out"></span></a></li>
                     </ul>
                 }

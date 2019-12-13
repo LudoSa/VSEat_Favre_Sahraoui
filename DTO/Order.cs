@@ -13,5 +13,8 @@ namespace DTO
         public int IdCourier { get; set; }
         public string CustomerName { get; set; } 
         public int Quantity { get; set; }
+        public int Price { get; set; }
+        public string DishName { get; set; }
+        public string Address { get; set; }
     }
 }
