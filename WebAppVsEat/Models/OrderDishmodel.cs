@@ -8,9 +8,9 @@ namespace WebAppVsEat.Models
 {
    public class OrderDishmodel
     {
-        public List<Dish> dish { get; }
+        public Dish dish { get; set; }
 
-        public DateTime dateTime { get; }
-        public int Quantity { get; }
+        
+        public int Quantity { get; set; }
     }
 }
