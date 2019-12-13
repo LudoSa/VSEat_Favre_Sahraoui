@@ -21,16 +21,20 @@ namespace WebAppVsEat.Controllers
         }
 
 
-        // GET: Login
+        //Page de connection
         [HttpGet]
         public ActionResult Index()
         {
             return View();
         }
 
+
+        //On récupère les infos de la page de connection
         [HttpPost]
         public IActionResult Index(Login l)
         {
+
+            //On récupère les boolean de validation du compte: Si le compte est valide et si le compte est un client
             bool isValid = LoginManager.IsUserValid(l);
             bool isCustomerValid = LoginManager.IsCustomerValid(l);
             if (isValid)
@@ -38,14 +42,18 @@ namespace WebAppVsEat.Controllers
 
                 if (isCustomerValid)
                 {
-                    ViewBag.Role = "Customer";
-
+                    //Si le compte est un client, on initialise un rôle pour la view Layout et le User pour afficher son nom en haut de la page
+                    //On retourne sur la page d'acceuil
+                    HttpContext.Session.SetString("Role", "Customer");
+                    HttpContext.Session.SetString("User", l.Email);
                     return RedirectToAction("Index", "Restaurant", new { isAccountValid = isValid, isCustomer = isCustomerValid});
                 }
                 else
                 {
-                    ViewBag.Role = "Courier";
-                    //return RedirectToAction("Index", "Restaurant", new { isValid = isValid, isCustomerValid = isCustomerValid });
+                    //Si le compte est un livreur, on initialise le rôle pour la view Layout, on retient sur mail pour trouver par la suite son id pour les orders
+                    //On retourne la view qui affichera toutes les commandes correspondantes à son id
+                    HttpContext.Session.SetString("Role", "Courier");
+                    HttpContext.Session.SetString("User", l.Email);
                     string emailLog = l.Email;
                     return RedirectToAction("GetOrders", "Courier", new  { email = emailLog, isAccountValid = isValid, isCourierValid = true });
                 }
@@ -57,10 +65,15 @@ namespace WebAppVsEat.Controllers
             }
         }
 
+
+        //Déconnexion du compte
         public IActionResult Logout()
         {
+
+            //On nettoie la Session et on remet le Role à null
             HttpContext.Session.Clear();
-            ViewBag.Role = "";
+            HttpContext.Session.SetString("Role", "");
+            //On retourne sur la page d'acceuil
             return RedirectToAction("Index", "Restaurant");
         }
     }

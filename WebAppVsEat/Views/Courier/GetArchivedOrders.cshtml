@@ -1,0 +1,80 @@
+﻿@model IEnumerable<DTO.Order>
+
+@{
+    ViewData["Title"] = "GetArchivedOrders";
+}
+
+<h2>My archived orders: </h2>
+<p>@Html.ActionLink("My orders", "GetOrders", new { email = ViewBag.email, isAccountValid = ViewBag.isAccountValid, isCourierValid = ViewBag.isCourierValid })</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <p> @Html.DisplayNameFor(model => model.IdOrder)</p>
+            </th>
+            <th>
+                <p> @Html.DisplayNameFor(model => model.Status)</p>
+            </th>
+            <th>
+                <p>  @Html.DisplayNameFor(model => model.Delivery_time)</p>
+            </th>
+            <th>
+                <p> @Html.DisplayNameFor(model => model.CustomerName)</p>
+            </th>
+            <th>
+                <p>  @Html.DisplayNameFor(model => model.Quantity)</p>
+            </th>
+            <th>
+                <p>  @Html.DisplayNameFor(model => model.Price)</p>
+            </th>
+            <th>
+                <p>  @Html.DisplayNameFor(model => model.DishName)</p>
+            </th>
+            <th>
+                <p>Customer's address</p>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @if (Model != null)
+        {
+            @foreach (var item in Model)
+            {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdOrder)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Delivery_time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                <p>CHF @Html.DisplayFor(modelItem => item.Price)</p>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DishName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+        </tr>
+            }
+        }
+        else
+        {
+            
+            <h3><p>Il n'y a pas de commandes archivées</p></h3>
+        }
+    </tbody>
+</table>

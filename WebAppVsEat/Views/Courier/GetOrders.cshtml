@@ -4,25 +4,35 @@
     ViewData["Title"] = "GetOrders";
 }
 
-<h2>Mes livraisons: </h2>
+<h2>My orders: </h2>
+
 
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.IdOrder)
+                <p>@Html.DisplayNameFor(model => model.IdOrder)</p>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Status)
+                <p> @Html.DisplayNameFor(model => model.Status)</p>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Delivery_time)
+                <p> @Html.DisplayNameFor(model => model.Delivery_time)</p>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdCustomer)
+                <p> @Html.DisplayNameFor(model => model.CustomerName)</p>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdCourier)
+                <p> @Html.DisplayNameFor(model => model.Quantity)</p>
+            </th>
+            <th>
+                <p> @Html.DisplayNameFor(model => model.Price)</p>
+            </th>
+            <th>
+                <p>  @Html.DisplayNameFor(model => model.DishName)</p>
+            </th>
+            <th>
+                <p>Customer's address</p>
             </th>
             <th></th>
         </tr>
@@ -44,24 +54,37 @@
                         @Html.DisplayFor(modelItem => item.Delivery_time)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.IdCustomer)
+                        @Html.DisplayFor(modelItem => item.CustomerName)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.IdCourier)
+                        @Html.DisplayFor(modelItem => item.Quantity)
                     </td>
                     <td>
-                        @Html.ActionLink("Edit", "EditOrder", new { id = item.IdOrder, isAccountValid = ViewBag.isAccountValid, isCourierValid = ViewBag.isCourierValid }) |
-
+                        <p>CHF @Html.DisplayFor(modelItem => item.Price)</p>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DishName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Status", "EditOrder", new { id = item.IdOrder, isAccountValid = ViewBag.isAccountValid, isCourierValid = ViewBag.isCourierValid })
                     </td>
                 </tr>
 
-
+                <p>
+                    @Html.ActionLink("Delivered", "GetArchivedOrders", new { email = ViewBag.email, isAccountValid = ViewBag.isAccountValid, isCourierValid = ViewBag.isCourierValid })
+                </p>
             }
         }
         else
         {
-            <h3><p>Il n'y a pas de commande en cours</p></h3>
+            <h3><p>Il n'y a pas de commandes en cours</p></h3>
+            <p>
+                @Html.ActionLink("Delivered", "GetArchivedOrders", new { email = ViewBag.email, isAccountValid = ViewBag.isAccountValid, isCourierValid = ViewBag.isCourierValid })
+            </p>
         }
 
-        </tbody>
+    </tbody>
 </table>

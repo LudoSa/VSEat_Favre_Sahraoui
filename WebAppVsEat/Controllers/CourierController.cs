@@ -15,18 +15,12 @@ namespace WebAppVsEat.Controllers
 
         private ICourierManager CourierManager { get; }
         private IOrdersManager OrderManager { get; }
-        private int Id { get; set; }
         public CourierController(ICourierManager courierManager, IOrdersManager ordersManager)
         {
             CourierManager = courierManager;
             OrderManager = ordersManager;
         }
 
-        // GET: Courier
-        public ActionResult Index()
-        {
-            return View();
-        }
 
         // GET: Courier/Details/5
         public ActionResult Details(int id)
@@ -34,40 +28,54 @@ namespace WebAppVsEat.Controllers
             return View();
         }
 
-        [HttpGet]
+        
+        //Méthode qui retourne la view de toutes les orders correspondantes à un livreur grâce à son id
         public ActionResult GetOrders(string email, [FromQuery(Name = "isAccountValid")] string isAccountValid, [FromQuery(Name = "isCourierValid")] string isCourier)
         {
-
+                // On récupère les orders correspondantes à un id
                 int id = CourierManager.GetCourierId(email);
                 var orders = OrderManager.GetCourierOrders(id);
-            //For the Edit page
+
+                //On stock dans des views bags les boolean de connection
+                
                 ViewBag.isAccountValid = isAccountValid;
-                ViewBag.isAccountValid = isCourier;
+                ViewBag.isCourierValid = isCourier;
                 ViewBag.email = email;
-            //For the Layout
-                ViewBag.Role = "Courier";
 
                 return View(orders);
 
 
         }
 
+        //Méthode qui retourne les orders qui ont été livrées (Archivage)
+        public ActionResult GetArchivedOrders(string email, [FromQuery(Name = "isAccountValid")] string isAccountValid, [FromQuery(Name = "isCourierValid")] string isCourier)
+        {
+            // On récupère les orders correspondantes à un id
+            int id = CourierManager.GetCourierId(email);
+            var orders = OrderManager.GetArchivedCourierOrders(id);
+
+            //On stock dans des views bags les boolean de connection
+            ViewBag.isAccountValid = isAccountValid;
+            ViewBag.isCourierValid = isCourier;
+            ViewBag.email = email;
+
+            return View(orders);
+
+
+        }
+
+
+        //Méthode pour modifier le statut d'une commande
         public ActionResult EditOrder(int id, string isAccoutValid, string isCourier)
         {
 
-            /*
-            if (isAccoutValid == true && isCourier == true)
-            {
-                
-            }
-            else
-                return RedirectToAction("Index", "Login");*/
-            Id = id;
-            var order = OrderManager.GetOrder(Id);
-            ViewBag.Role = "Courier";
+            
+           //On trouve l'order à modifier grâce à son id
+            var order = OrderManager.GetOrder(id);
             ViewBag.isAccountValid = isAccoutValid;
             ViewBag.isCourierValid = isCourier;
             return View(order);
+
 
 
         }
@@ -79,6 +87,8 @@ namespace WebAppVsEat.Controllers
             string isAccountValid = Request.Form["isAccountValid"];
             string email = Request.Form["email"];
 
+
+            //On modifie l'order avec les nouvelles informations
             OrderManager.UpdateOrder(order);
 
             return RedirectToAction(nameof(GetOrders));
