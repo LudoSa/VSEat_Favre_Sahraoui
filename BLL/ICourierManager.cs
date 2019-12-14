@@ -16,7 +16,7 @@ namespace BLL
         int UpdateCourier(Courier courier);
 
         int GetCourierId(String email);
-
+        List<Courier> GetCouriersSameCity(int idCity);
 
     }
 }

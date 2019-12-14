@@ -14,65 +14,97 @@ namespace WebAppVsEat.Controllers
     {
     private IDishesManager DishesManager { get; }
     private IRestaurantsManager RestaurantsManager { get; }
+    private ICourierManager CourierManager { get; }
+    private IOrder_dishesManager Order_dishesManager { get; }
+    private IOrdersManager OrderManager { get; }
+    private ICitiesManager CitiesManager { get; }
    
-    public DishController(IDishesManager dishesManager, IRestaurantsManager restaurantsManager)
+    public DishController(IDishesManager dishesManager, IRestaurantsManager restaurantsManager, ICourierManager courierManager, IOrder_dishesManager order_dishesManager, IOrdersManager orderManager, ICitiesManager citiesManager)
     {
             DishesManager = dishesManager;
             RestaurantsManager = restaurantsManager;
-         
+            CourierManager = courierManager;
+            Order_dishesManager = order_dishesManager;
+            OrderManager = orderManager;
+            CitiesManager = citiesManager;
     }
+
+
+
     // GET: Dish/Details/5
     public ActionResult DishesRestaurant(int id)
         {
 
-            var restaurant = RestaurantsManager.GetRestaurant(id);
-            ViewData["Address"] = restaurant;
-            
-            var order_dishes = new List<OrderDishmodel>();
-            var dishes = DishesManager.GetDishes(id);
 
-            foreach (var item in dishes)
+            if (HttpContext.Session.GetString("User") != null)
             {
-                var dishOrder = new Models.OrderDishmodel();
-                dishOrder.dish = DishesManager.GetDish(item.IdDishes);
-                dishOrder.dish.Name = item.Name;
+                var restaurant = RestaurantsManager.GetRestaurant(id);
+                ViewData["Address"] = restaurant;
 
-                order_dishes.Add(dishOrder);
-                
+                var order_dishes = new List<OrderDishmodel>();
+                var dishes = DishesManager.GetDishes(id);
+
+                foreach (var item in dishes)
+                {
+                    var dishOrder = new Models.OrderDishmodel();
+                    dishOrder.dish = DishesManager.GetDish(item.IdDishes);
+                    dishOrder.dish.Name = item.Name;
+
+                    order_dishes.Add(dishOrder);
+
+                }
+
+                return View(order_dishes);
             }
-
-            return View(order_dishes);
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
         }
 
 
         public ActionResult AddToCard(int idDish)
         {
+
+            var cardItem = new CardItem();
+            cardItem.idDish = idDish;
+
+            /*
             var order_dishes = new OrderDishmodel();
             var datetime = RoundUp(DateTime.Now.AddMinutes(15), TimeSpan.FromMinutes(15));
             
-            order_dishes.DeliveryTime = datetime;
+            order_dishes.DeliveryTime = datetime;*/
             
 
-            return View(order_dishes);
+            return View(cardItem);
 
 
 
         }
-        /*
+        
         //Méthode qui réceptionne les informations afin d'update l'order
         [HttpPost]
-        public ActionResult AddToCard(Order order)
+        public ActionResult AddToCard(Models.OrderDishmodel orderDish)
         {
-            string isCourier = Request.Form["isCourierValid"];
-            string isAccountValid = Request.Form["isAccountValid"];
-            string email = Request.Form["email"];
-
 
             //On modifie l'order avec les nouvelles informations
-            OrderManager.UpdateOrder(order);
+            //Add la méthode add
 
-            return RedirectToAction(nameof(GetOrders));
-        }*/
+
+            /*
+            int idCity = CitiesManager.GetRestaurantCity(orderDish.dish.Restaurants_id);
+            int idCourier = GetFreeCourier(orderDish.DeliveryTime, idCity);
+            if (idCourier != null)
+            {
+                orderDish.addOrder(idCustomer, Delivery_time, idCourier, quantity)
+            }
+            else
+            {
+                redirecttoaction
+            }
+            */
+            return RedirectToAction(nameof(DishesRestaurant));
+        }
 
 
 

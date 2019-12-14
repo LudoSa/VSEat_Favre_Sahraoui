@@ -138,5 +138,39 @@ namespace DAL
 
             return results;
         }
+
+
+        public int GetRestaurantCity(int id)
+        {
+            int idCity=0;
+
+
+            try
+            {
+                using (SqlConnection cn = new SqlConnection(connectionString))
+                {
+                    string query = "SELECT IdCity FROM Cities WHERE IdCity=@id";
+                    SqlCommand cmd = new SqlCommand(query, cn);
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cn.Open();
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+
+                            idCity = (int)dr["IdCity"];
+
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+            return idCity;
+        }
     }
 }

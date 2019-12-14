@@ -164,6 +164,75 @@ namespace DAL
             return result;
         }
 
-      
+        public List<Courier> GetCouriersSameCity(int idCity)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        /*
+        public int GetCouriersSameCityAndLessThanFiveOrders(int idCity, DateTime DeliveryTime)
+        {
+            List<Courier> results = null;
+
+
+            try
+            {
+                using (SqlConnection cn = new SqlConnection(connectionString))
+                {
+                    string query = "SELECT IdCourier FROM Courier " +
+                                    "INNER JOIN Cities ON Courier.Country_code = Cities.IdCity " +
+                                    "LEFT JOIN Orders ON Orders.IdCourier = Courier.IdCourier" +
+                                    "WHERE IdCity=@id " +
+                                    "AND COUNT(Orders.IdOrder)<=5 " +
+                                    "AND @DeliveryTime";
+
+                    string query = "SELECT Orders.IdOrder, Orders.Status, Orders.Delivery_time, Orders.IdCustomer, Orders.IdOrder" +
+                        ", Order_dishes.Quantity,  Customers.Firstname, Customers.Lastname, (Dishes.Price*Order_dishes.Quantity) AS FinalPrice, " +
+                        "Dishes.Name, Customers.Address, Customers.Country_code, Cities.Code, Cities.Name AS CityName FROM Orders " +
+                        "LEFT JOIN Customers ON Customers.IdCustomer = Orders.IdCustomer " +
+                        "INNER JOIN Order_dishes ON Order_dishes.IdOrder = Orders.IdOrder " +
+                        "LEFT JOIN Dishes ON Dishes.IdDishes = Order_dishes.IdDishes " +
+                        "LEFT JOIN Cities ON Cities.IdCity = Customers.Country_code " +
+                        "WHERE Orders.IdCourier = @id AND NOT Orders.Status='Delivered'";
+                    SqlCommand cmd = new SqlCommand(query, cn);
+                    cmd.Parameters.AddWithValue("@id", idCity);
+                    cmd.Parameters.AddWithValue("@DeliveryTime", DeliveryTime);
+                    cn.Open();
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+
+
+                            if (results == null)
+                                results = new List<Courier>();
+
+                            Courier courier = new Courier();
+
+
+                            courier.IdCourier = (int)dr["IdCourier"];
+
+
+                            results.Add(courier);
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+            return results;
+
+        }
+
+
+        public 
+
+    */
+
     }
 }

@@ -11,6 +11,7 @@ namespace DAL
         List<City> GetCities();
         City getCity(int id);
         List<string> GetNames();
+        int GetRestaurantCity(int id);
 
     }
 }

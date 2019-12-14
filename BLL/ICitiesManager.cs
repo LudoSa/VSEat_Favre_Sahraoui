@@ -11,6 +11,7 @@ namespace BLL
         City getCity(int id);
 
         List<City> GetCities();
+        int GetRestaurantCity(int id);
 
     }
 }

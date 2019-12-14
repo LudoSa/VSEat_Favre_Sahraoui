@@ -28,6 +28,10 @@ namespace BLL
             return CitiesDbObject.GetCities();
         }
 
+        public int GetRestaurantCity(int id)
+        {
+            return CitiesDbObject.GetRestaurantCity(id);
+        }
 
     }
 }

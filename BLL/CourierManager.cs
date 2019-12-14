@@ -53,5 +53,30 @@ namespace BLL
 
             return 0;
         }
+
+        public List<Courier> GetCouriersSameCity(int idCity)
+        {
+            throw new NotImplementedException();
+        }
+
+        /*
+        public int GetFreeCourier(DateTime Delivery_time, int idCity)
+        {
+
+
+            List<Courier> couriers = CourierDbObject.GetCouriersSameCity(idCity);
+
+            List<Courier> couriers = 
+
+            foreach()
+            {
+                if(count>)   
+            int Count
+            }
+
+
+            return CourierDbObject.GetFreeCourier(Delivery_time, idCourier);
+
+        }*/
     }
 }

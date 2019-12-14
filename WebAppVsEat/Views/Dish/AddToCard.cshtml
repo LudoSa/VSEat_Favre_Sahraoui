@@ -18,7 +18,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Quantity" class="control-label"></label>
-                <input asp-for="Quantity" class="form-control" />
+                <input asp-for="Quantity" class="form-control" min="0" max="10"/>
                 <span asp-validation-for="Quantity" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -28,6 +28,6 @@
     </div>
 </div>
 <div>
-    <a asp-action="Index">Back to List</a>
+  
 </div>
 
