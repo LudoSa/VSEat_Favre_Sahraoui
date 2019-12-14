@@ -1,0 +1,42 @@
+﻿@model IEnumerable<WebAppVsEat.Models.CardItem>
+
+@{
+    ViewData["Title"] = "Basket";
+}
+
+<h2>My order: </h2>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.quantity)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.quantity)
+            </td>
+        </tr>
+        <h2>Total price: </h2>
+        <h2>@Html.ActionLink("Make an order", "Edit", new { /* id=item.PrimaryKey */ })</h2>
+}
+    </tbody>
+</table>

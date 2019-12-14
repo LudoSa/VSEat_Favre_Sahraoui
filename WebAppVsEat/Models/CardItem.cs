@@ -9,6 +9,8 @@ namespace WebAppVsEat.Models
     {
 
         public int idDish { get; set; }
+        public string name { get; set; }
+        public int price { get; set; }
         public int quantity { get; set; }   
 
     }

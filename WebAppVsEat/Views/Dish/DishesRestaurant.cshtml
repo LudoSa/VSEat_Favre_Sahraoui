@@ -32,7 +32,7 @@
                     <p>CHF @Html.DisplayFor(modelItem => item.dish.Price)</p>
                 </td>
                 <td>
-                    <p>@Html.ActionLink("Add to card", "AddToCard", new { idDish = item.dish.IdDishes})</p>
+                    <p>@Html.ActionLink("Add to card", "AddToCard", new { idDish = item.dish.IdDishes, price = item.dish.Price, name = item.dish.Name, idRestau = item.dish.Restaurants_id})</p>
                 </td>
             </tr>
 
