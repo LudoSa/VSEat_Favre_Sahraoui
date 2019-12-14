@@ -101,6 +101,8 @@ namespace WebAppVsEat.Controllers
 
 
 
+
+
             if (Int32.TryParse(idRestau, out idRestauInt))
                 return RedirectToAction("DishesRestaurant", "Dish", new { id = idRestauInt });
             else

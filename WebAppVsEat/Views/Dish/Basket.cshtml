@@ -22,21 +22,31 @@
             <th></th>
         </tr>
     </thead>
+    @{ 
+        int totalShipping = 0;
+    }
+
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.quantity)
-            </td>
-        </tr>
-        <h2>Total price: </h2>
-        <h2>@Html.ActionLink("Make an order", "Edit", new { /* id=item.PrimaryKey */ })</h2>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    CHF @Html.DisplayFor(modelItem => item.price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.quantity)
+                </td>
+            </tr>
+             
+              int price = @item.price * item.quantity;
+                totalShipping += price;
+            
+
+        }
+        <p>Total price: CHF @totalShipping</p>
+        <p>@Html.ActionLink("Make an order", "Edit", new { /* id=item.PrimaryKey */ })</p>
     </tbody>
 </table>
