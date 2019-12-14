@@ -13,6 +13,8 @@ namespace WebAppVsEat.Controllers
 {
     public class DishController : Controller
     {
+
+        //All the configurations used for the requests
     private IDishesManager DishesManager { get; }
     private IRestaurantsManager RestaurantsManager { get; }
     private ICourierManager CourierManager { get; }
@@ -137,12 +139,16 @@ namespace WebAppVsEat.Controllers
             return View(basket);
         }
 
-
+        /*This will round up a DateTime object with the timespan given in parameter https://stackoverflow.com/questions/7029353/how-can-i-round-up-the-time-to-the-nearest-x-minutes/7029464#7029464
+         * 
+         * an exemple how to use in the View the date-time-local with this round up
+         * <input class="form-control" style="width:300px;" type="datetime-local" value="@item.dateTime.ToString("yyyy-MM-ddTHH:mm")" min="@item.dateTime.ToString("yyyy-MM-ddTHH:mm")" step="900" a />
+         */
         DateTime RoundUp(DateTime dt, TimeSpan d)
         {
             return new DateTime((dt.Ticks + d.Ticks - 1) / d.Ticks * d.Ticks, dt.Kind);
         }
-         //<input class="form-control" style="width:300px;" type="datetime-local" value="@item.dateTime.ToString("yyyy-MM-ddTHH:mm")" min="@item.dateTime.ToString("yyyy-MM-ddTHH:mm")" step="900" a />
+         
 
 
         

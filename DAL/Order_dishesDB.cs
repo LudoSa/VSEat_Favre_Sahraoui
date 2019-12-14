@@ -18,7 +18,7 @@ namespace DAL
         }
 
        
-
+        //get an order dish with and id of orderdish as parameter
         public OrderDish GetOrderDish(int id)
         {
             OrderDish orderdishes = null;
@@ -58,6 +58,7 @@ namespace DAL
             return orderdishes;
         }
 
+        //get a list of orderdish
         public List<OrderDish> GetOrderDishes()
         {
             List<OrderDish> results = null;
@@ -98,6 +99,7 @@ namespace DAL
             return results;
         }
 
+        //update the orderdish with an orderdish as parameter
         public int UpdateOrderDish(OrderDish orderDishes)
         {
             int result = 0;

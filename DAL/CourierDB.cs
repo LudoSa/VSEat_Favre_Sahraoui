@@ -17,7 +17,7 @@ namespace DAL
             connectionString = Config.GetConnectionString("DefaultConnection");
         }
 
-
+        //Add a courier
         public Courier AddCourier(Courier courier)
         {
            
@@ -44,7 +44,7 @@ namespace DAL
             return courier;
         }
 
-
+        //get a list of courier
         public List<Courier> GetCouriers()
         {
             List<Courier> results = null;
@@ -88,7 +88,7 @@ namespace DAL
             return results;
         }
 
-
+       // get a courier from and id as parameter
         public Courier GetCourier(int id)
         {
             Courier courier = null;
@@ -132,7 +132,7 @@ namespace DAL
         }
 
         
-
+        //update the information of a courier
         public int UpdateCourier(Courier courier)
         {
 
@@ -164,6 +164,7 @@ namespace DAL
             return result;
         }
 
+        // get a list of courier from a city as idcity entered as parameter
         public List<Courier> GetCouriersSameCity(int idCity)
         {
             throw new NotImplementedException();

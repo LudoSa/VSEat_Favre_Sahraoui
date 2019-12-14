@@ -18,6 +18,7 @@ namespace DAL
             connectionString = Config.GetConnectionString("DefaultConnection");
         }
 
+        //Get the city which we enter and id
         public City getCity(int id)
         {
             City city = null;
@@ -57,7 +58,7 @@ namespace DAL
         }
 
 
-
+        //Get a list of cities
         public List<City> GetCities()
         {
             List<City> results = null;
@@ -98,7 +99,7 @@ namespace DAL
             return results;
         }
 
-
+        //Get a list of name of the cities
         public List<string> GetNames()
         {
             List<string> results = null;
@@ -139,7 +140,7 @@ namespace DAL
             return results;
         }
 
-
+        //Get the get the id of a city for a restaurant where we enter the id of the restaurant as a parameter
         public int GetRestaurantCity(int id)
         {
             int idCity=0;

@@ -17,6 +17,7 @@ namespace DAL
             connectionString = Config.GetConnectionString("DefaultConnection");
         }
 
+        //add a customer
         public Customer AddCustomer(Customer customers)
         {
            
@@ -44,6 +45,7 @@ namespace DAL
             return customers;
         }
 
+        //delete a customer
         public int DeleteCustomer(int id)
         {
             int result = 0;
@@ -71,6 +73,7 @@ namespace DAL
             return result;
         }
 
+        //get a customer from and id as parameter
         public Customer GetCustomer(int id)
         {
             Customer customers = null;
@@ -114,6 +117,7 @@ namespace DAL
             return customers;
         }
 
+        //update the information of a customer
         public int UpdateCustomer(Customer customers)
         {
             int result = 0;

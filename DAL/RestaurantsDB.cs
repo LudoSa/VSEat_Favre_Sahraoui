@@ -20,7 +20,7 @@ namespace DAL
         }
 
         
-
+        //get a restaurant with an id as parameter
         public Restaurant GetRestaurant(int id)
         {
             Restaurant restaurants = null;
@@ -61,7 +61,7 @@ namespace DAL
 
             return restaurants;
         }
-
+        //get a list of restaurants
         public List<Restaurant> GetRestaurants()
         {
             List<Restaurant> results = null;

@@ -16,7 +16,7 @@ namespace DAL
             var Config = configuration;
             connectionString = Config.GetConnectionString("DefaultConnection");
         }
-
+        //add an order with and order as parameter
         public Order AddOrder(Order orders)
         {
            
@@ -41,7 +41,7 @@ namespace DAL
             }
             return orders;
         }
-
+        //delete an order
         public int DeleteOrder(int id)
         {
             int result = 0;
@@ -68,7 +68,7 @@ namespace DAL
 
             return result;
         }
-
+        //get an order with an id as parameter
         public Order GetOrder(int id)
         {
             Order orders = null;
@@ -221,7 +221,7 @@ namespace DAL
 
             return results;
         }
-
+        //update the order with and order as parameter
         public int UpdateOrder(Order orders)
         {
             int result = 0;
