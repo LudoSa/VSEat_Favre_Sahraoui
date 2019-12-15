@@ -51,6 +51,6 @@
 
         }
         <p>Total price: CHF @totalShipping</p>
-        <p>@Html.ActionLink("Make an order", "Order", new { quantity = quantity, idDish = idDish, totalPrice = totalShipping})</p>
+        <p>@Html.ActionLink("Make an order", "Order", new {totalPrice = totalShipping})</p>
     </tbody>
 </table>

@@ -124,7 +124,7 @@ namespace DAL
                 using (SqlConnection cn = new SqlConnection(connectionString))
                 {
 
-                    string query = "SELECT Orders.IdOrder, Orders.Status, Orders.Delivery_time, Orders.IdCustomer, Orders.IdOrder, Order_dishes.Quantity,  Customers.Firstname, Customers.Lastname, (Dishes.Price*Order_dishes.Quantity) AS FinalPrice, Dishes.Name, Customers.Address, Customers.Country_code, Cities.Code, Cities.Name AS CityName FROM Orders " +
+                    string query = "SELECT Orders.IdOrder, Orders.Status, Orders.Delivery_time, Orders.IdCustomer, Orders.IdCourier, Order_dishes.Quantity,  Customers.Firstname, Customers.Lastname, (Dishes.Price*Order_dishes.Quantity) AS FinalPrice, Dishes.Name, Customers.Address, Customers.Country_code, Cities.Code, Cities.Name AS CityName FROM Orders " +
                         "LEFT JOIN Customers ON Customers.IdCustomer = Orders.IdCustomer " +
                         "INNER JOIN Order_dishes ON Order_dishes.IdOrder = Orders.IdOrder " +
                         "LEFT JOIN Dishes ON Dishes.IdDishes = Order_dishes.IdDishes " +
@@ -149,7 +149,7 @@ namespace DAL
                             orders.Status = (string)dr["Status"];
                             orders.Delivery_time = (DateTime)dr["Delivery_time"];
                             orders.IdCustomer = (int)dr["IdCustomer"];
-                            orders.IdOrder = (int)dr["IdOrder"];
+                            orders.IdCourier = (int)dr["IdCourier"];
                             orders.CustomerName = (string)dr["Firstname"] + " " + dr["Lastname"];
                             orders.Quantity = (int)dr["Quantity"];
                             orders.Price = (int)dr["FinalPrice"];
@@ -179,7 +179,7 @@ namespace DAL
                 using (SqlConnection cn = new SqlConnection(connectionString))
                 {
 
-                    string query = "SELECT Orders.IdOrder, Orders.Status, Orders.Delivery_time, Orders.IdCustomer, Orders.IdOrder, Order_dishes.Quantity,  Customers.Firstname, Customers.Lastname, (Dishes.Price*Order_dishes.Quantity) AS FinalPrice, Dishes.Name, Customers.Address, Customers.Country_code, Cities.Code, Cities.Name AS CityName FROM Orders " +
+                    string query = "SELECT Orders.IdOrder, Orders.Status, Orders.Delivery_time, Orders.IdCustomer, Orders.IdCourier, Order_dishes.Quantity,  Customers.Firstname, Customers.Lastname, (Dishes.Price*Order_dishes.Quantity) AS FinalPrice, Dishes.Name, Customers.Address, Customers.Country_code, Cities.Code, Cities.Name AS CityName FROM Orders " +
                         "LEFT JOIN Customers ON Customers.IdCustomer = Orders.IdCustomer " +
                         "INNER JOIN Order_dishes ON Order_dishes.IdOrder = Orders.IdOrder " +
                         "LEFT JOIN Dishes ON Dishes.IdDishes = Order_dishes.IdDishes " +
@@ -204,7 +204,7 @@ namespace DAL
                             orders.Status = (string)dr["Status"];
                             orders.Delivery_time = (DateTime)dr["Delivery_time"];
                             orders.IdCustomer = (int)dr["IdCustomer"];
-                            orders.IdOrder = (int)dr["IdOrder"];
+                            orders.IdCourier = (int)dr["IdCourier"];
                             orders.CustomerName = (string)dr["Firstname"] + " " + dr["Lastname"];
                             orders.Quantity = (int)dr["Quantity"];
                             orders.Price = (int)dr["FinalPrice"];
@@ -235,7 +235,7 @@ namespace DAL
                 using (SqlConnection cn = new SqlConnection(connectionString))
                 {
 
-                    string query = "SELECT Orders.IdOrder, Orders.Status, Orders.Delivery_time, Orders.IdCustomer, Orders.IdOrder, Order_dishes.Quantity,  Customers.Firstname, Customers.Lastname, (Dishes.Price*Order_dishes.Quantity) AS FinalPrice, Dishes.Name, Customers.Address, Customers.Country_code, Cities.Code, Cities.Name AS CityName FROM Orders " +
+                    string query = "SELECT Orders.IdOrder, Orders.Status, Orders.Delivery_time, Orders.IdCustomer, Orders.IdCourier, Order_dishes.Quantity,  Customers.Firstname, Customers.Lastname, (Dishes.Price*Order_dishes.Quantity) AS FinalPrice, Dishes.Name, Customers.Address, Customers.Country_code, Cities.Code, Cities.Name AS CityName FROM Orders " +
                         "LEFT JOIN Customers ON Customers.IdCustomer = Orders.IdCustomer " +
                         "INNER JOIN Order_dishes ON Order_dishes.IdOrder = Orders.IdOrder " +
                         "LEFT JOIN Dishes ON Dishes.IdDishes = Order_dishes.IdDishes " +
@@ -260,7 +260,7 @@ namespace DAL
                             orders.Status = (string)dr["Status"];
                             orders.Delivery_time = (DateTime)dr["Delivery_time"];
                             orders.IdCustomer = (int)dr["IdCustomer"];
-                            orders.IdOrder = (int)dr["IdOrder"];
+                            orders.IdCourier = (int)dr["IdCourier"];
                             orders.CustomerName = (string)dr["Firstname"] + " " + dr["Lastname"];
                             orders.Quantity = (int)dr["Quantity"];
                             orders.Price = (int)dr["FinalPrice"];
@@ -291,7 +291,7 @@ namespace DAL
                 using (SqlConnection cn = new SqlConnection(connectionString))
                 {
 
-                    string query = "SELECT Orders.IdOrder, Orders.Status, Orders.Delivery_time, Orders.IdCustomer, Orders.IdOrder, Order_dishes.Quantity,  Customers.Firstname, Customers.Lastname, (Dishes.Price*Order_dishes.Quantity) AS FinalPrice, Dishes.Name, Customers.Address, Customers.Country_code, Cities.Code, Cities.Name AS CityName FROM Orders " +
+                    string query = "SELECT Orders.IdOrder, Orders.Status, Orders.Delivery_time, Orders.IdCustomer, Orders.IdCourier, Order_dishes.Quantity,  Customers.Firstname, Customers.Lastname, (Dishes.Price*Order_dishes.Quantity) AS FinalPrice, Dishes.Name, Customers.Address, Customers.Country_code, Cities.Code, Cities.Name AS CityName FROM Orders " +
                         "LEFT JOIN Customers ON Customers.IdCustomer = Orders.IdCustomer " +
                         "INNER JOIN Order_dishes ON Order_dishes.IdOrder = Orders.IdOrder " +
                         "LEFT JOIN Dishes ON Dishes.IdDishes = Order_dishes.IdDishes " +
@@ -316,7 +316,7 @@ namespace DAL
                             orders.Status = (string)dr["Status"];
                             orders.Delivery_time = (DateTime)dr["Delivery_time"];
                             orders.IdCustomer = (int)dr["IdCustomer"];
-                            orders.IdOrder = (int)dr["IdOrder"];
+                            orders.IdCourier = (int)dr["IdCourier"];
                             orders.CustomerName = (string)dr["Firstname"] + " " + dr["Lastname"];
                             orders.Quantity = (int)dr["Quantity"];
                             orders.Price = (int)dr["FinalPrice"];

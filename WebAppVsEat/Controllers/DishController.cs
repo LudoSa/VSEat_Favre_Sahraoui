@@ -113,21 +113,23 @@ namespace WebAppVsEat.Controllers
         }
 
         //Montrer le panier
-        public ActionResult Basket(int totalPrice)
+        public ActionResult Basket()
         {
 
-
-            HttpContext.Session.SetInt32("totalPrice", totalPrice);
 
             return View(basket);
         }
 
 
         //Création d'une order
-        public ActionResult Order ()
+        public ActionResult Order (int totalPrice)
         {
 
+            //On récupère le prix total pour la condition if plus bas
+            int totalPrice2 = totalPrice;
+
             
+
             var orderItem = new OrderItem();
 
             int idCustomer = (int) HttpContext.Session.GetInt32("idCustomer");
@@ -135,60 +137,86 @@ namespace WebAppVsEat.Controllers
             orderItem.IdCustomer = idCustomer;
             orderItem.Status = "Ready";
 
-            int idCityRestaurant = (int) HttpContext.Session.GetInt32("idCityRestaurant");
-
-
-            List<Courier> couriers = CourierManager.GetIdCourier(idCityRestaurant);
-
-            
-
-            //Cherche les livreurs de la même ville que le restaurant ceux qui n'ont pas 5 orders dans l'intervalle de 30 minutes
-            foreach(Courier courier in couriers)
-                {
-
-                    Boolean isAvailable = true;
-
-                    int cpt = 0;
-
-                //Retourne la liste de toutes les orders correspondantes au livreur sélectionné
-                    List<Order> orders= OrderManager.GetCourierOrders(courier.IdCourier);
-
-                    foreach(Order order in orders)
-                        {
-
-                    //On trouve la différence de temps pour la vérification des 30 minutes. Si c'est le cas, on augmente le compteur de commande
-                        var diffHours = order.Delivery_time - orderItem.DeliveryTime;
-
-                            if(diffHours.TotalMinutes >= -15 || diffHours.TotalMinutes <= 15 )
-                            {
-                                cpt++;
-                            
-                            }
-                        }
-
-                    //Si le compteur est égal à 5, on n'assigne pas le livreur
-                    if (cpt == 5)
-                    {
-                    isAvailable = false;
-                    }
-
-                    //Si le boolean est toujours à true, on assigne ce livreur.
-                    if(isAvailable == true)
-                    {
-                        orderItem.IdCourier = courier.IdCourier;
-                        return View(orderItem);
-                    }
-                }
-            return RedirectToAction("NoCourierAvailable", "Dish");
-
+            //Si le prix total n'est pas égal à 0, on crée l'order, sinon non et on affiche un message d'erreur
+            if (totalPrice2 != 0)
+                return View(orderItem);
+            else
+                return RedirectToAction("ErrorOrder", "Dish");
         }
 
         [HttpPost]
         public ActionResult Order (OrderItem orderItem)
         {
 
-            //Si le prix total n'est pas égal à 0, on crée l'order, sinon non
-            if (HttpContext.Session.GetInt32("totalPrice") != 0)
+
+            int idCityRestaurant = (int)HttpContext.Session.GetInt32("idCityRestaurant");
+
+
+            List<Courier> couriers = CourierManager.GetIdCourier(idCityRestaurant);
+
+
+
+            //Cherche les livreurs de la même ville que le restaurant ceux qui n'ont pas 5 orders dans l'intervalle de 30 minutes
+            foreach (Courier courier in couriers)
+            {
+
+                Boolean isAvailable = true;
+
+                int cpt = 0;
+
+                //Retourne la liste de toutes les orders correspondantes au livreur sélectionné
+                List<Order> orders = OrderManager.GetCourierOrders(courier.IdCourier);
+
+                //Si le livreur n'a pas d'order
+                if (orders != null)
+                {
+
+                    foreach (Order order in orders)
+                    {
+
+                        //On trouve la différence de temps pour la vérification des 30 minutes. Si c'est le cas, on augmente le compteur de commande
+                        double diffHours = (order.Delivery_time - orderItem.DeliveryTime).TotalMinutes;
+
+                        if (diffHours >= -15 && diffHours<=0 || diffHours <= 15 && diffHours >=0)
+                        {
+                            cpt++;
+
+                        }
+                    }
+
+                    //Si le compteur est égal à 5, on n'assigne pas le livreur
+                    if (cpt >= 5)
+                    {
+                        isAvailable = false;
+                    }
+
+                    //Si le boolean est toujours à true, on assigne ce livreur.
+                    if (isAvailable == true)
+                    {
+                        orderItem.IdCourier = courier.IdCourier;
+                        break;
+                    }
+                }
+                else
+                {
+
+                    //Si le boolean est toujours à true, on assigne ce livreur.
+                    if (isAvailable == true)
+                    {
+                        orderItem.IdCourier = courier.IdCourier;
+                    }
+                }
+            }
+
+            //Si aucun livreur n'est disponible, on affiche une page qui le dit
+            if (orderItem.IdCourier == 0)
+            {
+                basket.Clear();
+                return RedirectToAction("NoCourierAvailable");
+            }
+
+            //Si le prix total n'est pas égal à 0, on crée l'order, sinon non et on affiche un message d'erreur
+            if ( true)
             {
 
                 //On crée un objet Order qu'on remplit avec les informations de l'orderItem
@@ -223,10 +251,10 @@ namespace WebAppVsEat.Controllers
                         Order_dishesManager.AddOrderDishes(orderDishObject);
 
                 }
-                return RedirectToAction("Index", "Restaurant");
+                basket.Clear();
+                //HttpContext.Session.SetString("Role", "Customer");
+                return RedirectToAction("Restaurants", "Restaurant");
             }
-
-            return RedirectToAction("ErrorOrder", "Dish");
         }
 
 
@@ -275,6 +303,17 @@ namespace WebAppVsEat.Controllers
 
             return RedirectToAction(nameof(GetMyOrders));
 
+        }
+
+
+        public ActionResult NoCourierAvailable()
+        {
+            return View();
+        }
+
+        public ActionResult ErrorOrder()
+        {
+            return View();
         }
 
         //Permet d'arrondir le temps quand on sélectionne le temps de livraison
