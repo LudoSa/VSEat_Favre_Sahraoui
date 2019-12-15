@@ -96,7 +96,7 @@ namespace WebAppVsEat
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Restaurant}/{action=Index}/{id?}");
+                    template: "{controller=Login}/{action=Index}/{id?}");
             });
         }
     }

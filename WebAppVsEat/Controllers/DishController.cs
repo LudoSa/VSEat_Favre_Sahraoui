@@ -266,7 +266,7 @@ namespace WebAppVsEat.Controllers
             var orders = OrderManager.GetCustomerOrders(id);
 
             ViewBag.email = email;
-
+          
 
             return View(orders);
 

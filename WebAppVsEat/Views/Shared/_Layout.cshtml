@@ -33,17 +33,16 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a asp-area="" asp-controller="Restaurant" asp-action="Index" style="float: left; height: 50px;  padding: 15px 15px;  font-size: 18px;  line-height: 20px; color: darkgrey; text-decoration: none;">WebAppVsEat</a>
+                        <a asp-area="" asp-controller="Restaurant" asp-action="Restaurants" style="float: left; height: 50px;  padding: 15px 15px;  font-size: 18px;  line-height: 20px; color: darkgrey; text-decoration: none;">WebAppVsEat</a>
                     </div>
 
                     <ul class="nav navbar-nav">
-                        <li><a asp-area="" asp-controller="Restaurant" asp-action="Restaurants">Our restaurants</a></li>
                         <li><a asp-area="" asp-controller="Dish" asp-action="GetMyOrders">My orders</a></li>
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">
                         <li><a asp-area="" asp-controller="Dish" asp-action="Basket">Basket</a></li>
-                        <li><a asp-area="" asp-controller="" asp-action=""><span class="glyphicon glyphicon-user"></span> @Context.Session.GetString("User")</a></li>
+                        <li><a asp-area="" asp-controller="restaurant" asp-action="Restaurants"><span class="glyphicon glyphicon-user"></span> @Context.Session.GetString("User")</a></li>
                         <li><a asp-area="" asp-controller="Login" asp-action="Logout"><span class="glyphicon glyphicon-log-out"></span></a></li>
                     </ul>
                 }
@@ -70,12 +69,10 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a asp-area="" asp-controller="Restaurant" asp-action="Index" style="float: left; height: 50px;  padding: 15px 15px;  font-size: 18px;  line-height: 20px; color: darkgrey; text-decoration: none;">WebAppVsEat</a>
+                        <a asp-area="" asp-controller="" asp-action="" style="float: left; height: 50px;  padding: 15px 15px;  font-size: 18px;  line-height: 20px; color: darkgrey; text-decoration: none;">WebAppVsEat</a>
                     </div>
 
-                    <ul class="nav navbar-nav">
-                        <li><a asp-area="" asp-controller="Restaurant" asp-action="Restaurants">Our restaurants</a></li>
-                    </ul>
+                   
 
                     <ul class="nav navbar-nav navbar-right">
                         <li><a asp-area="" asp-controller="Customers" asp-action="Create"><span class="glyphicon glyphicon-user"></span> Register</a></li>

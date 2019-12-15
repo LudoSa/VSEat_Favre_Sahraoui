@@ -50,7 +50,7 @@ namespace WebAppVsEat.Controllers
                     HttpContext.Session.SetString("Role", "Customer");
                     HttpContext.Session.SetString("User", l.Email);
                     HttpContext.Session.SetInt32("idCustomer", idCustomer);
-                    return RedirectToAction("Index", "Restaurant", new { isAccountValid = isValid, isCustomer = isCustomerValid});
+                    return RedirectToAction("Restaurants", "Restaurant", new { isAccountValid = isValid, isCustomer = isCustomerValid});
                 }
                 else
                 {
@@ -78,7 +78,7 @@ namespace WebAppVsEat.Controllers
             HttpContext.Session.Clear();
             HttpContext.Session.SetString("Role", "");
             //On retourne sur la page d'acceuil
-            return RedirectToAction("Index", "Restaurant");
+            return RedirectToAction("Index", "Login");
         }
     }
 }

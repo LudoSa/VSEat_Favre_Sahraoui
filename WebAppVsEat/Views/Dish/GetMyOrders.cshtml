@@ -4,7 +4,7 @@
     ViewData["Title"] = "GetMyOrders";
 }
 
-<h2>My orders: </h2>
+<h2>My orders:</h2>
 
 @if (ViewBag.email != null)
 {
@@ -56,21 +56,21 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.DishName)
                         </td>
-                        
-                        @if (DateTime.Now.AddHours(3)<item.Delivery_time)
+
+                        @if (DateTime.Now.AddHours(3) < item.Delivery_time)
                         {
-                        <td>
-                            @Html.ActionLink("Cancel", "CancelOrder", new { idOrder = item.IdOrder })
-                        </td>
+                            <td>
+                                @Html.ActionLink("Cancel", "CancelOrder", new { idOrder = item.IdOrder })
+                            </td>
                         }
                     </tr>
 
                 }
-                 <p>
+                <p>
                     @Html.ActionLink("Cancelled orders", "GetCancelledOrders", new { email = ViewBag.email })
-                 </p>
-                
-                
+                </p>
+
+
             }
             else
             {
@@ -84,5 +84,5 @@
 }
 else
 {
-    @Html.ActionLink("Restaurant", "Index")
+    @Html.ActionLink("Back to login","Index","Login")
 }
