@@ -25,16 +25,13 @@ namespace WebAppVsEat.Controllers
 
         
         //Méthode qui retourne la view de toutes les orders correspondantes à un livreur grâce à son id
-        public ActionResult GetOrders(string email, [FromQuery(Name = "isAccountValid")] string isAccountValid, [FromQuery(Name = "isCourierValid")] string isCourier)
+        public ActionResult GetOrders(string email)
         {
                 // On récupère les orders correspondantes à un id
                 int id = CourierManager.GetCourierId(email);
                 var orders = OrderManager.GetCourierOrders(id);
 
                 //On stock dans des views bags les boolean de connection
-                
-                ViewBag.isAccountValid = isAccountValid;
-                ViewBag.isCourierValid = isCourier;
                 ViewBag.email = email;
 
                 return View(orders);
@@ -43,15 +40,13 @@ namespace WebAppVsEat.Controllers
         }
 
         //Méthode qui retourne les orders qui ont été livrées (Archivage)
-        public ActionResult GetArchivedOrders(string email, [FromQuery(Name = "isAccountValid")] string isAccountValid, [FromQuery(Name = "isCourierValid")] string isCourier)
+        public ActionResult GetArchivedOrders(string email)
         {
             // On récupère les orders correspondantes à un id
             int id = CourierManager.GetCourierId(email);
             var orders = OrderManager.GetArchivedCourierOrders(id);
 
             //On stock dans des views bags les boolean de connection
-            ViewBag.isAccountValid = isAccountValid;
-            ViewBag.isCourierValid = isCourier;
             ViewBag.email = email;
 
             return View(orders);
@@ -79,14 +74,13 @@ namespace WebAppVsEat.Controllers
         [HttpPost]
         public ActionResult EditOrder(Order order)
         {
-            string isCourier = Request.Form["isCourierValid"];
-            string isAccountValid = Request.Form["isAccountValid"];
-            string email = Request.Form["email"];
+            string email = HttpContext.Session.GetString("User");
 
+           
             //On modifie l'order avec les nouvelles informations
             OrderManager.UpdateOrder(order);
 
-            return RedirectToAction(nameof(GetOrders));
+            return RedirectToAction("GetOrders", "Courier", new { email = email });
         }
     }
 }

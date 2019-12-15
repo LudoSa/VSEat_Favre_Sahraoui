@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<DTO.Order>
+@using Microsoft.AspNetCore.Http;
 
 @{
     ViewData["Title"] = "GetOrders";
@@ -6,7 +7,7 @@
 
 
 
-@if (ViewBag.email != null)
+@if (@Context.Session.GetString("User") != null)
 {
 
     <h2>My orders: </h2>
@@ -96,5 +97,5 @@
 }
 else
 {
-    @Html.ActionLink("Restaurant", "Index")
+    @Html.ActionLink("Login", "Index", "Login")
 }
