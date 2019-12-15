@@ -32,15 +32,7 @@ namespace BLL
                     return CustomersDbObject.AddCustomer(customer);
         }
 
-        public int UpdateCustomer(Customer customer)
-        {
-            return CustomersDbObject.UpdateCustomer(customer);
-        }
-
-        public int DeleteCustomer(int id)
-        {
-            return CustomersDbObject.DeleteCustomer(id);
-        }
+        
 
         public List<string> GetCitiesName()
         {

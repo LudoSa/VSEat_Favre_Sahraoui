@@ -11,10 +11,6 @@ namespace BLL
 
         Courier GetCourier(int id);
 
-        Courier AddCourier(Courier courier);
-
-        int UpdateCourier(Courier courier);
-
         int GetCourierId(String email);
         List<Courier> GetIdCourier(int idCity);
 

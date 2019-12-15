@@ -44,33 +44,6 @@ namespace DAL
             return customers;
         }
 
-        public int DeleteCustomer(int id)
-        {
-            int result = 0;
-           
-
-            try
-            {
-                using (SqlConnection cn = new SqlConnection(connectionString))
-                {
-                    string query = "DELETE Customers where IdCustomer = @id";
-                    SqlCommand cmd = new SqlCommand(query, cn);
-                    cmd.Parameters.AddWithValue("@id", id);
-
-
-                    cn.Open();
-
-                    result = cmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-
-            return result;
-        }
-
 
         public List<Customer> GetCustomers()
         {
@@ -157,40 +130,6 @@ namespace DAL
 
             return customers;
         }
-
-        public int UpdateCustomer(Customer customers)
-        {
-            int result = 0;
-            
-
-            try
-            {
-                using (SqlConnection cn = new SqlConnection(connectionString))
-                {
-                    string query = "UPDATE Customers SET Firstname=@Firstname, Lastname=@Lastname, Email=@Email, Password=@Password, Address=@Address, Country_code=@Countrycode";
-                    SqlCommand cmd = new SqlCommand(query, cn);
-                    cmd.Parameters.AddWithValue("@id", customers.IdCustomer);
-                    cmd.Parameters.AddWithValue("@Firstname", customers.Firstname);
-                    cmd.Parameters.AddWithValue("@Lastname", customers.Lastname);
-                    cmd.Parameters.AddWithValue("@Email", customers.Email);
-                    cmd.Parameters.AddWithValue("@Password", customers.Password);
-                    cmd.Parameters.AddWithValue("@Address", customers.Address);
-                    cmd.Parameters.AddWithValue("@Countrycode", customers.Country_code);
-
-                    cn.Open();
-
-                    result = cmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-
-            return result;
-        }
-
-
 
     }
 }
