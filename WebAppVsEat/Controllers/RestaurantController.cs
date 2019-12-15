@@ -22,7 +22,7 @@ namespace WebAppVsEat.Views
             DishesManager = dishesManager;
         }
 
-
+        //Get a list of restaurants and inject it in the view Restaurants situated in the Restaurant folder
         public ActionResult Restaurants()
         {
             var restaurantlist = RestaurantsManager.GetRestaurants();
@@ -37,24 +37,11 @@ namespace WebAppVsEat.Views
             return View(restaurantlist);
         }
        
-        // GET: Restaurant
+        // Show the index view situated in the Shared folder
         public ActionResult Index()
         {
             return View();
         }
         
-       /* // GET: Restaurant/Details/5
-        public ActionResult Details(int id)
-        {
-
-            var restaurant = RestaurantsManager.GetRestaurant(id);
-            var city = RestaurantsManager.getRestaurantCity(restaurant.Country_code);
-            ViewData["Address"] = city.Code + " " + city.Name;
-
-            
-            
-            return View(restaurant);
-        }
-        */
     }
 }

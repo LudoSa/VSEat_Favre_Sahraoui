@@ -18,7 +18,7 @@ namespace DAL
         }
 
        
-
+        //get a dish from an id as a parameter
         public Dish GetDish(int id)
         {
             Dish dishes = null; 
@@ -57,6 +57,7 @@ namespace DAL
             return dishes;
         }
 
+        //get a list of dishes from an id of restaurant
         public List<Dish> GetDishes(int id)
         {
             List<Dish> results = null;
