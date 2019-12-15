@@ -47,5 +47,22 @@ namespace BLL
             return CitiesDB.GetNames();
         }
 
+        public int GetCustomerId(String email)
+        {
+
+            List<Customer> customers = CustomersDbObject.GetCustomers();
+
+            foreach (Customer customer in customers)
+            {
+
+                if (customer.Email.Equals(email))
+                {
+                    return customer.IdCustomer;
+                }
+            }
+
+            return 0;
+        }
+
     }
 }

@@ -18,6 +18,29 @@ namespace DAL
         }
 
        
+        public void AddOrderDishes(OrderDish orderDish)
+        {
+
+            try
+            {
+                using (SqlConnection cn = new SqlConnection(connectionString))
+                {
+                    String query = "INSERT INTO Order_dishes(IdOrder,IdDishes,Quantity) values(@IdOrder,@IdDishes,@Quantity)";
+                    SqlCommand cmd = new SqlCommand(query, cn);
+                    cmd.Parameters.AddWithValue("@IdDishes", orderDish.IdDishes);
+                    cmd.Parameters.AddWithValue("@IdOrder", orderDish.IdOrder);
+                    cmd.Parameters.AddWithValue("@Quantity", orderDish.Quantity);
+                    cn.Open();
+                    cmd.ExecuteScalar();
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+        }
+
 
         public OrderDish GetOrderDish(int id)
         {

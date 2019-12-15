@@ -1,48 +1,38 @@
 ﻿@model IEnumerable<DTO.Order>
 
 @{
-    ViewData["Title"] = "GetOrders";
+    ViewData["Title"] = "GetMyOrders";
 }
 
-
+<h2>My orders: </h2>
 
 @if (ViewBag.email != null)
 {
-
-    <h2>My orders: </h2>
-
     <table class="table">
         <thead>
             <tr>
                 <th>
-                    <p>@Html.DisplayNameFor(model => model.IdOrder)</p>
+                    @Html.DisplayNameFor(model => model.IdOrder)
                 </th>
                 <th>
-                    <p> @Html.DisplayNameFor(model => model.Status)</p>
+                    @Html.DisplayNameFor(model => model.Status)
                 </th>
                 <th>
-                    <p> @Html.DisplayNameFor(model => model.Delivery_time)</p>
+                    @Html.DisplayNameFor(model => model.Delivery_time)
                 </th>
                 <th>
-                    <p> @Html.DisplayNameFor(model => model.CustomerName)</p>
+                    @Html.DisplayNameFor(model => model.Quantity)
                 </th>
                 <th>
-                    <p> @Html.DisplayNameFor(model => model.Quantity)</p>
+                    @Html.DisplayNameFor(model => model.Price)
                 </th>
                 <th>
-                    <p> @Html.DisplayNameFor(model => model.Price)</p>
-                </th>
-                <th>
-                    <p>  @Html.DisplayNameFor(model => model.DishName)</p>
-                </th>
-                <th>
-                    <p>Customer's address</p>
+                    @Html.DisplayNameFor(model => model.DishName)
                 </th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-
             @if (Model != null)
             {
                 @foreach (var item in Model)
@@ -58,39 +48,37 @@
                             @Html.DisplayFor(modelItem => item.Delivery_time)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.CustomerName)
-                        </td>
-                        <td>
                             @Html.DisplayFor(modelItem => item.Quantity)
                         </td>
                         <td>
-                            <p>CHF @Html.DisplayFor(modelItem => item.Price)</p>
+                            CHF @Html.DisplayFor(modelItem => item.Price)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.DishName)
                         </td>
+                        
+                        @if (DateTime.Now.AddHours(3)<item.Delivery_time)
+                        {
                         <td>
-                            @Html.DisplayFor(modelItem => item.Address)
+                            @Html.ActionLink("Cancel", "CancelOrder", new { idOrder = item.IdOrder })
                         </td>
-                        <td>
-                            @Html.ActionLink("Status", "EditOrder", new { id = item.IdOrder, isAccountValid = ViewBag.isAccountValid, isCourierValid = ViewBag.isCourierValid })
-                        </td>
+                        }
                     </tr>
 
                 }
-
-                <p>
-                    @Html.ActionLink("Delivered", "GetArchivedOrders", new { email = ViewBag.email, isAccountValid = ViewBag.isAccountValid, isCourierValid = ViewBag.isCourierValid })
-                </p>
+                 <p>
+                    @Html.ActionLink("Cancelled orders", "GetCancelledOrders", new { email = ViewBag.email })
+                 </p>
+                
+                
             }
             else
             {
                 <h3><p>No orders actually</p></h3>
                 <p>
-                    @Html.ActionLink("Delivered", "GetArchivedOrders", new { email = ViewBag.email, isAccountValid = ViewBag.isAccountValid, isCourierValid = ViewBag.isCourierValid })
+                    @Html.ActionLink("Cancelled orders", "GetCancelledOrders", new { email = ViewBag.email })
                 </p>
             }
-
         </tbody>
     </table>
 }

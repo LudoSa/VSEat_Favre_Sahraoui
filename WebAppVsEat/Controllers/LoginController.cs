@@ -37,6 +37,9 @@ namespace WebAppVsEat.Controllers
             //On récupère les boolean de validation du compte: Si le compte est valide et si le compte est un client
             bool isValid = LoginManager.IsUserValid(l);
             bool isCustomerValid = LoginManager.IsCustomerValid(l);
+            //Utile quand on crée l'order
+            int idCustomer = LoginManager.GetIdCustomer(l.Email);
+
             if (isValid)
             {
 
@@ -46,6 +49,7 @@ namespace WebAppVsEat.Controllers
                     //On retourne sur la page d'acceuil
                     HttpContext.Session.SetString("Role", "Customer");
                     HttpContext.Session.SetString("User", l.Email);
+                    HttpContext.Session.SetInt32("idCustomer", idCustomer);
                     return RedirectToAction("Index", "Restaurant", new { isAccountValid = isValid, isCustomer = isCustomerValid});
                 }
                 else

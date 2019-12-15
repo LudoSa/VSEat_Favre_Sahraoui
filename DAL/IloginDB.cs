@@ -11,5 +11,6 @@ namespace DAL
         List<Login> GetCustomerLoginPassword();
         List<Login> GetLoginPassword();
 
+        int GetIdCustomer(string email);
     }
 }

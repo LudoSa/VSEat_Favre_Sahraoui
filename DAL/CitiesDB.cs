@@ -142,7 +142,7 @@ namespace DAL
 
         public int GetRestaurantCity(int id)
         {
-            int idCity=0;
+            int idCity =0;
 
 
             try

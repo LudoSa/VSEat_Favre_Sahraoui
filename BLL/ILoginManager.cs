@@ -10,5 +10,6 @@ namespace BLL
 
         bool IsUserValid(Login l);
         bool IsCustomerValid(Login l);
+        int GetIdCustomer(string email);
     }
 }

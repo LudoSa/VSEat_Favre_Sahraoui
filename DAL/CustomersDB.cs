@@ -71,6 +71,50 @@ namespace DAL
             return result;
         }
 
+
+        public List<Customer> GetCustomers()
+        {
+            List<Customer> results = null;
+
+
+            try
+            {
+                using (SqlConnection cn = new SqlConnection(connectionString))
+                {
+                    string query = "Select * from Customers";
+                    SqlCommand cmd = new SqlCommand(query, cn);
+
+                    cn.Open();
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            if (results == null)
+                                results = new List<Customer>();
+
+                            Customer customer = new Customer();
+
+                            customer.IdCustomer = (int)dr["IdCustomer"];
+                            customer.Firstname = (string)dr["Firstname"];
+                            customer.Lastname = (String)dr["Lastname"];
+                            customer.Country_code = (int)dr["Country_code"];
+                            customer.Email = (String)dr["Email"];
+                            customer.Password = (String)dr["Password"];
+                            customer.Address = (String)dr["Address"];
+
+                            results.Add(customer);
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+            return results;
+        }
         public Customer GetCustomer(int id)
         {
             Customer customers = null;

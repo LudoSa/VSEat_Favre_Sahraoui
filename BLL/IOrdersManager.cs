@@ -13,13 +13,15 @@ namespace BLL
 
         Order GetOrder(int id);
 
-        Order AddOrder(Order orders);
+        int AddOrder(Order orders);
 
         int UpdateOrder(Order orders);
 
         int DeleteOrder(int id);
         List<Order> GetCourierOrders(int id);
         List<Order> GetArchivedCourierOrders(int id);
+        List<Order> GetCustomerOrders(int id);
+        List<Order> GetCustomerCancelOrders(int id);
 
     }
 }

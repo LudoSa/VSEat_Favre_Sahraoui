@@ -35,6 +35,12 @@ namespace BLL
 
         }
 
+        public void AddOrderDishes(OrderDish orderDish) 
+        {
+
+            OrderDishesDbObject.AddOrderDishes(orderDish);
+
+        }
 
 
 

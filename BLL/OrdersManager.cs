@@ -26,8 +26,9 @@ namespace BLL
             return OrdersDbObject.GetOrder(id);
         }
 
-        public Order AddOrder(Order courier)
+        public int AddOrder(Order courier)
         {
+
             return OrdersDbObject.AddOrder(courier);
         }
 
@@ -53,5 +54,14 @@ namespace BLL
             return OrdersDbObject.GetArchivedCourierOrders(id);
         }
 
+        public List<Order> GetCustomerOrders(int id)
+        {
+            return OrdersDbObject.GetCustomerOrders(id);
+        }
+
+        public List<Order> GetCustomerCancelOrders(int id)
+        {
+            return OrdersDbObject.GetCustomerCancelOrders(id);
+        }
     }
 }

@@ -98,5 +98,42 @@ namespace DAL
 
             return results;
         }
+
+        public int GetIdCustomer(string email)
+        {
+
+            int idCustomer = 0;
+
+
+            try
+            {
+                using (SqlConnection cn = new SqlConnection(connectionString))
+                {
+
+
+                    string query = "Select IdCustomer from Customers where Email = @email";
+                    SqlCommand cmd = new SqlCommand(query, cn);
+                    cmd.Parameters.AddWithValue("@email", email);
+
+                    cn.Open();
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        if (dr.Read())
+                        {
+
+                            idCustomer = (int)dr["IdCustomer"];
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+            return idCustomer;
+
+        }
     }
 }

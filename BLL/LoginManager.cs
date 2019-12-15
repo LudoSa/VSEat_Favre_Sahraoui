@@ -48,7 +48,11 @@ namespace BLL
             return false; 
         }
             
+        public int GetIdCustomer(string email)
+        {
+            return LoginDbObject.GetIdCustomer(email);
+        }
 
-        
+
     }
 }

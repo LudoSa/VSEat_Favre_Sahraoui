@@ -24,6 +24,8 @@
     </thead>
     @{ 
         int totalShipping = 0;
+        int quantity = 0;
+        int idDish = 0;
     }
 
     <tbody>
@@ -40,13 +42,15 @@
                     @Html.DisplayFor(modelItem => item.quantity)
                 </td>
             </tr>
-             
-              int price = @item.price * item.quantity;
-                totalShipping += price;
-            
+
+            int price = @item.price * item.quantity;
+            totalShipping += price;
+            idDish = item.idDish;
+            quantity = item.quantity;
+
 
         }
         <p>Total price: CHF @totalShipping</p>
-        <p>@Html.ActionLink("Make an order", "Edit", new { /* id=item.PrimaryKey */ })</p>
+        <p>@Html.ActionLink("Make an order", "Order", new { quantity = quantity, idDish = idDish, totalPrice = totalShipping})</p>
     </tbody>
 </table>

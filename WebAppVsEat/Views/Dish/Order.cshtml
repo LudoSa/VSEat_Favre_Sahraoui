@@ -1,0 +1,36 @@
+﻿@model WebAppVsEat.Models.OrderItem
+
+@{
+    ViewData["Title"] = "Order";
+}
+
+<h2>Delivery time: </h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Order">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input asp-for="IdCustomer" type="hidden" class="form-control" />
+                <span asp-validation-for="IdCustomer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="IdCourier" type="hidden" class="form-control" />
+                <span asp-validation-for="IdCourier" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="DeliveryTime" style="width:200px;" class="form-control" type="time" value="@Model.DeliveryTime.ToShortTimeString()" min="@Model.DeliveryTime.ToShortTimeString()" max="23:30" step="900" />
+                <span asp-validation-for="DeliveryTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="Status" type="hidden" class="form-control" />
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
