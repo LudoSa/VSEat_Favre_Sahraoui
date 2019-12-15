@@ -16,8 +16,6 @@ namespace BLL
         int AddOrder(Order orders);
 
         int UpdateOrder(Order orders);
-
-        int DeleteOrder(int id);
         List<Order> GetCourierOrders(int id);
         List<Order> GetArchivedCourierOrders(int id);
         List<Order> GetCustomerOrders(int id);

@@ -25,18 +25,6 @@ namespace BLL
             return CourierDbObject.GetCourier(id);
         }
 
-        public Courier AddCourier(Courier courier)
-        {
-            return CourierDbObject.AddCourier(courier);
-        }
-
-        public int UpdateCourier(Courier courier)
-        {
-            return CourierDbObject.UpdateCourier(courier);
-        }
-
-        
-
         public int GetCourierId(String email)
         {
 

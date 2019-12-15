@@ -45,32 +45,6 @@ namespace DAL
             return idOrder;
         }
 
-        public int DeleteOrder(int id)
-        {
-            int result = 0;
-            
-
-            try
-            {
-                using (SqlConnection cn = new SqlConnection(connectionString))
-                {
-                    string query = "DELETE Orders where IdOrder = @id";
-                    SqlCommand cmd = new SqlCommand(query, cn);
-                    cmd.Parameters.AddWithValue("@id", id);
-
-
-                    cn.Open();
-
-                    result = cmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-
-            return result;
-        }
 
         public Order GetOrder(int id)
         {

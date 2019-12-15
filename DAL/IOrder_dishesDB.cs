@@ -10,7 +10,7 @@ namespace DAL
     {
         List<OrderDish> GetOrderDishes();
         OrderDish GetOrderDish(int id);
-        int UpdateOrderDish(OrderDish orderDish);
+ 
         void AddOrderDishes(OrderDish orderDish);
 
     }

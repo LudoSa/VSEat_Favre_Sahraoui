@@ -10,8 +10,7 @@ namespace DAL
     {
         Courier GetCourier(int id);
         List<Courier> GetCouriers();
-        Courier AddCourier(Courier courier);
-        int UpdateCourier(Courier courier);
+ 
         List<Courier> GetIdCourier(int idCity);
     }
 }

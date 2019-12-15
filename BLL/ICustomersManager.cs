@@ -14,9 +14,6 @@ namespace BLL
 
         Customer AddCustomer(Customer customer);
 
-        int UpdateCustomer(Customer customer);
-
-        int DeleteCustomer(int id);
 
         List<string> GetCitiesName();
         int GetCustomerId(String email);

@@ -121,32 +121,6 @@ namespace DAL
             return results;
         }
 
-        public int UpdateOrderDish(OrderDish orderDishes)
-        {
-            int result = 0;
-           
-
-            try
-            {
-                using (SqlConnection cn = new SqlConnection(connectionString))
-                {
-                    string query = "UPDATE Order_dishes SET IdOrder=@IdOrder, IdDishes=@IdDishes, Quantity=@Quantity";
-                    SqlCommand cmd = new SqlCommand(query, cn);
-                    cmd.Parameters.AddWithValue("@IdOrder", orderDishes.IdOrder);
-                    cmd.Parameters.AddWithValue("@IdDishes", orderDishes.IdDishes);
-                    cmd.Parameters.AddWithValue("@Quantity", orderDishes.Quantity);
-
-                    cn.Open();
-
-                    result = cmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-
-            return result;
-        }
+       
     }
 }

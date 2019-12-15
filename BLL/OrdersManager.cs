@@ -37,10 +37,7 @@ namespace BLL
             return OrdersDbObject.UpdateOrder(courier);
         }
 
-        public int DeleteOrder(int id)
-        {
-            return OrdersDbObject.DeleteOrder(id);
-        }
+     
 
         public List<Order> GetCourierOrders(int id)
         {

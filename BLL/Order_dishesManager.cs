@@ -29,12 +29,6 @@ namespace BLL
             return OrderDishesDbObject.GetOrderDish(id);
         }
 
-        public int UpdateOrderDish(OrderDish orderDish)
-        {
-            return OrderDishesDbObject.UpdateOrderDish(orderDish);
-
-        }
-
         public void AddOrderDishes(OrderDish orderDish) 
         {
 
